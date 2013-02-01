@@ -1,6 +1,5 @@
 .idea
-.gitignore
-*.*~
+.gitignore*
 *.rbc
 *.sassc
 .sass-cache

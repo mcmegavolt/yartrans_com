@@ -17,4 +17,4 @@ production:
   pool: 5
   user: root
   password: "b@Z?kQy6TxBm"
-  timeout: 5000
+  socket: /var/run/mysqld/mysqld.sock
