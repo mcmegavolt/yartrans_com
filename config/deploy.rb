@@ -5,8 +5,8 @@ require "capistrano-unicorn"
 set :using_rvm, true
 set :rvm_type, :system
 
-set :application, "yartrans"
-set :user, "root"
+set :application, 'yartrans'
+set :user, 'root'
 
 set :deploy_to, "/srv/#{application}"
 set :deploy_via, :copy
