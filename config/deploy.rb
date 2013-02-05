@@ -52,7 +52,7 @@ set :su_rails, "sudo -u #{user}"
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
     # Start unicorn server using sudo (rails)
-    run "cd #{current_path} && #{user} #{unicorn_binary}"
+    run "cd #{current_path} && #{unicorn_binary}"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
