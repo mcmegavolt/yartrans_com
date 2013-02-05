@@ -21,6 +21,7 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano'
   gem 'rvm-capistrano'
+  gem 'capistrano-unicorn', :require => false
 end
 
 group :production do
