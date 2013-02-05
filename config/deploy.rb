@@ -1,14 +1,17 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
-require "capistrano-unicorn"
+
+set :application, 'yartrans'
+set :deploy_to, "/srv/#{application}"
+
+
+
 
 set :using_rvm, true
 set :rvm_type, :system
 
-set :application, 'yartrans'
 set :user, 'root'
 
-set :deploy_to, "/srv/#{application}"
 set :deploy_via, :copy
 set :normalize_asset_timestamps, false
 set :scm, :git
@@ -18,17 +21,34 @@ server "91.223.223.135", :web, :app, :db, :primary => true
 
 set :keep_releases, 4
 
+set :unicorn_env,         rails_env
+set :unicorn_pid,         "#{shared_path}/pids/unicorn.pid"
+set :unicorn_log,         "#{shared_path}/log"
+set :unicorn_socket,      "#{shared_path}/unicorn.sock"
+set :unicorn_config_path, "#{current_path}/config/unicorn/unicorn.rb"
+set :unicorn_user,        "deploy"
+set :unicorn_processes,   4
+set :unicorn_timeout, 180
+
+require "capistrano-unicorn"
+#load "config/deploy/recipes/unicorn"
+
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :migrate_database do
     run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
   end
+
 end
 
-after "deploy:stop",    "delayed_job:stop"
-after "deploy:start",   "delayed_job:start"
-after "deploy:restart", "delayed_job:restart"
+
+task :unicorn_debug, :roles => :app do
+  logger.important("UNICORN PID: #{unicorn_get_pid}", "Unicorn")
+end
+
+before :unicorn_restart, :unicorn_debug
 
 after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
 after 'deploy:restart', 'unicorn:restart'  # app preloaded
