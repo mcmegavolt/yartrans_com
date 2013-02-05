@@ -1,13 +1,12 @@
 # Automatically precompile assets
 load "deploy/assets"
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
-set :rvm_ruby_string, 'ruby-1.9.3-p362@yartrans'
 require "bundler/capistrano"
 
+
+set :rvm_ruby_string, 'ruby-1.9.3-p362@yartrans'
 set :using_rvm, true
 set :rvm_type, :system
-
 
 set :application, "yartrans"
 set :user, "root"
@@ -46,8 +45,8 @@ after "deploy:restart", "deploy:cleanup"
 
 # Unicorn config
 set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
-set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
-set :unicorn_pid, "#{current_path}/tmp/pids/unicorn.pid"
+set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn -c #{unicorn_config} -E #{rails_env} -D'"
+set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
 set :su_rails, "sudo -u #{user}"
 
 namespace :deploy do
