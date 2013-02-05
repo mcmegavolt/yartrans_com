@@ -1,7 +1,10 @@
-# Automatically precompile assets
-load "deploy/assets"
 require "rvm/capistrano"
 require "bundler/capistrano"
+require 'capistrano-unicorn'
+load "config/deploy/recipes/unicorn"
+# Automatically precompile assets
+load "deploy/assets"
+
 
 
 set :rvm_ruby_string, 'ruby-1.9.3-p362@yartrans'
@@ -43,11 +46,33 @@ after "assetsrecompile", "deploy:fix_permissions"
 # Clean-up old releases
 after "deploy:restart", "deploy:cleanup"
 
+
+after 'deploy:update_code',
+      'deploy:create_symlink',
+      'db:make_symlink',
+      'symlink_to_assets',
+      'symlink_to_static',
+      'unicorn:stop',
+      'unicorn:start',
+      'resque:stop',
+      'resque:start',
+      'update_deploy_time'
+
+
+
 # Unicorn config
-set :unicorn_config, "#{current_path}/config/unicorn.conf.rb"
-set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
-set :unicorn_pid, "#{shared_path}/tmp/pids/unicorn.pid"
+set :unicorn_config_path, "#{current_path}/config/unicorn.conf.rb"
+#set :unicorn_binary, "bash -c 'source /etc/profile.d/rvm.sh && bundle exec unicorn_rails -c #{unicorn_config} -E #{rails_env} -D'"
+set :unicorn_pid, "#{shared_path}/pids/unicorn.pid"
 set :su_rails, "sudo -u #{user}"
+set :unicorn_env,         rails_env
+set :unicorn_log,         "#{shared_path}/log"
+set :unicorn_socket,      "#{shared_path}/unicorn.sock"
+set :unicorn_user,        "deploy"
+set :unicorn_processes,   2
+set :unicorn_timeout, 360
+
+
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
