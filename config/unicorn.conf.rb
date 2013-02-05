@@ -2,22 +2,23 @@
 worker_processes 4
 
 # App location
-@app = "/srv/yartrans/current"
+@basic_path = "/srv/yartrans"
+@app = "#{@basic_path}/current"
 
 # Listen on fs socket for better performance
-listen "#{@app}/tmp/sockets/unicorn.sock", :backlog => 64
+listen "#{@basic_path}/shared/unicorn.sock", :backlog => 64
 
 # Nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout 30
 
 # App PID
-pid "#{@app}/tmp/pids/unicorn.pid"
+pid "#{@basic_path}/shared/pids/unicorn.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, some applications/frameworks log to stderr or stdout,
 # so prevent them from going to /dev/null when daemonized here:
-stderr_path "#{@app}/log/unicorn.stderr.log"
-stdout_path "#{@app}/log/unicorn.stdout.log"
+stderr_path "#{@basic_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{@basic_path}/shared/log/unicorn.stdout.log"
 
 # To save some memory and improve performance
 preload_app true

@@ -1,6 +1,8 @@
 # Automatically precompile assets
 load "deploy/assets"
+#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
+set :rvm_ruby_string, 'ruby-1.9.3-p362@yartrans'
 require "bundler/capistrano"
 
 set :using_rvm, true
