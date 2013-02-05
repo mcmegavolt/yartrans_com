@@ -6,6 +6,7 @@ require "bundler/capistrano"
 set :using_rvm, true
 set :rvm_type, :system
 
+
 set :application, "yartrans"
 set :user, "root"
 
@@ -18,6 +19,10 @@ set :repository,  ".git"
 server "91.223.223.135", :web, :app, :db, :primary => true
 
 set :keep_releases, 4
+
+task :trust_rvmrc do
+  run "rvm rvmrc trust #{latest_release}"
+end
 
 # Install RVM and Ruby before deploy
 before "deploy:setup", "rvm:install_rvm"
