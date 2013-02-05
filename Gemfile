@@ -6,8 +6,6 @@ gem 'haml'
 gem 'inherited_resources'
 gem 'thin'
 
-gem 'unicorn'
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -21,7 +19,6 @@ group :development do
   gem 'sqlite3'
   gem 'capistrano'
   gem 'rvm-capistrano'
-  gem 'capistrano-unicorn', :require => false
 end
 
 group :production do
