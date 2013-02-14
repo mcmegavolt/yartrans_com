@@ -1,0 +1,19 @@
+/ Newsletter starts
+.container.newsletter
+  .row
+    .span12
+      .well
+        / Title
+        %h5 Please fill out the below form
+        / para
+        %p Nulla facilisi. Sed justo dui, scelerisque ut consectetur vel, eleifend id erat. Morbi auctor adipiscing tempor. Phasellus condimentum rutrum aliquet.
+        / Form
+        %form.form-inline
+          .controls.controls-row
+            %input.span2{:placeholder => "Name", :type => "text"}/
+            %input.span2{:placeholder => "Email", :type => "text"}/
+            %button.btn{:type => "submit"} Subscribe
+        %p
+          If you have any questions, let me know
+          %a{:href => "mailto:something@gmail.com"} something@gmail.com
+/ Newsletter ends

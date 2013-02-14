@@ -1,0 +1,20 @@
+.container
+  %p
+    %strong Name:
+    = article_category.name
+  %p
+    %strong Description:
+    = article_category.description
+  %p
+    %strong Ancestry:
+    = article_category.ancestry
+  %p
+    %strong Position:
+    = article_category.position
+
+  %p
+    = link_to "Edit", edit_article_category_path(article_category)
+    |
+    = link_to "Destroy", article_category, :confirm => 'Are you sure?', :method => :delete
+    |
+    = link_to "View All", article_categories_path

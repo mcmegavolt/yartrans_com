@@ -1,0 +1,20 @@
+= form_for article_category, :url => ( article_category.new_record? ? article_categories_path : article_category_path(article_category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
+  = render :partial => 'shared/form_errors', :locals => { :object => article_category }
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.label :permalink
+    %br
+    = f.text_field :permalink
+  %p
+    = f.label :position
+    %br
+    = f.number_field :position
+  %p
+    = f.submit

@@ -1,0 +1,7 @@
+- if object.errors.any?
+  .error_explanation.alert.alert-block.alert-error
+    %h4
+      = t(:'errors.messages.form_errors.header')
+    %ul
+      -object.errors.full_messages.each do |msg|
+        %li= msg.html_safe
