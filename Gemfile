@@ -30,8 +30,10 @@ group :development do
   gem 'nifty-generators'
   gem 'populator'
   gem 'faker'
-  gem 'better_errors'
+
 end
+
+gem 'better_errors'
 
 group :production do
   gem 'mysql2'
