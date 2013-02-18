@@ -1,4 +1,4 @@
-= form_for article_category, :url => ( article_category.new_record? ? article_categories_path : article_category_path(article_category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
+= form_for article_category, :url => ( category.new_record? ? categories_path : category_path(article_category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
   = render :partial => 'shared/form_errors', :locals => { :object => article_category }
   %p
     = f.label :name

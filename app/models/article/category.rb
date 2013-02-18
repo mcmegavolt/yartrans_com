@@ -6,6 +6,8 @@ class Article::Category < ActiveRecord::Base
 
   has_ancestry
 
+  has_many :pages, :class_name => Article::Page, :dependent => :destroy
+
   before_save :generate_adv_cat_permalink
 
   validates_uniqueness_of :permalink

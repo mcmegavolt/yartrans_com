@@ -14,6 +14,10 @@ gem 'devise-async'
 gem 'delayed_job_active_record'
 gem 'client_side_validations'
 gem 'ancestry'
+gem 'font-awesome-sass-rails'
+gem 'ckeditor'
+gem 'carrierwave'
+gem 'mini_magick'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -30,7 +34,6 @@ group :development do
   gem 'nifty-generators'
   gem 'populator'
   gem 'faker'
-
 end
 
 gem 'better_errors'

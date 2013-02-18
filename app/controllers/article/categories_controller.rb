@@ -13,7 +13,7 @@ class Article::CategoriesController < ApplicationController
 
       if article_category.save
         flash[:success] = 'Article category was successfully created.'
-        redirect_to article_categories_path
+        redirect_to categories_path
       else
         render :action => "new"
       end
@@ -26,7 +26,7 @@ class Article::CategoriesController < ApplicationController
   def update
     if article_category.update_attributes(params[:article_category])
       flash[:success] = 'Article category was successfully updated.'
-      redirect_to article_category_path(article_category)
+      redirect_to category_path(article_category)
     else
       render :action => "edit"
     end
@@ -38,7 +38,7 @@ class Article::CategoriesController < ApplicationController
     else
       flash[:error] = 'Can\'t delete non-empty article category'
     end
-    redirect_to article_categories_path
+    redirect_to categories_path
   end
 
   def sort

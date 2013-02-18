@@ -4,7 +4,7 @@ class CreateArticleCategories < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.string :ancestry
-      t.integer :position
+      t.integer :position, :default => 0
       t.timestamps
     end
   end

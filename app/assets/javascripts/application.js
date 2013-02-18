@@ -1,5 +1,6 @@
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap
 //= require jquery.isotope
 //= require jquery.prettyPhoto
@@ -11,6 +12,6 @@
 //= require jquery.carouFredSel-6.1.0-packed
 //= require jquery.refineslide.min
 //= require custom
-//= require jquery_ujs
+//= require ckeditor/init
 //= require_tree .
 

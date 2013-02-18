@@ -37,23 +37,14 @@
               .tweet
           .span4
             .widget
-              %h5 Links Goes Here
+              %h5 Services
               %hr/
               .two-col
                 .col-left
                   %ul
-                    %li
-                      %a{:href => "#"} Condimentum
-                    %li
-                      %a{:href => "#"} Etiam at
-                    %li
-                      %a{:href => "#"} Fusce vel
-                    %li
-                      %a{:href => "#"} Vivamus
-                    %li
-                      %a{:href => "#"} Pellentesque
-                    %li
-                      %a{:href => "#"} Vivamus
+                    - root_article_categories.each do |c|
+                      %li
+                        = link_to c.name, category_path(c)
                 .col-right
                   %ul
                     %li

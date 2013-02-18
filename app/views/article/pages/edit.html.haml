@@ -1,0 +1,20 @@
+.page-head
+  .container
+    .row
+      .span12
+        %h2= article_page.title
+        -# %h4 editing page
+.content.blog
+  .container
+    .row
+      .span12
+
+        = render 'form'
+
+
+        .posts
+          .entry
+            .meta
+              = link_to "Show", page_path(article_page)
+              |
+              = link_to "View All", pages_path

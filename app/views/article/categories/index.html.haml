@@ -1,18 +1,28 @@
-.container
-  %table
-    %tr
-      %th Name
-      %th Description
-      %th Ancestry
-      %th Position
-    - for cat in article_categories
+.page-head
+  .container
+    .row
+      .span12
+        %h2 Article Categories
+        %h4 omg
+.content
+  .container
+    %table.table
       %tr
-        %td= cat.name
-        %td= cat.description
-        %td= cat.permalink
-        %td= cat.position
-        %td= link_to 'Show', cat
-        %td= link_to 'Edit', edit_article_category_path(cat)
-        %td= link_to 'Destroy', cat, :confirm => 'Are you sure?', :method => :delete
+        %th Name
+        %th Description
+        %th Ancestry
+        %th Position
+        %th
+        %th
+        %th
+      - for cat in article_categories
+        %tr
+          %td= cat.name
+          %td= cat.description.truncate(100)
+          %td= cat.permalink
+          %td= cat.position
+          %td= link_to 'Show', category_path(cat)
+          %td= link_to 'Edit', edit_category_path(cat)
+          %td= link_to 'Destroy', category_path(cat), :confirm => 'Are you sure?', :method => :delete
 
-  %p= link_to "New Article/Category", new_article_category_path
+    %p= link_to "New Article/Category", new_category_path
