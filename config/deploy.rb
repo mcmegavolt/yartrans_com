@@ -11,9 +11,11 @@ set :rvm_type, :system
 #set :whenever_command, "bundle exec whenever"
 
 set :application, "yartrans"
-set :user, "root"
+set :user, "yartrans"
+set :password, "YaRtRan8*Pa8w0rd"
+set :use_sudo, false
 
-set :deploy_to, "/srv/#{application}"
+set :deploy_to, "/home/yartrans/#{application}"
 set :deploy_via, :copy
 set :normalize_asset_timestamps, false
 set :scm, :git
@@ -21,7 +23,7 @@ set :repository,  ".git"
 
 server "vps.yartrans.ua", :web, :app, :db, :primary => true
 
-set :keep_releases, 4
+set :keep_releases, 10
 
 namespace :deploy do
   task :start do ; end
