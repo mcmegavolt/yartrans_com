@@ -1,0 +1,36 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-table
+			Register User
+		/ Breadcrumb
+		.bread-crumb.pull-right
+			= link_to admin_dashboard_path do
+				%i.icon-home
+				Home
+			/ Divider
+			%span.divider /
+			%a.bread-current{:href => "#"} New User
+		.clearfix
+
+	.matter
+		.container-fluid
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							Register form
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								%a.wclose{:href => "#"}
+									%i.icon-remove
+						.widget-content
+							.padd
+
+								= render 'admin/users/user_form'
+
+							.widget-foot
+								/ Footer goes here
+
+

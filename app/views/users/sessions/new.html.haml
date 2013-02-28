@@ -1,0 +1,33 @@
+.page-head
+  .container
+    .row
+      .span12
+        %h2 Client sign in
+        %h4 Only for certificated clients
+.content
+  .container
+    .row
+      .span6
+        .formy.well
+          %h4.title Login in your account
+          .form
+            = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal'} do |f|
+              .control-group
+                = f.label :email, :class => 'control-label'
+                .controls
+                  = f.email_field :email, :autofocus => true, :class => 'input-large'
+              .control-group
+                = f.label :password, :class => 'control-label'
+                .controls
+                  = f.password_field :password, :class => 'input-large'
+              .control-group
+                .controls
+                  - if devise_mapping.rememberable?
+                    %label.checkbox
+                      = f.check_box :remember_me
+                      Remember me
+                  = f.submit "Sign in", :class => 'btn'
+          
+      .span6
+        %h4.title Need help?
+        = render "devise/shared/links"

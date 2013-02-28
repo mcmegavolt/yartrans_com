@@ -1,0 +1,7 @@
+- flash.each do |name, msg|
+	.content
+		.container
+			%div{ :class => "alert alert-#{name} fade in" }
+				%a.close{ 'data-dismiss' => 'alert'} x
+				- unless msg == 'true'
+					= msg

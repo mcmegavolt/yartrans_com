@@ -1,0 +1,87 @@
+/ Sidebar
+.sidebar
+	.sidebar-dropdown
+		%a{:href => "#"} Navigation
+	/ - Sidebar navigation
+	/ If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation.
+	%ul#nav
+		/ Main menu with font awesome icon
+		%li
+			= link_to admin_path, :class => ('open' if controller_name == 'dashboard') do
+				%i.icon-home
+				Dashboard
+
+		%li.has_sub
+			%a{:href => "#", :class => ('open' if controller_name == 'users')}
+				%i.icon-user
+				Users
+				%span.pull-right
+					%i.icon-chevron-right
+			%ul
+				%li
+					= link_to admin_users_path do
+						%i.icon-list
+						Manage Users
+				%li
+					= link_to new_admin_user_path do
+						%i.icon-plus
+						Add New User
+		
+
+		/ %li.has_sub
+		/ 	%a{:href => "#"}
+		/ 		%i.icon-file-alt
+		/ 		Pages #1
+		/ 		%span.pull-right
+		/ 			%i.icon-chevron-right
+		/ 	%ul
+		/ 		%li
+		/ 			%a{:href => "post.html"} Post
+		/ 		%li
+		/ 			%a{:href => "login.html"} Login
+		/ 		%li
+		/ 			%a{:href => "register.html"} Register
+		/ 		%li
+		/ 			%a{:href => "support.html"} Support
+		/ 		%li
+		/ 			%a{:href => "invoice.html"} Invoice
+		/ 		%li
+		/ 			%a{:href => "profile.html"} Profile
+		/ 		%li
+		/ 			%a{:href => "gallery.html"} Gallery
+		/ %li.has_sub
+		/ 	%a{:href => "#"}
+		/ 		%i.icon-file-alt
+		/ 		Pages #2
+		/ 		%span.pull-right
+		/ 			%i.icon-chevron-right
+		/ 	%ul
+		/ 		%li
+		/ 			%a{:href => "media.html"} Media
+		/ 		%li
+		/ 			%a{:href => "statement.html"} Statement
+		/ 		%li
+		/ 			%a{:href => "error.html"} Error
+		/ 		%li
+		/ 			%a{:href => "error-log.html"} Error Log
+		/ 		%li
+		/ 			%a{:href => "calendar.html"} Calendar
+		/ 		%li
+		/ 			%a{:href => "grid.html"} Grid
+		/ %li
+		/ 	%a{:href => "charts.html"}
+		/ 		%i.icon-bar-chart
+		/ 		Charts
+		/ %li
+		/ 	%a{:href => "tables.html"}
+		/ 		%i.icon-table
+		/ 		Tables
+		/ %li
+		/ 	%a{:href => "forms.html"}
+		/ 		%i.icon-tasks
+		/ 		Forms
+		/ %li
+		/ 	%a{:href => "ui.html"}
+		/ 		%i.icon-magic
+		/ 		User Interface
+/ Sidebar ends

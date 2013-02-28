@@ -5,7 +5,19 @@ namespace :db do
 
     require 'populator'
     require 'faker'
-
+                                                                                                                                                                                                                          
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+                                                                                                                                                                                                                          
+         ##   ##### ###### #### ####  ##     ######  
+        ####  ##  ##  ##    ## ##  ## ##     ##      
+       ##  ## ##  ##  ##    ## ##     ##     ##      
+       ###### #####   ##    ## ##     ##     ####    
+       ##  ## ####    ##    ## ##     ##     ##      
+       ##  ## ## ##   ##    ## ##  ## ##     ##      
+       ##  ## ##  ##  ##   #### ####  ###### ######  
+                                                                                                                                                                                                                                                                           
     Article::Category.populate 4 do |cat|
       cat.permalink = Populator.words(1..2).parameterize
       cat.name = cat.permalink.titleize
@@ -29,6 +41,53 @@ namespace :db do
       static.entry = Populator.paragraphs(1)
       static.published = true
     end
+
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+
+
+       ##  ##  ####  ###### #####   ####   
+       ##  ## ##  ## ##     ##  ## ##  ##  
+       ##  ## ##     ##     ##  ## ##      
+       ##  ##  ####  ####   #####   ####   
+       ##  ##     ## ##     ####       ##  
+       ##  ## ##  ## ##     ## ##  ##  ##  
+        ####   ####  ###### ##  ##  ####   
+    
+
+    70.times do
+      User.create do |u|
+        u.email = Faker::Internet.email
+        u.password = 'mcmegavolt'
+        u.role_ids = [Role.find_by_name('Client').id]
+        u.confirm!
+        Profile.populate 1 do |p|
+          p.user_id = u.id
+          p.name = Faker::Company.name
+          p.personal_id = '1C-' + rand(10 ** 10).to_s.rjust(10,'0')
+          p.phone_main = Faker::PhoneNumber.phone_number
+          p.phone_alternate = Faker::PhoneNumber.phone_number
+        end
+        u.save
+      end
+    end
+
+    # User.find_each do |u|
+    #   Profile.populate 1 do |p|
+    #     p.user_id = u.id
+    #     p.name = Faker::Company.name
+    #     p.personal_id = '1C-' + rand(10 ** 10).to_s.rjust(10,'0')
+    #     p.phone_main = Faker::PhoneNumber.phone_number
+    #     p.phone_alternate = Faker::PhoneNumber.phone_number
+    #   end
+    # end
+      
+
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+    ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ###### ######  
+
 
     #Category.populate 20 do |category|
     #  category.name = Populator.words(1..3).titleize

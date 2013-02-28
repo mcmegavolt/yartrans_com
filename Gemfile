@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'jquery-rails'
+gem 'jquery-rails', '2.0.1'
 gem 'haml'
 gem 'inherited_resources'
 gem 'thin'
@@ -18,6 +18,13 @@ gem 'font-awesome-sass-rails'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'ckeditor'
+gem "carrierwave"
+gem "mini_magick"
+gem 'devise'
+gem "cancan"
+gem 'kaminari'
+gem 'ransack'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -37,6 +44,7 @@ group :development do
 end
 
 gem 'better_errors'
+gem 'binding_of_caller'
 
 group :production do
   gem 'mysql2'

@@ -1,2 +1,14 @@
 ru:
   hello: "Привет!"
+
+
+
+
+
+  ckeditor:
+    page_title: "Файловый менеджер"
+    confirm_delete: "Удалить файл?"
+    buttons:
+      cancel: "Отмена"
+      upload: "Загрузить"
+      delete: "Удалить"

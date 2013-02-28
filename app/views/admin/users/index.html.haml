@@ -1,0 +1,97 @@
+= render 'admin/shared/sidebar'
+.mainbar
+
+	.page-head
+		%h2.pull-left
+			%i.icon-table
+			Users Manager
+		/ Breadcrumb
+		.bread-crumb.pull-right
+			= link_to admin_dashboard_path do
+				%i.icon-home
+				Home
+			/ Divider
+			%span.divider /
+			%a.bread-current{:href => "#"} Users
+			
+		.clearfix
+
+	.matter
+		.container-fluid
+			.controls.controls-row
+
+				= search_form_for @q, :url => search_admin_users_path, :html => {:method => :post, :class => 'form-inline'} do |f|
+					= f.label :email_cont, 'Email'
+					= f.text_field :email_cont, :class => 'input-medium'
+					= f.label :profile_name_or_profile_personal_id_cont, 'Name / ID'
+					= f.text_field :profile_name_or_profile_personal_id_cont, :class => 'input-medium'
+					= f.collection_select :roles_id_eq, Role.order(:name), :id, :name, :include_blank => '- role -'
+					= f.submit 'Search', :class => 'btn'
+					= f.submit 'Reset', :type => 'reset', :class => 'btn btn-reverse'
+
+			/ Table
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							Tables
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								%a.wclose{:href => "#"}
+									%i.icon-remove
+						.widget-content
+							%table.table.table-striped.table-bordered.table-hover
+								%thead
+									%tr
+										/ %th{style:"width:21px;"} ID
+										%th ID
+										/ %th.span3 Email
+										%th Email
+										%th Name
+										%th Personal ID
+										%th Role
+										%th Actions
+								%tbody
+									- users.each do |u|
+										%tr
+											%td
+												= u.id
+											%td
+												= "#{u.email}"
+											%td
+												= "#{u.profile.name}"
+											%td
+												= "#{u.profile.personal_id}"
+											%td
+												- if u.role? :admin
+													%span.label.label-success
+														= "#{u.role}"
+												- elsif u.role? :director
+													%span.label.label-info
+														= "#{u.role}"
+												- elsif u.role? :manager
+													%span.label.label-warning
+														= "#{u.role}"
+												- else
+													%span.label
+														= "#{u.role}"
+											%td
+												- if can? :edit || :destroy, u
+													- if can? :edit, u
+														= link_to edit_admin_user_path(u) do
+															%i.icon-pencil
+															Edit
+														%span.muted
+													- if can? :destroy, u
+														= link_to admin_user_path(u), :method => :delete, :confirm => "Are you sure?" do
+															%i.icon-trash
+															Delete
+												- else	
+													%i.icon-lock
+													Locked
+								
+							.widget-foot
+								= paginate users
+								.clearfix
+.clearfix

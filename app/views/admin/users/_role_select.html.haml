@@ -1,0 +1,10 @@
+- if can? :read, Role
+	.control-group
+		= f.label :role, :class => 'control-label'
+		.controls
+			= f.select :role_ids, @accessible_roles.map{ |r| [r.name, r.id]}
+
+
+	/ For this we need "habtm_checkboxes" gem / MEGAVOLT
+	/ %ul.no-pad.no-bullets
+	/ 	= habtm_checkboxes( user, :role_ids, @accessible_roles, :name)

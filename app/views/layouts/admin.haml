@@ -1,0 +1,34 @@
+!!!
+/[if lt IE 7] <html lang="en" class="no-js ie6">
+/[if IE 7 ]    <html lang="en" class="no-js ie7">
+/[if IE 8 ]    <html lang="en" class="no-js ie8">
+/[if IE 9 ]    <html lang="en" class="no-js ie9">
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+%head
+  %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
+  %meta{:charset => "utf-8"}/
+  / Title and other stuffs
+  %title MacBeath
+  %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,600", :rel => "stylesheet", :type => "text/css"}/
+
+  = stylesheet_link_tag 'admin/application'
+
+  /[if lt IE 9]
+    = javascript_include_tag 'html5shim'
+  / Favicon
+  %link{:href => "img/favicon/favicon.png", :rel => "shortcut icon"}/
+  = csrf_meta_tags
+
+%body
+  = render 'admin/shared/navbar'
+  = render 'admin/shared/header'
+  = render 'shared/flash_messages'
+
+  = render 'admin/shared/sidebar'
+  = yield
+  
+  = render 'admin/shared/footer'
+
+  = javascript_include_tag 'admin/application'

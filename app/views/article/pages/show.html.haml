@@ -5,6 +5,7 @@
         %h2= article_page.title
         %h4= article_page.entry.html_safe
 
+
 .content.blog
   .container
     .row
@@ -12,19 +13,20 @@
         .posts
           .entry
             = article_page.body.html_safe
-
           .meta
-            = link_to edit_page_path(article_page) do
-              %i.icon-pencil
-              Edit
-            &nbsp;
-            = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
-              %i.icon-trash
-              Delete
-            &nbsp;
+            - if can? :edit, Article::Page
+              = link_to edit_page_path(article_page) do
+                %i.icon-pencil
+                Edit
+              &nbsp;
+            - if can? :destroy, Article::Page  
+              = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
+                %i.icon-trash
+                Delete
+              &nbsp;
             - if article_page.is_static?
               %i.icon-folder-close
               STATIC
             - else
               %i.icon-folder-open
-                = article_page.category
+                = link_to article_page.category,  category_path(article_page.category)

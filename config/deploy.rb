@@ -15,11 +15,12 @@ set :user, "yartrans"
 set :password, "YaRtRan8*Pa8w0rd"
 set :use_sudo, false
 
-set :deploy_to, "/home/yartrans/#{application}"
+set :deploy_to, "/home/#{user}/#{application}"
 set :deploy_via, :copy
 set :normalize_asset_timestamps, false
 set :scm, :git
 set :repository,  ".git"
+set :branch, "master"
 
 server "vps.yartrans.ua", :web, :app, :db, :primary => true
 

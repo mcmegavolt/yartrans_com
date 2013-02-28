@@ -10,20 +10,21 @@ class Article::CategoriesController < ApplicationController
   end
 
   def create
-
+      authorize! :create, article_category
       if article_category.save
         flash[:success] = 'Article category was successfully created.'
         redirect_to categories_path
       else
         render :action => "new"
       end
-
   end
 
   def edit
+    authorize! :edit, article_category
   end
 
   def update
+    authorize! :edit, article_category
     if article_category.update_attributes(params[:article_category])
       flash[:success] = 'Article category was successfully updated.'
       redirect_to category_path(article_category)
@@ -33,6 +34,7 @@ class Article::CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, article_category
     unless article_category.children.exists?
       article_category.destroy
     else

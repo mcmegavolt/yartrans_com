@@ -23,8 +23,12 @@
   = csrf_meta_tags
 
 %body
-  = render :partial => 'shared/header'
+
+  = render 'shared/header'
+  = render 'shared/flash_messages'
+  - if user_signed_in?  
+    = render 'users/shared/user_toolbar'
   = yield
-  = render :partial => 'shared/footer'
+  = render 'shared/footer'
 
   = javascript_include_tag 'application'

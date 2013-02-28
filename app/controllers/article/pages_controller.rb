@@ -7,20 +7,21 @@ class Article::PagesController < ApplicationController
   end
 
   def new
+    authorize! :create, article_page
   end
 
   def create
-
       if article_page.save
         flash[:success] = 'Article page was successfully created.'
         redirect_to pages_path
       else
         render :action => "new"
       end
-
+      authorize! :create, article_page
   end
 
   def edit
+    authorize! :edit, article_page
   end
 
   def update
@@ -30,15 +31,15 @@ class Article::PagesController < ApplicationController
     else
       render :action => "edit"
     end
+    authorize! :edit, article_page
   end
 
   def destroy
-    unless article_page.children.exists?
-      article_page.destroy
-    else
-      flash[:error] = 'Can\'t delete non-empty article page'
+    authorize! :destroy, article_page
+    if article_page.destroy
+      flash[:error] = 'Page destroyed!'
+      redirect_to category_path(article_page.category)
     end
-    redirect_to pages_path
   end
 
   def sort

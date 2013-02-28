@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
 
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
+  
   def root_article_categories
     @root_article_categories = Article::Category.roots
   end
