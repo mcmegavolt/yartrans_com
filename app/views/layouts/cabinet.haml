@@ -23,11 +23,12 @@
   = csrf_meta_tags
 
 %body
-  = render 'shared/header'
+  / = render 'shared/header'
 
+  - if user_signed_in?  
+    = render 'cabinet/toolbar'
   = yield
-  / - if user_signed_in?  
-  /   = render 'users/shared/user_toolbar'
+  
   = render 'shared/footer'
 
   = javascript_include_tag 'application'

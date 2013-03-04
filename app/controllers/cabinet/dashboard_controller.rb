@@ -1,3 +1,21 @@
 class Cabinet::DashboardController < ApplicationController
-  # layout 'admin'
+  
+  layout 'cabinet'
+
+  before_filter :require_client_access
+
+  def require_client_access
+    authorize! :log, :cabinet
+  end
+
+  def admission_apps
+  	@admission_apps ||= current_user.admission_apps
+  end
+  helper_method :admission_apps
+
+  def release_apps
+  	@release_apps ||= current_user.release_apps
+  end
+  helper_method :release_apps
+
 end

@@ -27,8 +27,8 @@ Yartrans::Application.routes.draw do
   end
 
   namespace :cabinet do
-  	resources :admission_applications, :path => 'admission'
-  	resources :release_applications, :path => 'release'
+  	resources :admission_apps, :path => 'admission'
+  	resources :release_apps, :path => 'release'
   end
 
 

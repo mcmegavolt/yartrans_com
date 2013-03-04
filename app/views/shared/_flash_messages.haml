@@ -1,7 +1,11 @@
 - flash.each do |name, msg|
-	.content
-		.container
-			%div{ :class => "alert alert-#{name} fade in" }
-				%a.close{ 'data-dismiss' => 'alert'} x
-				- unless msg == 'true'
-					= msg
+	:javascript
+		noty({
+			text: "#{msg}",
+			layout:'topRight',
+			type: "#{name}",
+			timeout:10000
+		});
+
+		// Alert  Success  Error  Warning  Information
+

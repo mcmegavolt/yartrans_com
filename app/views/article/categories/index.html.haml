@@ -6,23 +6,25 @@
         %h4 omg
 .content
   .container
-    %table.table
-      %tr
-        %th Name
-        %th Description
-        %th Ancestry
-        %th Position
-        %th
-        %th
-        %th
-      - for cat in article_categories
-        %tr
-          %td= cat.name
-          %td= cat.description.truncate(100)
-          %td= cat.permalink
-          %td= cat.position
-          %td= link_to 'Show', category_path(cat)
-          %td= link_to 'Edit', edit_category_path(cat)
-          %td= link_to 'Destroy', category_path(cat), :confirm => 'Are you sure?', :method => :delete
+    .row
+      .span12
+        %table.table
+          %tr
+            %th Name
+            %th Description
+            %th Ancestry
+            %th Position
+            %th
+            %th
+            %th
+          - for cat in article_categories
+            %tr
+              %td= cat.name
+              %td= cat.description.truncate(100)
+              %td= cat.permalink
+              %td= cat.position
+              %td= link_to 'Show', category_path(cat)
+              %td= link_to 'Edit', edit_category_path(cat)
+              %td= link_to 'Destroy', category_path(cat), :confirm => 'Are you sure?', :method => :delete
 
-    %p= link_to "New Article/Category", new_category_path
+        %p= link_to "New Article/Category", new_category_path

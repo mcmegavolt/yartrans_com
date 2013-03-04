@@ -1,0 +1,41 @@
+.page-head
+	.container
+		.row
+			.span12
+				%h2
+					%span.color= current_user.email
+					|
+					Profile edition
+.content
+	.container
+		.row
+			.span12
+				= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
+					= devise_error_messages!
+
+					.control-group
+						= f.label :email, :class => 'control-label' 
+						.controls
+							= f.email_field :email, :autofocus => true
+
+					- if devise_mapping.confirmable? && resource.pending_reconfirmation? 
+						Currently waiting confirmation for: 
+						= resource.unconfirmed_email
+					.control-group
+						= f.label :password , :class => 'control-label'
+						.controls
+							= f.password_field :password, :autocomplete => "off"
+							%p.help-block (leave blank if you don't want to change it)
+					.control-group
+						= f.label :password_confirmation, :class => 'control-label'
+						.controls
+							= f.password_field :password_confirmation
+					.control-group
+						= f.label :current_password, :class => 'control-label'
+						.controls
+							= f.password_field :current_password
+							%p.help-block (we need your current password to confirm your changes)
+					.form-actions
+						= f.submit "Update", :class => 'btn'
+
+				= link_to "Back", :back 

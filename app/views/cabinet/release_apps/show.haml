@@ -1,0 +1,42 @@
+.content
+	.container
+		.row
+			.span8
+				%h2= t(:'applications.release.show.title')
+				%h4 #{release_app.cargo_name } (##{release_app.id})
+				%br/
+				%table.table.table-condensed.table-hover
+					%tbody
+						%tr
+							%th Created at
+							%td
+								= l release_app.created_at, :format => :short
+								(#{time_ago_in_words release_app.created_at} ago)
+						%tr
+							%th Cargo name
+							%td= release_app.cargo_name
+						%tr
+							%th Cod number
+							%td= release_app.code_number
+						%tr
+							%th Unit
+							%td= release_app.unit
+						%tr
+							%th Unit count
+							%td= release_app.unit_count
+						%tr
+							%th In box count
+							%td= release_app.in_box_count
+						%tr
+							%th Box count
+							%td= release_app.box_count
+						%tr
+							%th Additional info
+							%td= release_app.additional_info
+			.span4
+				.sidebar
+					.widget
+						%h4= t(:'cabinet.my_release_apps')
+						%ul
+							- current_user.release_apps.each do |app|
+								%li= link_to app.cargo_name + " (##{app.id})", cabinet_release_app_path(app), :style => ('font-weight:bold;' if app == release_app)

@@ -6,7 +6,7 @@
         .row
           .span4
             .widget
-              %h5 Contact
+              %h5= t(:'footer.contacts')
               %hr/
               %p Praesent ultricies enim ac ipsum aliquet . Nullam justo nunc, dignissim at convallis posuere, sodales eu orci.
               %hr/
@@ -18,7 +18,7 @@
               %hr/
               %i.icon-envelope-alt
               \ 
-              %a{:href => "mailto:#"} someone@company.com
+              %a{:href => "mailto:office@yartrans.ua"} office@yartrans.ua
               %hr/
               .social
                 %a{:href => "#"}
@@ -37,7 +37,7 @@
               .tweet
           .span4
             .widget
-              %h5 Services
+              %h5= t(:'footer.services')
               %hr/
               .two-col
                 .col-left
@@ -63,24 +63,29 @@
         %hr/
         / Copyright info
         %p.copy
-          Copyright © 2012 |
-          %a{:href => "#"} Your Site
+          Copyright © #{Time.now.year} |
+          = link_to root_url do
+            YARTRANS
           \-
-          %a{:href => "#"} Home
-          |
-          %a{:href => "#"} About Us
-          |
-          %a{:href => "#"} Service
-          |
-          %a{:href => "#"} Contact Us
-          |
-          
-          - if user_signed_in?
-            Hello, #{current_user.email}
+          = link_to root_url do
+            Home
+          - static_article_pages.each do |static|
             |
-            = link_to 'Logout', destroy_user_session_path, :method => :delete
-          - else
-            = link_to 'Client Login', new_user_session_path
+            = link_to static.title, page_path(static)
+          %span.pull-right
+            - if user_signed_in?
+              = t(:'cabinet.hello')
+              = link_to cabinet_path do
+                #{current_user.email}
+              |
+              = link_to cabinet_path do
+                = t(:'cabinet.my_cabinet')
+              |
+              = link_to destroy_user_session_path, :method => :delete do
+                = t(:'cabinet.logout')
+            - else
+              = link_to new_user_session_path do
+                = t(:'cabinet.login')
     .clearfix
 / Footer ends
 / Scroll to top

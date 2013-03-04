@@ -63,7 +63,7 @@
 						/ Widget content
 						.widget-content
 							.padd
-								- ActivityFeed.all.each do |a|
+								-#- for a in activity_feeds do
 									.alert.alert-success.fade.in
 										= link_to 'x', admin_activity_feed_path(a), :method => :delete, :class => 'close', "data-dismiss" => "alert"
 										%b= User.find(a.record_id).profile.name

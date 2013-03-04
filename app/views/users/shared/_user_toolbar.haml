@@ -1,25 +1,31 @@
 .cta
-  .container
-    .row
-      .span1
-      .span3
-        .ctas
-          %h5
-            Hello
-            %span.color
-              = current_user.email
-          %p.muted
-            Your current role:
-            %b #{current_user.roles.last.name.downcase}
-      .span3
-        .ctas
-          %ul
-            %li= link_to "Edit profile", edit_registration_path(current_user)
-            %li= link_to "Admin Panel", admin_path
+	.container
+		.row
+			.span1
+			.span3
+				.ctas
+					%h5
+						Hello
+						%span.color
+							= current_user.email
+					%p.muted
+						Your current role:
+						%b #{current_user.roles.last.name.downcase}
+			.span3
+				.ctas
+					%ul
+						%li= link_to "Edit profile", edit_registration_path(current_user)
+						- if current_user.role? (:admin || :director || :manager)
+							%li= link_to "Admin Panel", admin_path
+						- else
+							%li= link_to "Admission Applications", cabinet_admission_apps_path
+							%li= link_to "Release Applications", cabinet_release_apps_path
 
 
-      .span5
-        .ctas
-          %p Want say goodbye?
-          .button
-            = link_to 'Log Out', destroy_user_session_path, :method => :delete, :confirm => 'Confirm logout?'
+
+			.span5
+				.ctas
+					Want say goodbye?
+					.button
+						= link_to 'Log Out', destroy_user_session_path, :method => :delete, :confirm => 'Confirm logout?'
+.clearfix

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cargo_name: MyString
+  consignment: MyString
+  code_number: MyString
+  unit_id: 1
+  unit_count: 1
+  in_box_count: 1
+  box_count: 1
+  additional_info: MyText
+  user_id: 1
+
+two:
+  cargo_name: MyString
+  consignment: MyString
+  code_number: MyString
+  unit_id: 1
+  unit_count: 1
+  in_box_count: 1
+  box_count: 1
+  additional_info: MyText
+  user_id: 1

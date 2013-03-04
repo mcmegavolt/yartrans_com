@@ -1,9 +1,35 @@
 ru:
-  hello: "Привет!"
-
-
-
-
+  applications:
+    admission:
+      index:
+        title: "Мои заявки на прием груза"
+      show:
+        title: "Детали заявки"
+      edit:
+        title: "Редактирование заявки на прием груза"
+      new:
+        title: "Новая заявка на прием груза"
+    release:
+      index:
+        title: "Мои заявки на выдачу груза"
+      show:
+        title: "Детали заявки"
+      edit:
+        title: "Редактирование заявки на выдачу груза"
+      new:
+        title: "Новая заявка на прием груза"
+    unit_types:
+      shtuk: "шт."
+      butil: "бут."
+      upak: "уп."
+      paleta: "пал."
+      label: "Единица"
+  user:
+    roles:
+      admin: "Администратор"
+      director: "Директор"
+      manager: "Менеджер"
+      client: "Клиент"
 
   ckeditor:
     page_title: "Файловый менеджер"
@@ -12,3 +38,22 @@ ru:
       cancel: "Отмена"
       upload: "Загрузить"
       delete: "Удалить"
+
+  cabinet:
+    title: "Кабинет"
+    my_cabinet: "Мой кабинет"
+    my_admission_apps: "Мои заявки на прием груза"
+    admission_apps: "Заявки на прием груза"
+    my_release_apps: "Мои заявки на выдачу груза"
+    release_apps: "Заявки на выдачу груза"
+    my_profile: "Моя учетная запись"
+    edit_profile: "Изменить учетную запись"
+    hello: "Приветствую, "
+    login: "Вход для клиентов"    
+    logout: "Выйти"
+    main_page: "На главную"
+
+  footer:
+    contacts: "Контакты"
+    services: "Услуги"
+
