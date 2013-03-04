@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  barcode: MyString
+  expected_date: 2013-02-28 23:03:05
+  notes: MyText
+  vehicle: MyText
+  cargo_name: MyString
+  code_number: MyString
+  unit_id: 1
+  unit_count: 1
+  in_box_count: 1
+  box_count: 1
+  additional_info: MyText
+
+two:
+  user_id: 1
+  barcode: MyString
+  expected_date: 2013-02-28 23:03:05
+  notes: MyText
+  vehicle: MyText
+  cargo_name: MyString
+  code_number: MyString
+  unit_id: 1
+  unit_count: 1
+  in_box_count: 1
+  box_count: 1
+  additional_info: MyText

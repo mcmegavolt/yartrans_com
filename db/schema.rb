@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227234419) do
+ActiveRecord::Schema.define(:version => 20130302192107) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(:version => 20130227234419) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "admission_apps", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "barcode"
+    t.datetime "expected_date"
+    t.text     "notes"
+    t.text     "vehicle"
+    t.string   "cargo_name"
+    t.string   "code_number"
+    t.integer  "unit_id"
+    t.integer  "unit_count"
+    t.integer  "in_box_count"
+    t.integer  "box_count"
+    t.text     "additional_info"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "article_categories", :force => true do |t|
@@ -70,6 +87,20 @@ ActiveRecord::Schema.define(:version => 20130227234419) do
     t.integer  "user_id"
   end
 
+  create_table "release_apps", :force => true do |t|
+    t.string   "cargo_name"
+    t.string   "consignment"
+    t.string   "code_number"
+    t.integer  "unit_id"
+    t.integer  "unit_count"
+    t.integer  "in_box_count"
+    t.integer  "box_count"
+    t.text     "additional_info"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -80,6 +111,17 @@ ActiveRecord::Schema.define(:version => 20130227234419) do
     t.integer "role_id"
     t.integer "user_id"
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "var",                       :null => false
+    t.text     "value"
+    t.integer  "target_id"
+    t.string   "target_type", :limit => 30
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "settings", ["target_type", "target_id", "var"], :name => "index_settings_on_target_type_and_target_id_and_var", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

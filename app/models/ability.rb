@@ -21,12 +21,12 @@ class Ability
     # end
 
     if user.role? :admin ######### ADMIN ##############
-      can :log, :admin_panel
+      can :log, [:admin_panel, :cabinet]
       can :manage, :all
 
     elsif user.role? :director ###### DIRECTOR ########
-      can :log, :admin_panel
-      can :edit, [Article::Page, Article::Category]
+      can :log, [:admin_panel, :cabinet]
+      can :edit, [Article::Page, Article::Category,]
       can [:edit, :destroy], User do |user|
         (user.role? :client) || (user.role? :manager)
       end
@@ -34,7 +34,7 @@ class Ability
       can :read, Role, :name => ['Manager', 'Client']
 
     elsif user.role? :manager ####### MANAGER #########
-      can :log, :admin_panel
+      can :log, [:admin_panel, :cabinet]
       can [:edit, :destroy, :create], User do |user|
         user.role? :client
       end
@@ -42,6 +42,13 @@ class Ability
       can :read, Role, :name => 'Client'
 
     elsif user.role? :client ####### CLIENT ###########
+      can :manage, AdmissionApp do |adm_app|
+        adm_app.try(:user) == user
+      end
+      can :manage, ReleaseApp do |rel_app|
+        rel_app.try(:user) == user
+      end
+      can :log, :cabinet
 
     else ####### GUEST ################################
 

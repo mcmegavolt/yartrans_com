@@ -1,0 +1,42 @@
+.content
+	.container
+		.row
+			.span12
+				%h4= t(:'applications.release.index.title')
+				%hr/
+				- unless release_apps.blank?
+					%table.table.table-condensed.table-hover
+						%thead
+							%tr
+								%th #
+								%th Cargo Name
+								%th Unit
+								%th Unit count
+								%th Date
+								%th Actions
+						%tbody
+							- release_apps.each do |app|
+								%tr
+									%td= app.id
+									%td= link_to app.cargo_name, cabinet_release_app_path(app)
+									%td= app.unit
+									%td= app.unit_count
+									%td= l app.created_at, :format => :short
+									%td
+										= link_to cabinet_release_app_path(app), :method => :delete, :confirm => '???' do
+											%i.icon-trash
+											Delete
+										&nbsp;
+										= link_to edit_cabinet_release_app_path(app) do
+											%i.icon-pencil
+											Edit
+				- else
+					You don't have release applications yet.
+
+				.button
+					= link_to new_cabinet_release_app_path do
+						Create a new application
+
+
+
+

@@ -1,0 +1,58 @@
+.content
+	.container
+		.row
+			.span8
+				%h2= t(:'applications.admission.show.title')
+				%h4 #{admission_app.cargo_name } (##{admission_app.id})
+				%br/
+				%table.table.table-condensed.table-hover
+					%tbody
+						%tr
+							%th Created at
+							%td
+								= l admission_app.created_at, :format => :short
+								(#{time_ago_in_words admission_app.created_at} ago)
+						%tr
+							%th Barcode
+							%td= admission_app.barcode
+						%tr
+							%th Expected date
+							%td
+								= l admission_app.expected_date, :format => :long
+								(
+								= distance_of_time_in_words_to_now admission_app.expected_date
+								)
+						%tr
+							%th Notes
+							%td= admission_app.notes
+						%tr
+							%th Vehicle
+							%td= admission_app.vehicle
+						%tr
+							%th Cargo name
+							%td= admission_app.cargo_name
+						%tr
+							%th Cod number
+							%td= admission_app.code_number
+						%tr
+							%th Unit
+							%td= admission_app.unit
+						%tr
+							%th Unit count
+							%td= admission_app.unit_count
+						%tr
+							%th In box count
+							%td= admission_app.in_box_count
+						%tr
+							%th Box count
+							%td= admission_app.box_count
+						%tr
+							%th Additional info
+							%td= admission_app.additional_info
+			.span4
+				.sidebar
+					.widget
+						%h4= t(:'cabinet.my_admission_apps')
+						%ul
+							- current_user.admission_apps.each do |app|
+								%li= link_to app.cargo_name + " (##{app.id})", cabinet_admission_app_path(app), :style => ('font-weight:bold;' if app == admission_app)

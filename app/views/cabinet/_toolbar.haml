@@ -1,0 +1,29 @@
+.page-head
+	.container
+		.row
+			.span12
+				%h3
+					%span.color= current_user.email
+					|
+					= t(:"user.roles.#{current_user.role.downcase}") 
+				%hr/
+				%span{:style => 'margin-right: 15px;'}
+					= link_to edit_registration_path(current_user) do
+						%i.icon-user
+						= t(:'cabinet.edit_profile')
+				%span{:style => 'margin-right: 15px;'}
+					= link_to cabinet_admission_apps_path do
+						%i.icon-download-alt
+						= t(:'cabinet.admission_apps')
+				%span{:style => 'margin-right: 15px;'}
+					= link_to cabinet_release_apps_path do
+						%i.icon-upload-alt
+						= t(:'cabinet.release_apps')
+				%span
+					= link_to destroy_user_session_path, :method => :delete, :confirm => 'Confirm logout?' do
+						%i.icon-off
+						= t(:'cabinet.logout')
+				%span.pull-right
+					= link_to root_url do
+						%i.icon-home
+						= t(:'cabinet.main_page')

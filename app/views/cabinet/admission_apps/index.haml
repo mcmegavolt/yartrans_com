@@ -1,0 +1,42 @@
+.content
+	.container
+		.row
+			.span12
+				%h4= t(:'applications.admission.index.title')
+				%hr/
+				- unless admission_apps.blank?
+					%table.table.table-condensed.table-hover
+						%thead
+							%tr
+								%th #
+								%th Cargo Name
+								%th Unit
+								%th Unit count
+								%th Date
+								%th Actions
+						%tbody
+							- admission_apps.each do |app|
+								%tr
+									%td= app.id
+									%td= link_to app.cargo_name, cabinet_admission_app_path(app)
+									%td= app.unit
+									%td= app.unit_count
+									%td= l app.created_at, :format => :short
+									%td
+										= link_to cabinet_admission_app_path(app), :method => :delete, :confirm => '???' do
+											%i.icon-trash
+											Delete
+										&nbsp;
+										= link_to edit_cabinet_admission_app_path(app) do
+											%i.icon-pencil
+											Edit
+				- else
+					You don't have admission applications yet.
+
+				.button
+					= link_to new_cabinet_admission_app_path do
+						Create a new application
+
+
+
+
