@@ -42,8 +42,6 @@ namespace :deploy do
     run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
   end
 
-  after 'deploy:update_code', 'deploy:create_symlink'
-
 end
 
 
