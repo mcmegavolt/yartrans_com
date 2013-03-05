@@ -12,8 +12,10 @@ set :rvm_type, :system
 
 set :application, "yartrans"
 set :user, "yartrans"
-set :password, "YaRtRan8*Pa8w0rd"
+set :password, "YaRtRaN8*pa88w0rd"
 set :use_sudo, false
+
+set :ssh_options, { :paranoid => false }
 
 set :deploy_to, "/home/#{user}/#{application}"
 set :deploy_via, :copy
@@ -40,7 +42,11 @@ namespace :deploy do
     run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
   end
 
+  after 'deploy:update_code', 'deploy:create_symlink'
+
 end
+
+
 
 #after "deploy:stop",    "delayed_job:stop"
 #after "deploy:start",   "delayed_job:start"
@@ -86,6 +92,8 @@ namespace :uploads do
   on :start,  "uploads:register_dirs"
 
 end
+
+
 
 #before 'deploy:update_code', 'thinking_sphinx:stop'
 #after 'deploy:update_code', 'thinking_sphinx:start'

@@ -26,6 +26,7 @@ gem "cancan"
 gem 'kaminari'
 gem 'ransack'
 gem 'ledermann-rails-settings', :require => 'rails-settings'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
