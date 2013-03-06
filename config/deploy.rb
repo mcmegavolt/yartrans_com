@@ -6,14 +6,13 @@ set :rvm_type, :system  # Copy the exact line. I really mean :user here
 set :application, "yartrans"
 set :scm, :git
 set :repository,  ".git"
-set :branch, "master"
-
+# set :branch, "master"
+set :branch, "develop"
 
 role :web, "vps.yartrans.ua"                          # Your HTTP server, Apache/etc
 role :app, "vps.yartrans.ua"                          # This may be the same as your `Web` server
 role :db,  "vps.yartrans.ua", :primary => true # This is where Rails migrations will run
 role :db,  "vps.yartrans.ua"
-
 
 set :ssh_options, { :forward_agent => true, :paranoid => false }
 
@@ -29,7 +28,6 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :keep_releases, 10
 
-
 namespace :rvm do
   task :trust_rvmrc do
     run "rvm rvmrc trust #{release_path}"
@@ -41,14 +39,11 @@ after "deploy", "rvm:trust_rvmrc"
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
 
-# for passenger
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+after 'deploy:update_code', :roles => :app do
+  # Здесь для примера вставлен только один конфиг с приватными данными - database.yml. Обычно для таких вещей создают папку /srv/myapp/shared/config и кладут файлы туда. При каждом деплое создаются ссылки на них в нужные места приложения.
+  run "rm -f #{current_release}/config/database.yml"
+  run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
+end
 
 # Далее идут правила для перезапуска unicorn. Их стоит просто принять на веру - они работают.
 # В случае с Rails 3 приложениями стоит заменять bundle exec unicorn_rails на bundle exec unicorn
