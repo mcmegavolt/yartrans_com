@@ -19,6 +19,9 @@ module Yartrans
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{Rails.root}/lib #{Rails.root}/app/models/**/*)
 
+    # Add additional path to the assets path for pipeline compilation
+    config.assets.paths << "#{Rails.root}/lib/assets"
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
