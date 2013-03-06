@@ -21,20 +21,19 @@ set :password, "YaRtRaN8*pa88w0rd"
 set :use_sudo, false
 set :deploy_via, :copy
 set :deploy_to, "/home/yartrans/yartrans"
-set :normalize_asset_timestamps, false
+# set :normalize_asset_timestamps, false
 
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :keep_releases, 10
 
-namespace :rvm do
-  task :trust_rvmrc do
-    run "rvm rvmrc trust #{release_path}"
-  end
-end
-
-after "deploy", "rvm:trust_rvmrc"
+# namespace :rvm do
+#   task :trust_rvmrc do
+#     run "rvm rvmrc trust #{release_path}"
+#   end
+# end
+# after "deploy", "rvm:trust_rvmrc"
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
