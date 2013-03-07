@@ -42,6 +42,7 @@ ru:
   cabinet:
     title: "Кабинет"
     my_cabinet: "Мой кабинет"
+    admin_panel: "Админ-панель"
     my_admission_apps: "Мои заявки на прием груза"
     admission_apps: "Заявки на прием груза"
     my_release_apps: "Мои заявки на выдачу груза"

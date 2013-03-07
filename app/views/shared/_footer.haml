@@ -77,9 +77,15 @@
               = t(:'cabinet.hello')
               = link_to cabinet_path do
                 #{current_user.email}
+              (#{t(:"user.roles.#{current_user.role.downcase}")})
+
               |
-              = link_to cabinet_path do
-                = t(:'cabinet.my_cabinet')
+              - if current_user.role? :client
+                = link_to cabinet_path do
+                  = t(:'cabinet.my_cabinet')
+              - else
+                = link_to admin_path do
+                  = t(:'cabinet.admin_panel')
               |
               = link_to destroy_user_session_path, :method => :delete do
                 = t(:'cabinet.logout')

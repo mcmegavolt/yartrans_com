@@ -70,6 +70,10 @@
 						/ Dropdown menu
 						%ul.dropdown-menu
 							%li
+								= link_to root_path do
+									%i.icon-home
+									Main page
+							%li
 								= link_to admin_user_path(current_user) do
 									%i.icon-user
 									My Profile
