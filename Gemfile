@@ -43,10 +43,9 @@ group :development do
   gem 'nifty-generators'
   gem 'populator'
   gem 'faker'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
-
-gem 'better_errors'
-gem 'binding_of_caller'
 
 group :production do
   gem 'mysql2'
