@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if current_user.role? :admin || :director || :manager
+    if current_user.role? :admin 
+      admin_path
+    elsif current_user.role? :director 
+      admin_path
+    elsif current_user.role? :manager
       admin_path
     elsif current_user.role? :client
       cabinet_path
