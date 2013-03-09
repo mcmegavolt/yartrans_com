@@ -1,11 +1,12 @@
 - flash.each do |name, msg|
-	:javascript
-		noty({
-			text: "#{msg}",
-			layout:'topRight',
-			type: "#{name}",
-			timeout:10000
-		});
+	- unless msg == true
+		:javascript
+			noty({
+				text: "#{msg}",
+				layout:'topRight',
+				type: "#{name}",
+				timeout:10000
+			});
 
-		// Alert  Success  Error  Warning  Information
+			// Alert  Success  Error  Warning  Information
 

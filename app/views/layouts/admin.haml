@@ -24,12 +24,9 @@
 
 %body
   = render 'admin/shared/navbar'
-  = render 'admin/shared/header'
-  = render 'shared/flash_messages'
-
+  / = render 'admin/shared/header'
   = render 'admin/shared/sidebar'
   = yield
-  
   = render 'admin/shared/footer'
-
   = javascript_include_tag 'admin/application'
+  = render 'shared/flash_messages'

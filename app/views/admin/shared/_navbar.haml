@@ -10,57 +10,13 @@
 			/ Navigation starts
 			.nav-collapse.collapse
 				%ul.nav
-					/ Upload to server link. Class "dropdown-big" creates big dropdown
-					%li.dropdown.dropdown-big
-						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-							%span.badge.badge-important
-								%i.icon-cloud-upload
-							Upload to Cloud
-						/ Dropdown
-						%ul.dropdown-menu
-							%li
-								/ Progress bar
-								%p Photo Upload in Progress
-								/ Bootstrap progress bar
-								.progress
-									.bar.bar-success{:style => "width: 40%;"}
-								%hr/
-								/ Progress bar
-								%p Video Upload in Progress
-								/ Bootstrap progress bar
-								.progress
-									.bar.bar-important{:style => "width: 80%;"}
-								%hr/
-								/ Dropdown menu footer
-								.drop-foot
-									%a{:href => "#"} View All
-					/ Sync to server link
-					%li.dropdown.dropdown-big
-						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-							%span.badge.badge-success
-								%i.icon-refresh
-							Sync with Server
-						/ Dropdown
-						%ul.dropdown-menu
-							%li
-								/ Using "icon-spin" class to rotate icon.
-								%p
-									%span.badge.badge-success
-										%i.icon-refresh.icon-spin
-									Syncing Members Lists to Server
-								%hr/
-								%p
-									%span.badge.badge-warning
-										%i.icon-refresh.icon-spin
-									Syncing Bookmarks Lists to Cloud
-								%hr/
-								/ Dropdown menu footer
-								.drop-foot
-									%a{:href => "#"} View All
-				/ Search form
-				%form.navbar-search.pull-left
-					%input.search-query{:placeholder => "Search", :type => "text"}/
+					%li
+						= link_to root_url do
+							%i.icon-home
+							Main site
+				
 				/ Links
+				
 				%ul.nav.pull-right
 					%li.dropdown.pull-right
 						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}

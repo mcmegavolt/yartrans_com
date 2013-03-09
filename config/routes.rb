@@ -21,6 +21,9 @@ Yartrans::Application.routes.draw do
         match 'search' => 'users#search', :via => [:get, :post], :as => :search
         get 'page/:page', :action => :index
       end
+      member do
+        get :confirm
+      end
     end
     resource :dashboard
     resources :activity_feeds

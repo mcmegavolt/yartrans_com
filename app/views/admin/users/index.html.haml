@@ -21,9 +21,7 @@
 			.controls.controls-row
 
 				= search_form_for @q, :url => search_admin_users_path, :html => {:method => :post, :class => 'form-inline'} do |f|
-					= f.label :email_cont, 'Email'
-					= f.text_field :email_cont, :class => 'input-medium'
-					= f.label :profile_name_or_profile_personal_id_cont, 'Name / ID'
+					= f.label :email_or_profile_name_or_profile_personal_id_cont, 'Name / ID / Email'
 					= f.text_field :profile_name_or_profile_personal_id_cont, :class => 'input-medium'
 					= f.collection_select :roles_id_eq, Role.order(:name), :id, :name, :include_blank => '- role -'
 					= f.submit 'Search', :class => 'btn'
@@ -50,6 +48,7 @@
 										%th Email
 										%th Name
 										%th Personal ID
+										%th Confirmed?
 										%th Role
 										%th Actions
 								%tbody
@@ -63,6 +62,13 @@
 												= "#{u.profile.name}"
 											%td
 												= "#{u.profile.personal_id}"
+											%td
+												- if u.confirmed?
+													%span{:style => 'color: green'}
+														%i.icon-circle
+												- else
+													= link_to confirm_admin_user_path(u), :style => 'color: red', :confirm => 'Confirm this user?' do
+														%i.icon-circle-blank
 											%td
 												- if u.role? :admin
 													%span.label.label-success

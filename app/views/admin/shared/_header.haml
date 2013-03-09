@@ -8,8 +8,8 @@
 				.logo
 					%h1
 						= link_to admin_path do
-							YARTRANS admin
-					%p.meta we rock every our client!
+							ADMIN
+					%p.meta we rock everybody!
 				/ Logo ends
 			/ Button section
 			.span4
@@ -128,10 +128,7 @@
 							/ Number of logins
 							%p
 								%a{:href => "#"}
-									- @logins = 0
-									- User.find_each do |u|
-										- @logins += u.sign_in_count
-									= @logins
+									777
 								%em logins
 						.clearfix
 					/ Members data

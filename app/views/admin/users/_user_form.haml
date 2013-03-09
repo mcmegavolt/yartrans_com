@@ -11,10 +11,6 @@
 				= f.label :password, :class => 'control-label'
 				.controls
 					= f.text_field :password, :autocomplete => "off"
-			/ .control-group
-			/ 	= f.label :password_confirmation, :class => 'control-label'
-			/ 	.controls
-			/ 		= f.text_field :password_confirmation
 			= render :partial => 'role_select', :locals => { :f => f }
 		.span4
 			= f.fields_for :profile do |p|

@@ -7,7 +7,7 @@
 			user.email = 'admin@yartrans.ua'
 			user.password = 'mcmegavolt'
 			user.role_ids = [Role.find_by_name('Admin').id] 
-				## Profile
+			## Profile
 			user.build_profile
       user.profile.user_id = user.id
       user.profile.name = Faker::Company.name

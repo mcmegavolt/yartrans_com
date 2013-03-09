@@ -18,8 +18,8 @@ namespace :db do
        ##  ## ## ##   ##    ## ##  ## ##     ##      
        ##  ## ##  ##  ##   #### ####  ###### ######  
                                                                                                                                                                                                                                                                            
-    Article::Category.populate 4 do |cat|
-      cat.permalink = Populator.words(1..2).parameterize
+    Article::Category.populate 3 do |cat|
+      cat.permalink = Populator.words(2).parameterize
       cat.name = cat.permalink.titleize
       cat.description = Populator.paragraphs(1)
       cat.position = 0
@@ -55,13 +55,9 @@ namespace :db do
        ##  ## ##  ## ##     ## ##  ##  ##  
         ####   ####  ###### ##  ##  ####   
     
-
-    70.times do
-      User.create do |u|
+      User.populate 70 do |u|
         u.email = Faker::Internet.email
-        u.password = 'mcmegavolt'
-        u.role_ids = [Role.find_by_name('Client').id]
-        u.confirm!
+        u.encrypted_password = '#########'
         Profile.populate 1 do |p|
           p.user_id = u.id
           p.name = Faker::Company.name
@@ -73,7 +69,7 @@ namespace :db do
         AdmissionApp.populate 10 do |app|
           app.user_id = u.id
           app.barcode = 'BAR-' + rand(10 ** 10).to_s.rjust(10,'0')
-          app.expected_date = Time.now + (10..25).days
+          app.expected_date = Time.now + 10.days
           app.notes = Populator.words(2..4)
           app.vehicle = Populator.words(2..4)
           app.cargo_name = Faker::Company.name
@@ -84,10 +80,40 @@ namespace :db do
           app.box_count = 5..10
           app.additional_info = Populator.paragraphs(1) 
         end
-
-        u.save
       end
-    end
+
+      User.find_each do |u|
+        u.password = 'mcmegavolt'
+        if u.id == 1
+          p 'if 1 //// USER-ID => ' + u.id.to_s
+          u.role_ids = [1]
+        elsif u.id == 2
+          p 'if 2 //// USER-ID => ' + u.id.to_s
+          u.role_ids = [2]
+        elsif  u.id == 3
+          p 'if 3 //// USER-ID => ' + u.id.to_s
+          u.role_ids = [3]
+        else
+          p 'ELSE //// USER-ID => ' + u.id.to_s
+          u.role_ids = [Role.find_by_name('Client').id]
+        end
+        if u.save
+          p 'Saving user ' + u.id.to_s + ' - OK'
+        else
+          p 'Saving user ' + u.id.to_s + ' - FALSE'
+        end
+        if u.confirm!
+          p 'Confirm user ' + u.id.to_s + ' - OK'
+        else
+          p 'Confirm user ' + u.id.to_s + ' - Already confirmed!'
+        end
+
+      end
+
+      # user = User.find_by_email('admin@yartrans.ua')
+      # user.role_ids = []
+      # user.role_ids = [Role.find_by_name('Admin').id]
+      # user.save
 
          ##    #### ###### #### ##  ## #### ###### #### ###### ####   
         ####  ##  ##  ##    ##  ##  ##  ##    ##    ##  ##    ##  ##  

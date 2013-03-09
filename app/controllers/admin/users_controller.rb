@@ -94,4 +94,14 @@ class Admin::UsersController < Admin::DashboardController
     user.updated_by = current_user.id
   end
 
+  def confirm
+    if user.confirm!
+      flash[:success] = 'User was successfully confirmed.'
+      redirect_to admin_users_path
+    else
+      flash[:error] = 'Confirmation error.'
+      redirect_to admin_users_path
+    end
+  end
+
 end
