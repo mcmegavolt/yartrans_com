@@ -25,13 +25,13 @@ class Article::PagesController < ApplicationController
   end
 
   def update
+    authorize! :edit, article_page
     if article_page.update_attributes(params[:article_page])
       flash[:success] = 'Article page was successfully updated.'
       redirect_to page_path(article_page)
     else
       render :action => "edit"
     end
-    authorize! :edit, article_page
   end
 
   def destroy

@@ -14,9 +14,12 @@
                 = category.name
                 %b.caret
               %ul.dropdown-menu
+                - for sub_cat in category.children do
+                  %li= link_to sub_cat, category_path(sub_cat)
                 - category.pages.each do |page|
                   %li
                     = link_to page, page_path(page)
+          
           - static_article_pages.each do |static|
             %li
               = link_to static.title, page_path(static)

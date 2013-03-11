@@ -13,6 +13,29 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 CKEDITOR.editorConfig = function( config )
 {
 
+
+	/* Filebrowser routes */
+  // The location of an external file browser, that should be launched when "Browse Server" button is pressed.
+  config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
+
+  // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Flash dialog.
+  config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";
+
+  // The location of a script that handles file uploads in the Flash dialog.
+  config.filebrowserFlashUploadUrl = "/ckeditor/attachment_files";
+  
+  // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Link tab of Image dialog.
+  config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+
+  // The location of an external file browser, that should be launched when "Browse Server" button is pressed in the Image dialog.
+  config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+
+  // The location of a script that handles file uploads in the Image dialog.
+  config.filebrowserImageUploadUrl = "/ckeditor/pictures";
+  
+  // The location of a script that handles file uploads.
+  config.filebrowserUploadUrl = "/ckeditor/attachment_files";
+
   config.language = 'ru';
 
 	config.emailProtection = 'encode';
@@ -32,15 +55,6 @@ CKEDITOR.editorConfig = function( config )
 		
 		
 	config.shiftEnterMode = CKEDITOR.ENTER_DIV;
-		
-		
-	// The toolbar definition. It is an array of toolbars (strips), each one being also an array, containing a list of UI items. Note that this setting is composed by "toolbar_" added by the toolbar name, which in this case is called "Basic". This second part of the setting name can be anything. You must use this name in the CKEDITOR.config.toolbar setting, so you instruct the editor which toolbar_(name) setting to you. 
-		/*
-		config.toolbar_Basic = [
-			[ 'Source', '-', 'Bold', 'Italic' ]
-		];
-		*/
-		
 		
 	// This is the default toolbar definition used by the editor. It contains all editor features.
 		
@@ -63,8 +77,6 @@ CKEDITOR.editorConfig = function( config )
 			['Image','Flash','Table','HorizontalRule','SpecialChar']
 			
 		];
-		
-		
 		
 	// The editor width in CSS size format or pixel integer.
 		config.width = 770;

@@ -1,20 +1,42 @@
-= form_for article_category, :url => ( article_category.new_record? ? categories_path : category_path(article_category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
-  = render :partial => 'shared/form_errors', :locals => { :object => article_category }
-  %p
-    = f.label :name
-    %br
-    = f.text_field :name
-  %p
-    = f.label :description
-    %br
-    = f.text_area :description
-  %p
-    = f.label :permalink
-    %br
-    = f.text_field :permalink
-  %p
-    = f.label :position
-    %br
-    = f.number_field :position
-  %p
-    = f.submit
+.form
+  = form_for article_category, :url => ( article_category.new_record? ? categories_path : category_path(article_category) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
+    = render :partial => 'shared/form_errors', :locals => { :object => article_category }
+    .row
+      .span12
+        .control-group
+          = f.label :name, :class => 'control-label'
+          .controls
+            = f.text_field :name, :class => 'span10'
+        .control-group
+          = f.label :description, :class => 'control-label'
+          .controls
+            / = javascript_include_tag "ckeditor/init"
+            / = f.cktext_area :description, :rows => 6, :class => 'span10'
+            = f.text_area :description, :rows => 6, :class => 'span10'
+    .row
+      .span5
+        .control-group
+          = f.label :parent_id, :class => 'control-label'
+          .controls
+            = f.select :parent_id, Article::Category.roots.map {|c| [c.name, c.id]} , :include_blank => '--- Root ---'
+        .control-group
+          = f.label :permalink, :class => 'control-label'
+          .controls
+            = f.text_field :permalink
+        .control-group
+          = f.label :position, :class => 'control-label'
+          .controls
+            = f.number_field :position, :class => 'span1'
+      .span7
+        .control-group
+          = f.label :icon, :class => 'control-label'
+          .controls
+            = image_tag(article_category.icon_url(:medium)) if article_category.icon?
+            = f.file_field :icon
+            = f.hidden_field :icon_cache
+            = f.check_box :remove_icon
+            Remove icon
+
+
+    .form-actions
+      = f.submit

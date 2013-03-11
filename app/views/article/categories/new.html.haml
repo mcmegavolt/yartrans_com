@@ -1,4 +1,14 @@
-.container
-  = render 'form'
+.page-head
+	.container
+		.row
+			.span12
+				%h2
+					%i.icon-edit
+					New category
+.content.blog
+	.container
+		.row
+			.span12
+				= render 'form'
 
-  %p= link_to "Back to List", categories_path
+				%p= link_to "Back to List", categories_path

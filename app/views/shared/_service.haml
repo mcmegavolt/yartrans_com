@@ -2,27 +2,12 @@
 .service-one
   .container
     .row
-      .span4
-        / Font awesome icon
-        %i.icon-envelope
-        / Title
-        %h5 Web Designing Service
-        / Para
-        %p Praesent at tellus porttitor nisl porttitor sagittis. Mauris in massa ligula, a tempor nulla. Ut tempus interdum mauris vel vehicula.
-        / Button
-        .button
-          %a{:href => "#"} Check It Out
-      .span4
-        %i.icon-comments-alt
-        %h5 Web Developemnt Service
-        %p Praesent at tellus porttitor nisl porttitor sagittis. Mauris in massa ligula, a tempor nulla. Ut tempus interdum mauris vel vehicula.
-        .button
-          %a{:href => "#"} Check It Out
-      .span4
-        %i.icon-thumbs-up
-        %h5 Web Consulting Service
-        %p Praesent at tellus porttitor nisl porttitor sagittis. Mauris in massa ligula, a tempor nulla. Ut tempus interdum mauris vel vehicula.
-        .button
-          %a{:href => "#"} Check It Out
+      - for root_cat in root_article_categories do
+        .span4
+          = image_tag root_cat.icon_url(:small)
+          %h5= root_cat.name
+          %p= root_cat.description.truncate(190)
+          .button
+            = link_to 'Check it Out', category_path(root_cat)
     %hr/
 / Service style #1 ends

@@ -17,23 +17,48 @@ namespace :db do
        ##  ## ####    ##    ## ##     ##     ##      
        ##  ## ## ##   ##    ## ##  ## ##     ##      
        ##  ## ##  ##  ##   #### ####  ###### ######  
-                                                                                                                                                                                                                                                                           
+                
+
+    ### First create root category                                                                                                                                                                                                                                                                       
     Article::Category.populate 3 do |cat|
-      cat.permalink = Populator.words(2).parameterize
-      cat.name = cat.permalink.titleize
+      cat.permalink = Populator.words(1).parameterize
+      cat.name = (cat.permalink + ' root cat').titleize
       cat.description = Populator.paragraphs(1)
       cat.position = 0
 
-      Article::Page.populate 6 do |page|
-        page.permalink = Populator.words(2..3).parameterize
-        page.title = page.permalink.titleize
+      ### Create some sub-categories
+      Article::Category.populate 2..3 do |subcat|
+        subcat.permalink = Populator.words(2).parameterize
+        subcat.name = (subcat.permalink + ' sub cat').titleize
+        subcat.description = Populator.paragraphs(1)
+        subcat.position = 0
+        subcat.ancestry = cat.id.to_s
+
+        ### Create some pages for sub-category
+        Article::Page.populate 2..4 do |page|
+          page.permalink = Populator.words(1..2).parameterize
+          page.title = (page.permalink + ' sub page').titleize
+          page.body = Populator.paragraphs(3..5)
+          page.entry = Populator.paragraphs(1)
+          page.published = true
+          page.category_id = subcat.id
+        end
+
+      end
+
+      ### Create some pages for root category
+      Article::Page.populate 1..3 do |page|
+        page.permalink = Populator.words(1).parameterize
+        page.title = (page.permalink + ' root page').titleize
         page.body = Populator.paragraphs(3..5)
         page.entry = Populator.paragraphs(1)
         page.published = true
         page.category_id = cat.id
       end
+
     end
 
+    ### Create some static pages
     Article::Page.populate 2 do |static|
       static.permalink = Populator.words(1).parameterize
       static.title = static.permalink.titleize
@@ -110,10 +135,6 @@ namespace :db do
 
       end
 
-      # user = User.find_by_email('admin@yartrans.ua')
-      # user.role_ids = []
-      # user.role_ids = [Role.find_by_name('Admin').id]
-      # user.save
 
          ##    #### ###### #### ##  ## #### ###### #### ###### ####   
         ####  ##  ##  ##    ##  ##  ##  ##    ##    ##  ##    ##  ##  

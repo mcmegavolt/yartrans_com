@@ -3,24 +3,35 @@
     .row
       .span12
         %h2= article_category.name
-        %h4= article_category.description.truncate(110)
+    .row    
+      .span10
+        %h4= article_category.description.html_safe
+      .span2
+        = image_tag article_category.icon_url(:medium)
 .container
   .content.process
     .row
-      - article_category.pages.each_with_index do |page, index|
-        .span4
-          .onethree-left
-            .process-meta
-              %span= index + 1
-          .onethree-right
-            %h4= page.title
-            %p= page.body.html_safe.truncate(150)
-            %hr/
-        - if ((index+1)%3).zero?
-          .clearfix
-
+      - if article_category.children.present?
+        - article_category.children.each_with_index do |sub, index|
+          .span4
+            .onethree-left
+              = image_tag article_category.icon_url(:small)
+              / .process-meta
+              /   %span= index + 1
+            .onethree-right
+              %h4= sub.name
+              %p= sub.description.truncate(150)
+              %hr/
+              - for page in sub.pages do
+                %h6
+                  %i.icon-double-angle-right.color
+                  &nbsp;&nbsp;
+                  = link_to page_path(page) do
+                    = page.title
+          - if ((index+1)%3).zero?
+            .clearfix
     .row
-      .span12
+      .span12.blog
         .posts
           .meta
             - if can? :edit, Article::Category

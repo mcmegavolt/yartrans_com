@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302192107) do
+ActiveRecord::Schema.define(:version => 20130311221511) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20130302192107) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "permalink"
+    t.string   "icon"
   end
 
   create_table "article_pages", :force => true do |t|

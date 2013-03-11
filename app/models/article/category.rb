@@ -2,7 +2,13 @@ class Article::Category < ActiveRecord::Base
 
   self.table_name = 'article_categories'
 
-  attr_accessible :name, :description, :ancestry, :position, :permalink
+  attr_accessible :name,
+                  :description, 
+                  :ancestry, 
+                  :position, 
+                  :permalink, 
+                  :parent_id,
+                  :icon, :icon_cache, :remove_icon
 
   has_ancestry
 
@@ -13,6 +19,8 @@ class Article::Category < ActiveRecord::Base
   validates_uniqueness_of :permalink
 
   default_scope order('position ASC')
+
+  mount_uploader :icon, CategoryIconUploader
 
   def to_param
     permalink

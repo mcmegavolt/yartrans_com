@@ -1,6 +1,16 @@
-.container
-  = render 'form'
-  %p
-    = link_to "Show", category_path
-    |
-    = link_to "View All", categories_path
+.page-head
+	.container
+		.row
+			.span12
+				%h2
+					%i.icon-edit
+					= article_category.name
+.content.blog
+	.container
+		.row
+			.span12
+				= render 'form'
+				%p
+					= link_to "Show", category_path
+					|
+					= link_to "View All", categories_path

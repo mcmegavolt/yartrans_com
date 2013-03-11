@@ -23,6 +23,7 @@ class Ability
     if user.role? :admin ######### ADMIN ##############
       can :log, [:admin_panel, :cabinet]
       can :manage, :all
+      can :access, :ckeditor
 
     elsif user.role? :director ###### DIRECTOR ########
       can :log, [:admin_panel, :cabinet]

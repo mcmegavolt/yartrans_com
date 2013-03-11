@@ -4,7 +4,7 @@
     .row
       .span12
         .row
-          .span4
+          .span3
             .widget
               %h5= t(:'footer.contacts')
               %hr/
@@ -29,37 +29,31 @@
                   %i.icon-linkedin.linkedin
                 %a{:href => "#"}
                   %i.icon-google-plus.google-plus
-          .span4
-            .widget
-              %h5 Latest Tweets
-              %hr/
-              / Below line is produce acutal output
-              .tweet
-          .span4
-            .widget
-              %h5= t(:'footer.services')
-              %hr/
-              .two-col
-                .col-left
-                  %ul
-                    - root_article_categories.each do |c|
-                      %li
-                        = link_to c.name, category_path(c)
-                .col-right
-                  %ul
-                    %li
-                      %a{:href => "#"} Condimentum
-                    %li
-                      %a{:href => "#"} Etiam at
-                    %li
-                      %a{:href => "#"} Fusce vel
-                    %li
-                      %a{:href => "#"} Vivamus
-                    %li
-                      %a{:href => "#"} Pellentesque
-                    %li
-                      %a{:href => "#"} Vivamus
-                .clearfix
+          - root_article_categories.each do |c|
+            .span3
+              .widget
+                %h5= link_to c.name, category_path(c)
+                %hr/
+                %ul
+                  - c.children.each do |child|
+                    %li{:style => 'font-weight: bold;'}
+                      = link_to child.name, category_path(child)
+                    - for p in child.pages do
+                      %p
+                        %i.icon-angle-right
+                        &nbsp;
+                        = link_to p.title, page_path(p)
+                    %hr/
+                  - for p in c.pages do
+                    %li= link_to p.title, page_path(p)
+                / .two-col
+                /   .col-left
+                /       111
+                /   .col-right
+                /     %ul
+                /       %li
+                /         %a{:href => "#"} Vivamus
+                /   .clearfix
         %hr/
         / Copyright info
         %p.copy
