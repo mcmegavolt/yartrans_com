@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :registerable, :confirmable
 
+  acts_as_messageable
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, 
                   :password, 
@@ -31,6 +33,10 @@ class User < ActiveRecord::Base
 
   def role
     self.roles.last.name
+  end
+
+  def name
+    email
   end
 
 end

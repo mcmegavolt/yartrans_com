@@ -2,13 +2,11 @@
 	.page-head
 		%h2.pull-left
 			%i.icon-table
-			Register User
-		/ Breadcrumb
-		.bread-crumb.pull-right
+			= t(:'admin.users.new.title')
+		-#.bread-crumb.pull-right
 			= link_to admin_dashboard_path do
 				%i.icon-home
 				Home
-			/ Divider
 			%span.divider /
 			%a.bread-current{:href => "#"} New User
 		.clearfix
@@ -19,7 +17,7 @@
 				.span12
 					.widget
 						.widget-head
-							Register form
+							= t(:'admin.users.new.form_title')
 							.widget-icons.pull-right
 								%a.wminimize{:href => "#"}
 									%i.icon-chevron-up

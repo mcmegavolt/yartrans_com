@@ -30,7 +30,6 @@ ru:
       director: "Директор"
       manager: "Менеджер"
       client: "Клиент"
-
   ckeditor:
     page_title: "Файловый менеджер"
     confirm_delete: "Удалить файл?"
@@ -57,4 +56,26 @@ ru:
   footer:
     contacts: "Контакты"
     services: "Услуги"
+
+  actions:
+    save: "Сохранить"
+
+  pagination:
+    first: "Первая страница"
+    last: "Последняя страница"
+    next: "Следующая"
+    previous: "Предыдущая"
+
+  activerecord: 
+    attributes:
+      user:
+        email: "Эл. почта"
+        password: "Пароль"
+        role: "Роль"
+      profile:
+        name: "Имя"
+        personal_id: "Персональный номер"
+        phone_main: "Телефон 1"
+        phone_alternate: "Телефон 2"
+
 

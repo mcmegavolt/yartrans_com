@@ -1,0 +1,5 @@
+= search_form_for @q, :url => search_admin_users_path, :html => {:method => :post, :class => 'form-inline'} do |f|
+	= f.text_field :profile_name_or_profile_personal_id_cont, :class => 'input-large', :placeholder => "#{t(:'admin.users.index.name')} / #{t(:'admin.users.index.personal_id')} / Email"
+	= f.collection_select :roles_id_eq, Role.all, :id, :name, :include_blank => "- #{t(:"admin.users.index.role")} -"
+	= f.submit t(:'admin.users.index.search_form.submit'), :class => 'btn'
+	= f.submit t(:'admin.users.index.search_form.reset'), :type => 'reset', :class => 'btn btn-reverse'

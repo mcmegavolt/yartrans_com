@@ -1,7 +1,8 @@
 / Sidebar
 .sidebar
 	.sidebar-dropdown
-		%a{:href => "#"} Navigation
+		%a{:href => "#"}
+			= t(:'admin.navigation')
 	/ - Sidebar navigation
 	/ If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation.
 	%ul#nav
@@ -9,23 +10,23 @@
 		%li
 			= link_to admin_path, :class => ('open' if controller_name == 'dashboard') do
 				%i.icon-home
-				Dashboard
+				= t(:'admin.menu.dashboard')
 
 		%li.has_sub
 			%a{:href => "#", :class => ('open' if controller_name == 'users')}
 				%i.icon-user
-				Users
+				= t(:'admin.menu.users')
 				%span.pull-right
 					%i.icon-chevron-right
 			%ul
 				%li
 					= link_to admin_users_path do
 						%i.icon-list
-						Manage Users
+						= t(:'admin.menu.manage_users')
 				%li
 					= link_to new_admin_user_path do
 						%i.icon-plus
-						Add New User
+						= t(:'admin.menu.add_user')
 		
 
 		/ %li.has_sub

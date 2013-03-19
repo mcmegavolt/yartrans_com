@@ -12,7 +12,7 @@ set :branch, "develop"
 role :web, "vps.yartrans.ua"                          # Your HTTP server, Apache/etc
 role :app, "vps.yartrans.ua"                          # This may be the same as your `Web` server
 role :db,  "vps.yartrans.ua", :primary => true # This is where Rails migrations will run
-role :db,  "vps.yartrans.ua"
+# role :db,  "vps.yartrans.ua" 
 
 set :ssh_options, { :forward_agent => true, :paranoid => false }
 

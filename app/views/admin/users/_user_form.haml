@@ -1,6 +1,5 @@
 = form_for user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
 	= render :partial => 'shared/form_errors', :locals => { :object => user }
-	
 	.row-fluid
 		.span4
 			.control-group
@@ -19,17 +18,17 @@
 					.controls
 						= p.text_field :name
 				.control-group
-					= p.label :personal_id, 'Personal ID', :class => 'control-label'
+					= p.label :personal_id, :class => 'control-label'
 					.controls
 						= p.text_field :personal_id
 				.control-group
-					= p.label :phone_main, 'Main phone', :class => 'control-label'
+					= p.label :phone_main, :class => 'control-label'
 					.controls
 						= p.text_field :phone_main
 				.control-group
-					= p.label :phone_alternate, 'Alternate phone', :class => 'control-label'
+					= p.label :phone_alternate, :class => 'control-label'
 					.controls
 						= p.text_field :phone_alternate
 
 	.form-actions
-		= f.submit "Save User", :class => 'btn btn-success'
+		= f.submit t(:"actions.save"), :class => 'btn btn-success btn-large	'

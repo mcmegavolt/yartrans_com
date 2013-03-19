@@ -1,0 +1,33 @@
+ru:
+  admin:
+    title: "Панель администрирования"
+    main_menu: "Меню"
+    navigation: "Инструменты"
+    menu:
+      users: "Пользователи"
+      manage_users: "Все пользователи"
+      add_user: "Создать пользователя"
+      dashboard: "Панель управления"
+      main_site: "Перейти на сайт"
+      my_profile: "Мой профиль"
+      logout: "Выйти"
+
+    users:
+      index:
+        title: "Менеджер пользователей"
+        name: "Имя"
+        personal_id: "Персональный номер"
+        is_confirmed: "Активен?"
+        role: "Роль"
+        actions: "Действия"
+        search_form:
+          submit: "Поиск"
+          reset: "Сбросить"
+        edit: "Изменить"
+        delete: "Удалить"
+      new:
+        title: "Новый пользователь"
+        form_title: "Заполните форму"
+
+
+

@@ -4,9 +4,9 @@
 	.page-head
 		%h2.pull-left
 			%i.icon-home
-			Dashboard
+			= t(:"admin.title")
 		/ Breadcrumb
-		.bread-crumb.pull-right
+		-#.bread-crumb.pull-right
 			%a{:href => "index.html"}
 				%i.icon-home
 				Home
@@ -16,7 +16,7 @@
 		.clearfix
 	/ Page heading ends
 	/ Matter
-	.matter
+	-#.matter
 		.container-fluid
 			/ Today status. jQuery Sparkline plugin used.
 			.row-fluid

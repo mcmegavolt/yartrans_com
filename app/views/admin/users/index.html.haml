@@ -4,13 +4,11 @@
 	.page-head
 		%h2.pull-left
 			%i.icon-table
-			Users Manager
-		/ Breadcrumb
-		.bread-crumb.pull-right
+			= t(:'admin.users.index.title')
+		-#.bread-crumb.pull-right
 			= link_to admin_dashboard_path do
 				%i.icon-home
 				Home
-			/ Divider
 			%span.divider /
 			%a.bread-current{:href => "#"} Users
 			
@@ -19,20 +17,11 @@
 	.matter
 		.container-fluid
 			.controls.controls-row
-
-				= search_form_for @q, :url => search_admin_users_path, :html => {:method => :post, :class => 'form-inline'} do |f|
-					= f.label :email_or_profile_name_or_profile_personal_id_cont, 'Name / ID / Email'
-					= f.text_field :profile_name_or_profile_personal_id_cont, :class => 'input-medium'
-					= f.collection_select :roles_id_eq, Role.order(:name), :id, :name, :include_blank => '- role -'
-					= f.submit 'Search', :class => 'btn'
-					= f.submit 'Reset', :type => 'reset', :class => 'btn btn-reverse'
-
-			/ Table
+				= render :partial => 'search_form'
 			.row-fluid
 				.span12
 					.widget
 						.widget-head
-							Tables
 							.widget-icons.pull-right
 								%a.wminimize{:href => "#"}
 									%i.icon-chevron-up
@@ -42,15 +31,13 @@
 							%table.table.table-striped.table-bordered.table-hover
 								%thead
 									%tr
-										/ %th{style:"width:21px;"} ID
-										%th ID
-										/ %th.span3 Email
+										%th #
 										%th Email
-										%th Name
-										%th Personal ID
-										%th Confirmed?
-										%th Role
-										%th Actions
+										%th= t(:'admin.users.index.name')
+										%th= t(:'admin.users.index.personal_id')
+										%th= t(:'admin.users.index.is_confirmed')
+										%th= t(:'admin.users.index.role')
+										%th= t(:'admin.users.index.actions')
 								%tbody
 									- users.each do |u|
 										%tr
