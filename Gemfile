@@ -30,7 +30,7 @@ gem 'unicorn'
 gem 'mailboxer'
 gem 'simple_form' 
 gem 'cocoon'
-gem 'axlsx'
+gem 'axlsx_rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
