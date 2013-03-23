@@ -2,7 +2,8 @@
 	.container
 		.row
 			.span12
-				%h2= t(:'applications.admission.edit.title')
-				%h4 #{admission_app.cargo_name } (##{admission_app.id})
+				%h2
+					= t(:'applications.admission.edit.title')
+					%span #{admission_app.id}
 				%hr/
 				= render :partial => 'app_form'

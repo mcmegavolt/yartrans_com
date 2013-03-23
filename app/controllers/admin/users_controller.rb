@@ -23,6 +23,7 @@ class Admin::UsersController < Admin::DashboardController
     authorize! :create, user
 
     if user.save
+      # Devise::Mailer.confirmation_instructions(user).deliver
       flash[:success] = 'New user was successfully created.'
       redirect_to admin_users_path
     else

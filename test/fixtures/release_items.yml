@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  code_number: MyString
+  bar_code: MyString
+  unit_id: 1
+  unit_count: 1
+  box_count: 1
+  add_services: MyText
+  release_app: 
+
+two:
+  name: MyString
+  code_number: MyString
+  bar_code: MyString
+  unit_id: 1
+  unit_count: 1
+  box_count: 1
+  add_services: MyText
+  release_app: 

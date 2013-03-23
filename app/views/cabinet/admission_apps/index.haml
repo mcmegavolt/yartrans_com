@@ -9,33 +9,35 @@
 						%thead
 							%tr
 								%th #
-								%th Cargo Name
-								%th Unit
-								%th Unit count
-								%th Date
-								%th Actions
+								%th= t(:'applications.admission.index.created_at')
+								%th= t(:'applications.admission.index.adm_date')
+								%th= t(:'applications.admission.index.adm_time')
+								%th= t(:'applications.admission.index.items_count')
+								%th= t(:'applications.admission.index.vehicle')
+								%th= t(:'applications.admission.index.actions')
 						%tbody
 							- admission_apps.each do |app|
 								%tr
 									%td= app.id
-									%td= link_to app.cargo_name, cabinet_admission_app_path(app)
-									%td= app.unit
-									%td= app.unit_count
 									%td= l app.created_at, :format => :short
+									%td= l app.admission_date, :format => :short
+									%td= app.admission_time.strftime("%H:%M") 
+									%td= app.admission_items.count
+									%td= app.vehicle
 									%td
 										= link_to cabinet_admission_app_path(app), :method => :delete, :confirm => '???' do
 											%i.icon-trash
-											Delete
+											= t(:'actions.delete')
 										&nbsp;
 										= link_to edit_cabinet_admission_app_path(app) do
 											%i.icon-pencil
-											Edit
+											= t(:'actions.edit')
 				- else
-					You don't have admission applications yet.
+					= t(:'applications.admission.index.no_apps_yet')
 
 				.button
 					= link_to new_cabinet_admission_app_path do
-						Create a new application
+						= t(:'applications.admission.index.create')
 
 
 

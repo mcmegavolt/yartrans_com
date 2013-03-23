@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319121918) do
+ActiveRecord::Schema.define(:version => 20130323120351) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -24,20 +24,31 @@ ActiveRecord::Schema.define(:version => 20130319121918) do
 
   create_table "admission_apps", :force => true do |t|
     t.integer  "user_id"
-    t.string   "barcode"
-    t.datetime "expected_date"
     t.text     "notes"
     t.text     "vehicle"
-    t.string   "cargo_name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.time     "admission_time"
+    t.date     "admission_date"
+  end
+
+  create_table "admission_items", :force => true do |t|
+    t.string   "name"
     t.string   "code_number"
+    t.string   "bar_code"
     t.integer  "unit_id"
     t.integer  "unit_count"
     t.integer  "in_box_count"
     t.integer  "box_count"
-    t.text     "additional_info"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "box_weight"
+    t.integer  "box_size"
+    t.text     "add_services"
+    t.integer  "admission_app_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
+
+  add_index "admission_items", ["admission_app_id"], :name => "index_admission_items_on_admission_app_id"
 
   create_table "article_categories", :force => true do |t|
     t.string   "name"
@@ -127,18 +138,30 @@ ActiveRecord::Schema.define(:version => 20130319121918) do
   add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
 
   create_table "release_apps", :force => true do |t|
-    t.string   "cargo_name"
-    t.string   "consignment"
+    t.text     "notes"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.date     "release_date"
+    t.time     "release_time"
+    t.text     "recipient"
+    t.text     "vehicle"
+  end
+
+  create_table "release_items", :force => true do |t|
+    t.string   "name"
     t.string   "code_number"
+    t.string   "bar_code"
     t.integer  "unit_id"
     t.integer  "unit_count"
-    t.integer  "in_box_count"
     t.integer  "box_count"
-    t.text     "additional_info"
-    t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.text     "add_services"
+    t.integer  "release_app_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
+
+  add_index "release_items", ["release_app_id"], :name => "index_release_items_on_release_app_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

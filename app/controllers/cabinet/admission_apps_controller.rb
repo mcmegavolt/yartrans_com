@@ -10,6 +10,7 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, AdmissionApp
+    admission_app.admission_items.build unless admission_app.admission_items
   end
 
   def create
@@ -17,9 +18,10 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
     admission_app.user = current_user
     if admission_app.save
-      flash[:success] = 'New admission_app was successfully created.'
+      flash[:success] = t(:'applications.admission.flash.created')
       redirect_to cabinet_admission_apps_path
     else
+      flash[:error] = t(:'applications.admission.flash.not_created')
       render :action => "new"
     end
   end

@@ -3,9 +3,13 @@
 		.row
 			.span12
 				%h3
-					%span.color= current_user.email
-					|
-					= t(:"user.roles.#{current_user.role.downcase}") 
+					%span.color
+						= link_to cabinet_path do
+							= current_user.profile.name
+					%span.muted
+						|
+						= current_user.email
+					/ = t(:"user.roles.#{current_user.role.downcase}") 
 				%hr/
 				%span{:style => 'margin-right: 15px;'}
 					= link_to edit_registration_path(current_user) do
@@ -19,6 +23,16 @@
 					= link_to cabinet_release_apps_path do
 						%i.icon-upload-alt
 						= t(:'cabinet.release_apps')
+				
+				%span{:style => 'margin-right: 15px;'}
+					= link_to cabinet_mailbox_messages_path do
+						%i.icon-envelope-alt
+						= t(:'mailbox.title')
+						(
+						= current_user.mailbox.inbox({:read => false}).count
+						)
+				
+
 				%span
 					= link_to destroy_user_session_path, :method => :delete, :confirm => 'Confirm logout?' do
 						%i.icon-off

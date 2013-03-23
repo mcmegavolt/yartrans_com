@@ -1,33 +1,19 @@
 class AdmissionApp < ActiveRecord::Base
   
-  attr_accessible :additional_info, 
-  								:barcode,
-  								:box_count, 
-  								:cargo_name, 
-  								:code_number,
-  								:expected_date, 
-  								:in_box_count, 
-  								:notes, 
-  								:unit_count, 
-  								:unit_id, 
+  attr_accessible :notes, 
   								:user_id, 
-  								:vehicle
+  								:vehicle,
+                  :admission_date,
+                  :admission_time,
+                  :admission_items_attributes
 
   belongs_to :user
 
-  validates_presence_of :unit_id,
-  											:cargo_name, 
-  											:expected_date, 
-  											:unit_count, 
-  											:in_box_count,
-  											:box_count
+  has_many :admission_items, :dependent => :destroy
+  accepts_nested_attributes_for :admission_items, :reject_if => :all_blank, :allow_destroy => true
 
-  attr_accessor :unit
+  validates_presence_of :vehicle, :admission_date
 
-  UNITS = %w(shtuk butil upak paleta);
-
-  def unit
-    UNITS[unit_id]
-  end
+  default_scope order('created_at DESC') 
 
 end

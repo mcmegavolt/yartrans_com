@@ -1,0 +1,30 @@
+.nested-fields	
+	.row
+		.span4
+			= f.input :name, :input_html => { :class => 'span4' }
+		.span2
+			= f.input :code_number, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :bar_code, :input_html => { :class => 'span2' }
+		.span4
+			= f.input :add_services, :as => :string, :input_html => { :class => 'span4'}
+	.row
+		.span2
+			= f.input :unit_id, :collection => AdmissionItem::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), AdmissionItem::UNITS.index(u)]}, :selected => 0, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :unit_count, :input_html => { :class => 'span2'}
+		.span2
+			= f.input :in_box_count, :input_html => { :class => 'span2', :value => 1 }
+		.span2
+			= f.input :box_count, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :box_weight, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :box_size, :input_html => { :class => 'span2' }
+			
+
+	= link_to_remove_association f do
+		%i.icon-trash
+		= t(:'applications.admission.items.remove_item')
+	.clearfix
+	%hr/

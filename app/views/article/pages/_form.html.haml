@@ -12,10 +12,7 @@
     .control-group
       = f.label :body, :class => 'control-label'
       .controls
-        // :javascript
-        //   var CKEDITOR_BASEPATH = '/assets/ckeditor/';
         = javascript_include_tag "ckeditor/init"
-        / = javascript_include_tag "ckeditor/config"
         = f.cktext_area :body, :class => 'span8'
     .control-group
       = f.label :permalink, :class => 'control-label'

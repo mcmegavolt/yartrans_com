@@ -3,15 +3,33 @@ ru:
     admission:
       index:
         title: "Мои заявки на прием груза"
+        no_apps_yet: "Заявок не найдено"
+        create: "Подать заявку на прием груза"
+        created_at: "Отправлена"
+        adm_date: "Дата приема"
+        adm_time: "Желаемое время"
+        vehicle: "Данные об авто"
+        actions: "Действия"
+        items_count: "Позиций"
       show:
         title: "Детали заявки"
       edit:
         title: "Редактирование заявки на прием груза"
       new:
         title: "Новая заявка на прием груза"
+        submit: "Отправить заявку"
+      flash:
+        created: "Заявка на прием груза успешно отправлена"
+        not_created: "Заявка не отправлена, проверьте данные."
+      items:
+        title: "Позиции"
+        add_item: "Добавить позицию"
+        remove_item: "Удалить позицию"
     release:
       index:
         title: "Мои заявки на выдачу груза"
+        no_apps_yet: "Заявок не найдено"
+        create: "Подать заявку на выдачу груза"
       show:
         title: "Детали заявки"
       edit:
@@ -53,18 +71,49 @@ ru:
     logout: "Выйти"
     main_page: "На главную"
 
+  mailbox:
+    title: "Сообщения"
+    sender: "От кого"
+    subject: "Тема"
+    messages: "Сообщений"
+    compose: "Написать"
+    inbox: "Входящие"
+    sent: "Отправленные"
+    trash: "Корзина"
+    delete_checked: "Отправить отмеченные в корзину"
+    recipient: "Получатель"
+    select_recipient: "Выберите получателя"
+    body: "Сообщение"
+    reply: "Ответ"
+    attachment: "Приложение"
+    send_message: "Отправить"
+    trash_conver: "Отправить в корзину"
+    untrash_conver: "Восстановить"
+    dont_have_permission: "У Вас нет прав для просмотра этой цепочки сообщений."
+    msg_sent: "Сообщение отправлено."
+    msg_sent_to_trash: "Сообщение отправлены в корзину"
+    msgs_sent_to_trash: "Сообщения отправлены в корзину"
+    msg_untrashed: "Сообщение восстановлено из корзины"
+
+
+
   footer:
     contacts: "Контакты"
     services: "Услуги"
 
   actions:
     save: "Сохранить"
+    delete: "Удалить"
+    edit: "Изменить"
 
   pagination:
     first: "Первая страница"
     last: "Последняя страница"
     next: "Следующая"
     previous: "Предыдущая"
+
+  most_common:
+    ago: "назад"
 
   activerecord: 
     attributes:
@@ -77,5 +126,28 @@ ru:
         personal_id: "Персональный номер"
         phone_main: "Телефон 1"
         phone_alternate: "Телефон 2"
+      admission_app:
+        admission_date: "Дата приема"
+        admission_time: "Желаемое время"
+        vehicle: "Данные об автомобиле"
+        notes: "Примечания"
+        admission_items: "Позиции"
+      admission_item:
+        name: "Название"
+        code_number: "Артикул"
+        bar_code: "Шрих-код"
+        unit_id: "Единица"
+        unit_count: "Количество"
+        in_box_count: "В коробке"
+        box_count: "Количество коробок"
+        box_weight: "Вес коробки"
+        box_size: "Объем коробки"
+        add_services: "Доп. складские услуги"
+  
+  errors:
+    messages:
+      form_errors:
+        header: "Ошибка заполение формы"
+
 
 

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :registerable, :confirmable
 
+  include Mailboxer::Models::Messageable
   acts_as_messageable
 
   # Setup accessible (or protected) attributes for your model
@@ -26,7 +27,6 @@ class User < ActiveRecord::Base
   has_many :admission_apps, :dependent => :destroy
   has_many :release_apps, :dependent => :destroy
 
-
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
 	end
@@ -35,7 +35,15 @@ class User < ActiveRecord::Base
     self.roles.last.name
   end
 
+  def to_s
+    self.profile.name
+  end
+
   def name
+    email
+  end
+
+  def mailboxer_email(object)
     email
   end
 

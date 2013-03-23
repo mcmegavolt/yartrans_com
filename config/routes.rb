@@ -32,6 +32,17 @@ Yartrans::Application.routes.draw do
   namespace :cabinet do
   	resources :admission_apps, :path => 'admission'
   	resources :release_apps, :path => 'release'
+
+    resources :mailbox_messages, :path => 'msg' do
+      member do
+        delete 'trash'
+        post 'untrash'
+      end
+      collection do
+        delete 'trash'
+      end
+    end
+
   end
 
 

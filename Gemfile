@@ -28,6 +28,9 @@ gem 'ransack'
 gem 'ledermann-rails-settings', :require => 'rails-settings'
 gem 'unicorn'
 gem 'mailboxer'
+gem 'simple_form' 
+gem 'cocoon'
+gem 'axlsx'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
