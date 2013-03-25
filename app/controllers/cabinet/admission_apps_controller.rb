@@ -15,9 +15,11 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
   def create
     authorize! :create, AdmissionApp
-
     admission_app.user = current_user
     if admission_app.save
+
+      AdmissionAppMailer.new_app_to_manager(admission_app).deliver 
+
       flash[:success] = t(:'applications.admission.flash.created')
       redirect_to cabinet_admission_apps_path
     else

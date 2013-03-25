@@ -44,6 +44,7 @@ group :development do
   gem 'capistrano'
   gem 'rvm-capistrano'
   gem 'letter_opener'
+  gem 'letter_opener_web', '~> 1.0'
   gem 'nifty-generators'
   gem 'populator'
   gem 'faker'

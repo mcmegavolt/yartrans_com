@@ -4,6 +4,10 @@ Yartrans::Application.routes.draw do
 
   mount Ckeditor::Engine => "/ckeditor"
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   # namespace :article do
   #   resources :categories, :path => 'c'
   # end
