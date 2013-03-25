@@ -91,20 +91,20 @@ namespace :db do
           p.phone_alternate = Faker::PhoneNumber.phone_number
         end
 
-        AdmissionApp.populate 10 do |app|
-          app.user_id = u.id
-          app.barcode = 'BAR-' + rand(10 ** 10).to_s.rjust(10,'0')
-          app.expected_date = Time.now + 10.days
-          app.notes = Populator.words(2..4)
-          app.vehicle = Populator.words(2..4)
-          app.cargo_name = Faker::Company.name
-          app.code_number = rand(10 ** 10).to_s.rjust(10,'0')
-          app.unit_id = [0,1,2,3]
-          app.unit_count = 5..40
-          app.in_box_count = 5..10
-          app.box_count = 5..10
-          app.additional_info = Populator.paragraphs(1) 
-        end
+        # AdmissionApp.populate 10 do |app|
+        #   app.user_id = u.id
+        #   app.barcode = 'BAR-' + rand(10 ** 10).to_s.rjust(10,'0')
+        #   app.expected_date = Time.now + 10.days
+        #   app.notes = Populator.words(2..4)
+        #   app.vehicle = Populator.words(2..4)
+        #   app.cargo_name = Faker::Company.name
+        #   app.code_number = rand(10 ** 10).to_s.rjust(10,'0')
+        #   app.unit_id = [0,1,2,3]
+        #   app.unit_count = 5..40
+        #   app.in_box_count = 5..10
+        #   app.box_count = 5..10
+        #   app.additional_info = Populator.paragraphs(1) 
+        # end
       end
 
       User.find_each do |u|
