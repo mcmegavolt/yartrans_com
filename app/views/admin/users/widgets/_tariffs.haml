@@ -1,0 +1,25 @@
+.widget
+	= render 'admin/users/widgets/widget_header', :title => t(:'admin.users.edit.widgets.tariffs')
+	.widget-content
+		.padd
+			= f.fields_for :tariff do |f|
+
+				.control-group
+					= f.label :file, :class => 'control-label'
+					.controls
+						= f.file_field :file
+
+				- if f.object.file.present?
+					.control-group
+						= f.label :remove_file, :class => 'control-label'
+						.controls
+							= f.check_box :remove_file
+							&nbsp;&nbsp;&nbsp;
+							= link_to f.object.file_url, :target => '_blank' do 
+								= File.basename(f.object.file_url)
+
+
+				.control-group
+					= f.label :notes, :class => 'control-label'
+					.controls
+						= f.text_field :notes

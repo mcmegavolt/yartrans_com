@@ -1,0 +1,36 @@
+= render 'admin/shared/sidebar'
+.mainbar
+
+	.page-head
+		%h2.pull-left
+			%i.icon-wrench
+			= t(:'admin.settings.title')
+		.clearfix
+
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							= t(:'admin.settings.main_settings')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								%a.wclose{:href => "#"}
+									%i.icon-remove
+						.widget-content
+							= simple_form_for [:admin, @setting], :html => {:class => 'form-inline'} do |f|
+								= f.error_notification
+								.form-inputs{:style => 'margin: 25px 0px 0px 50px;'}
+									= f.input :var, :as => :hidden
+									= f.input :value, :as => :string, :label => t(:"admin.settings.items.#{f.object.var}")
+								.form-actions
+									= f.button :submit, "Save"
+
+							.widget-foot
+								/ = paginate users
+								.clearfix
+.clearfix

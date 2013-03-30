@@ -1,0 +1,11 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+	%body
+		%h1
+			Заявка ##{@app.id} на выдачу груза принята в обработку.
+		%p
+			Дата заполнения: #{l @app.created_at, :format => :short}
+		%p  
+			Количество позиций: #{@app.release_items.count.to_s}

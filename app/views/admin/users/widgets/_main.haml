@@ -1,0 +1,13 @@
+.widget
+	= render 'admin/users/widgets/widget_header', :title => t(:'admin.users.edit.widgets.main')
+	.widget-content
+		.padd
+			.control-group
+				= f.label :email, :class => 'control-label'
+				.controls
+					= f.text_field :email, :placeholder => 'email'
+			.control-group
+				= f.label :password, :class => 'control-label'
+				.controls
+					= f.text_field :password, :autocomplete => "off"
+			= render :partial => 'role_select', :locals => { :f => f }

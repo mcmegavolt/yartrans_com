@@ -1,0 +1,23 @@
+.nested-fields	
+	.row
+		.span4
+			= f.input :name, :input_html => { :class => 'span4' }
+		.span2
+			= f.input :code_number, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :bar_code, :input_html => { :class => 'span2' }
+		.span4
+			= f.input :add_services, :as => :string, :input_html => { :class => 'span4'}
+	.row
+		.span2
+			= f.input :unit_id, :collection => ReleaseItem::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), ReleaseItem::UNITS.index(u)]}, :selected => 0, :input_html => { :class => 'span2' }
+		.span2
+			= f.input :unit_count, :input_html => { :class => 'span2'}
+		.span2
+			= f.input :box_count, :input_html => { :class => 'span2' }
+
+	= link_to_remove_association f do
+		%i.icon-trash
+		= t(:'applications.release.items.remove_item')
+	.clearfix
+	%hr/

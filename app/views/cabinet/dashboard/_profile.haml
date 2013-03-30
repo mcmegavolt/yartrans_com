@@ -1,0 +1,24 @@
+.widget
+	%h4= t(:'cabinet.my_profile')
+	%table
+		%tbody
+			%tr
+				%td{:style => 'width: 20px;'}
+					%i.icon-user
+				%td
+					= current_user.profile.name
+			%tr
+				%td
+					%i.icon-barcode
+				%td
+					= current_user.profile.personal_id
+			%tr
+				%td
+					%i.icon-phone
+				%td
+					= current_user.profile.phone_main
+			%tr
+				%td
+					%i.icon-phone
+				%td
+					= current_user.profile.phone_alternate

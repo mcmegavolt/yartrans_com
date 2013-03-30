@@ -1,34 +1,10 @@
 = form_for user, :url => ( user.new_record? ? admin_users_path : admin_user_path(user) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
 	= render :partial => 'shared/form_errors', :locals => { :object => user }
 	.row-fluid
-		.span4
-			.control-group
-				= f.label :email, :class => 'control-label'
-				.controls
-					= f.text_field :email, :placeholder => 'email'
-			.control-group
-				= f.label :password, :class => 'control-label'
-				.controls
-					= f.text_field :password, :autocomplete => "off"
-			= render :partial => 'role_select', :locals => { :f => f }
-		.span4
-			= f.fields_for :profile do |p|
-				.control-group
-					= p.label :name, :class => 'control-label'
-					.controls
-						= p.text_field :name
-				.control-group
-					= p.label :personal_id, :class => 'control-label'
-					.controls
-						= p.text_field :personal_id
-				.control-group
-					= p.label :phone_main, :class => 'control-label'
-					.controls
-						= p.text_field :phone_main
-				.control-group
-					= p.label :phone_alternate, :class => 'control-label'
-					.controls
-						= p.text_field :phone_alternate
-
-	.form-actions
+		.span6
+			= render 'admin/users/widgets/main', :f => f	
+			= render 'admin/users/widgets/profile', :f => f
+		.span6
+			= render 'admin/users/widgets/tariffs', :f => f
+	.widget.form-actions
 		= f.submit t(:"actions.save"), :class => 'btn btn-success btn-large	'

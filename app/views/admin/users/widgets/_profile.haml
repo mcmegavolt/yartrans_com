@@ -1,0 +1,21 @@
+.widget
+	= render 'admin/users/widgets/widget_header', :title => t(:'admin.users.edit.widgets.profile')
+	.widget-content
+		.padd
+			= f.fields_for :profile do |p|
+				.control-group
+					= p.label :name, :class => 'control-label'
+					.controls
+						= p.text_field :name
+				.control-group
+					= p.label :personal_id, :class => 'control-label'
+					.controls
+						= p.text_field :personal_id
+				.control-group
+					= p.label :phone_main, :class => 'control-label'
+					.controls
+						= p.text_field :phone_main
+				.control-group
+					= p.label :phone_alternate, :class => 'control-label'
+					.controls
+						= p.text_field :phone_alternate

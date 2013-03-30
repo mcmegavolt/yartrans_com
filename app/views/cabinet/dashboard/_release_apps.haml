@@ -1,0 +1,5 @@
+.widget
+	%h4= link_to t(:'cabinet.my_release_apps'), cabinet_release_apps_path
+	%ul
+		- release_apps.each do |rel_app|
+			%li= link_to rel_app.created_at, cabinet_admission_app_path(rel_app)

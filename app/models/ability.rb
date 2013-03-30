@@ -25,6 +25,8 @@ class Ability
       can :manage, :all
       can :access, :ckeditor
 
+    
+
     elsif user.role? :director ###### DIRECTOR ########
       can :log, [:admin_panel, :cabinet]
       can :edit, [Article::Page, Article::Category,]
@@ -34,6 +36,8 @@ class Ability
       can [:read, :create] , User
       can :read, Role, :name => ['Manager', 'Client']
 
+    
+
     elsif user.role? :manager ####### MANAGER #########
       can :log, [:admin_panel, :cabinet]
       can [:edit, :destroy, :create], User do |user|
@@ -42,11 +46,13 @@ class Ability
       can [:read, :create], User
       can :read, Role, :name => 'Client'
 
+    
+
     elsif user.role? :client ####### CLIENT ###########
-      can :manage, AdmissionApp do |adm_app|
+      can [:read, :create], AdmissionApp do |adm_app|
         adm_app.try(:user) == user
       end
-      can :manage, ReleaseApp do |rel_app|
+      can [:read, :create], ReleaseApp do |rel_app|
         rel_app.try(:user) == user
       end
       can :log, :cabinet

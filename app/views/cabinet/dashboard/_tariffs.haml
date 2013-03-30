@@ -1,0 +1,15 @@
+.widget{:style => 'height: 132px;'}
+	%h4= t(:'cabinet.tariffs.title')
+	- if current_user.tariff.present?
+		%p= current_user.tariff.notes
+		%p
+			= link_to current_user.tariff.file_url, :target => '_blank' do
+				%i.icon-download-alt
+				= t(:'most_common.download')
+				|
+				= File.basename(current_user.tariff.file_url)
+		%p
+			= t(:'cabinet.tariffs.updated') 
+			= time_ago_in_words current_user.tariff.updated_at
+			= t(:'most_common.ago')
+			%span.muted (#{current_user.tariff.updated_at.strftime("%m/%d/%Y")})

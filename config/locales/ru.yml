@@ -21,21 +21,59 @@ ru:
       flash:
         created: "Заявка на прием груза успешно отправлена"
         not_created: "Заявка не отправлена, проверьте данные."
+        updated: "Заявка на прием груза обновлена"
+        not_updated: "Ошибка сохранения, проверьте заполненные поля"
+        destroyed: "Заявка на прием груза удалена"
+      tooltips:
+        not_permitted: "Редактирование и удаления заявок недоступно"
       items:
         title: "Позиции"
         add_item: "Добавить позицию"
         remove_item: "Удалить позицию"
+      mailer:
+        new_app:
+          to_manager:
+            subject: "Новая заявка на прием груза. %{client}"
+          to_client:
+            subject: "Новая заявка на прием груза"
+
+
     release:
       index:
         title: "Мои заявки на выдачу груза"
         no_apps_yet: "Заявок не найдено"
         create: "Подать заявку на выдачу груза"
+        created_at: "Отправлена"
+        adm_date: "Дата приема"
+        adm_time: "Желаемое время"
+        vehicle: "Данные об авто"
+        actions: "Действия"
+        items_count: "Позиций"        
       show:
         title: "Детали заявки"
       edit:
         title: "Редактирование заявки на выдачу груза"
       new:
         title: "Новая заявка на прием груза"
+        submit: "Отправить заявку"
+      flash:
+        created: "Заявка на выдачу груза успешно отправлена"
+        not_created: "Заявка не отправлена, проверьте данные"
+        updated: "Заявка на выдачу груза обновлена"
+        not_updated: "Ошибка сохранения, проверьте заполненные поля"
+        destroyed: "Заявка на выдачу груза удалена"
+
+
+      items:
+        title: "Позиции"
+        add_item: "Добавить позицию"
+        remove_item: "Удалить позицию"
+      mailer:
+        new_app:
+          to_manager:
+            subject: "Новая заявка на прием груза. %{client}"
+          to_client:
+            subject: "Новая заявка на прием груза"
     unit_types:
       shtuk: "шт."
       butil: "бут."
@@ -70,7 +108,10 @@ ru:
     login: "Вход для клиентов"    
     logout: "Выйти"
     main_page: "На главную"
-
+    news: "Корпоративные новости"
+    tariffs:
+      title: "Текущие тарифы"
+      updated: "Обновлено:"
   mailbox:
     title: "Сообщения"
     sender: "От кого"
@@ -95,8 +136,6 @@ ru:
     msgs_sent_to_trash: "Сообщения отправлены в корзину"
     msg_untrashed: "Сообщение восстановлено из корзины"
 
-
-
   footer:
     contacts: "Контакты"
     services: "Услуги"
@@ -114,8 +153,18 @@ ru:
 
   most_common:
     ago: "назад"
+    download: "Скачать"
 
   activerecord: 
+    models:
+      news_item: "Новость"
+      user: "Пользователь"
+      profile: "Профиль"
+      admission_app: "Заявка на прием груза"
+      admission_item: "Позиция"
+      release_app: "Заявка на выдачу груза"
+      release_item: "Позиция"
+      tariff: "Текущие тарифы"
     attributes:
       user:
         email: "Эл. почта"
@@ -131,7 +180,14 @@ ru:
         admission_time: "Желаемое время"
         vehicle: "Данные об автомобиле"
         notes: "Примечания"
-        admission_items: "Позиции"
+        admission_items: "Позиции"      
+      release_app:
+        release_date: "Дата приема"
+        release_time: "Желаемое время"
+        vehicle: "Данные об автомобиле"
+        notes: "Примечания"
+        release_items: "Позиции"
+        recipient: "Кому выдать"
       admission_item:
         name: "Название"
         code_number: "Артикул"
@@ -143,7 +199,22 @@ ru:
         box_weight: "Вес коробки"
         box_size: "Объем коробки"
         add_services: "Доп. складские услуги"
-  
+      release_item:
+        name: "Название"
+        code_number: "Артикул"
+        bar_code: "Шрих-код"
+        unit_id: "Единица"
+        unit_count: "Количество"
+        box_count: "Количество коробок"
+        add_services: "Доп. складские услуги"
+      news_item:
+        title: "Заголовок"
+        body: "Текст новости"
+      tariff:
+        notes: "Примечание"
+        file: "Файл"
+        remove_file: "Удалить файл"
+
   errors:
     messages:
       form_errors:

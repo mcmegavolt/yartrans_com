@@ -10,7 +10,7 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, AdmissionApp
-    admission_app.admission_items.build unless admission_app.admission_items
+    admission_app.admission_items.build
   end
 
   def create
@@ -19,6 +19,7 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
     if admission_app.save
 
       AdmissionAppMailer.new_app_to_manager(admission_app).deliver 
+      AdmissionAppMailer.new_app_to_client(admission_app).deliver
 
       flash[:success] = t(:'applications.admission.flash.created')
       redirect_to cabinet_admission_apps_path
@@ -37,9 +38,10 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
     authorize! :edit, AdmissionApp
 
     if admission_app.update_attributes(params[:admission_app])
-      flash[:success] = 'admission_app was successfully updated.'
+      flash[:success] = t(:'applications.admission.flash.updated')
       redirect_to cabinet_admission_apps_path
     else
+      flash[:success] = t(:'applications.admission.flash.not_updated')
       render "edit"
     end
   end
@@ -48,7 +50,7 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
     authorize! :destroy, AdmissionApp
 
     if admission_app.destroy
-      flash[:success] = 'admission_app was successfully destroyed!'
+      flash[:success] = t(:'applications.admission.flash.destroyed')
       redirect_to cabinet_admission_apps_path
     end
   end

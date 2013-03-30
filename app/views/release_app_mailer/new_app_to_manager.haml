@@ -1,0 +1,11 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+	%body
+		%h1
+			Новая заявка ##{@app.id} на выдачу груза (#{@app.user.profile.name})
+		%p
+			Дата заполнения: #{l @app.created_at, :format => :short}
+		%p  
+			Количество позиций: #{@app.release_items.count.to_s}

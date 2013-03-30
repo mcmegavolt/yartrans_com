@@ -25,13 +25,17 @@
 									%td= app.admission_items.count
 									%td= app.vehicle
 									%td
-										= link_to cabinet_admission_app_path(app), :method => :delete, :confirm => '???' do
-											%i.icon-trash
-											= t(:'actions.delete')
-										&nbsp;
-										= link_to edit_cabinet_admission_app_path(app) do
-											%i.icon-pencil
-											= t(:'actions.edit')
+										- if can? [:edit, :destroy], ReleaseApp
+											= link_to cabinet_admission_app_path(app), :method => :delete, :confirm => '???' do
+												%i.icon-trash
+												= t(:'actions.delete')
+											&nbsp;
+											= link_to edit_cabinet_admission_app_path(app) do
+												%i.icon-pencil
+												= t(:'actions.edit')
+										- else
+											= link_to '#', :class => 'link-tooltip', :title => t(:"applications.admission.tooltips.not_permitted") do
+												%i.icon-lock
 				- else
 					= t(:'applications.admission.index.no_apps_yet')
 

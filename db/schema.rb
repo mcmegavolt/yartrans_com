@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323120351) do
+ActiveRecord::Schema.define(:version => 20130328163828) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -95,6 +95,13 @@ ActiveRecord::Schema.define(:version => 20130323120351) do
     t.datetime "updated_at",                 :null => false
   end
 
+  create_table "news_items", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
+  end
+
   create_table "notifications", :force => true do |t|
     t.string   "type"
     t.text     "body"
@@ -175,15 +182,25 @@ ActiveRecord::Schema.define(:version => 20130323120351) do
   end
 
   create_table "settings", :force => true do |t|
-    t.string   "var",                       :null => false
+    t.string   "var",                      :null => false
     t.text     "value"
-    t.integer  "target_id"
-    t.string   "target_type", :limit => 30
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "thing_id"
+    t.string   "thing_type", :limit => 30
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
-  add_index "settings", ["target_type", "target_id", "var"], :name => "index_settings_on_target_type_and_target_id_and_var", :unique => true
+  add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
+
+  create_table "tariffs", :force => true do |t|
+    t.text     "notes"
+    t.string   "file"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tariffs", ["user_id"], :name => "index_tariffs_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

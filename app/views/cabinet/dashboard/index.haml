@@ -3,45 +3,16 @@
 		.row
 			.span4
 				.sidebar
-					.widget
-						%h4= link_to t(:'cabinet.my_admission_apps'), cabinet_admission_apps_path
-						 		
-						%ul
-							- admission_apps.each do |adm_app|
-								%li= link_to adm_app.created_at, cabinet_admission_app_path(adm_app)
-
-
+					= render 'profile'
+					= render 'admission_apps', :admission_apps => admission_apps
 			.span4
 				.sidebar
-					.widget
-						%h4= link_to t(:'cabinet.my_release_apps'), cabinet_release_apps_path
-						%ul
-							- release_apps.each do |rel_app|
-								%li= link_to rel_app.created_at, cabinet_admission_app_path(rel_app)
+					= render 'tariffs'
+					= render 'release_apps', :release_apps => release_apps
 			.span4
 				.sidebar
-					.widget
-						%h4= t(:'cabinet.my_profile')
-						%table
-							%tbody
-								%tr
-									%td{:style => 'width: 20px;'}
-										%i.icon-user
-									%td
-										= current_user.profile.name
-								%tr
-									%td
-										%i.icon-barcode
-									%td
-										= current_user.profile.personal_id
-								%tr
-									%td
-										%i.icon-phone
-									%td
-										= current_user.profile.phone_main
-								%tr
-									%td
-										%i.icon-phone
-									%td
-										= current_user.profile.phone_alternate
+					= render 'news_items', :news_items => news_items
+					
+
+					
 

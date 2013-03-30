@@ -18,4 +18,9 @@ class Cabinet::DashboardController < ApplicationController
   end
   helper_method :release_apps
 
+  def news_items
+    @news_items ||= NewsItem.last(5)
+  end
+  helper_method :news_items
+
 end

@@ -27,6 +27,26 @@
 					= link_to new_admin_user_path do
 						%i.icon-plus
 						= t(:'admin.menu.add_user')
+
+		%li
+			= link_to admin_settings_path, :class => ('open' if controller_name == 'settings') do
+				%i.icon-wrench
+				= t(:'admin.menu.settings')
+		%li.has_sub
+			%a{:href => "#", :class => ('open' if controller_name == 'news_items')}
+				%i.icon-flag
+				= t(:'admin.menu.news_items')
+				%span.pull-right
+					%i.icon-chevron-right
+			%ul
+				%li
+					= link_to admin_news_items_path do
+						%i.icon-list
+						= t(:'admin.menu.news_items')
+				%li
+					= link_to new_admin_news_item_path do
+						%i.icon-plus
+						= t(:'admin.menu.add_news_item')
 		
 
 		/ %li.has_sub

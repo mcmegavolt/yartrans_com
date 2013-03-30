@@ -1,0 +1,6 @@
+Новая заявка ##{@app.id} на выдачу груза (#{@app.user.profile.name})
+==========================================
+
+Дата заполнения: #{l @app.created_at, :format => :short}
+
+Количество позиций: #{@app.release_items.count.to_s}

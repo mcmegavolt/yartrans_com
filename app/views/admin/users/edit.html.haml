@@ -14,20 +14,9 @@
 		.container-fluid
 			.row-fluid
 				.span12
-					.widget
-						.widget-head
-							User edition form
-							.widget-icons.pull-right
-								%a.wminimize{:href => "#"}
-									%i.icon-chevron-up
-								%a.wclose{:href => "#"}
-									%i.icon-remove
-						.widget-content
-							.padd
+					
+					= render 'admin/users/user_form'
 
-								= render 'admin/users/user_form'
-
-							.widget-foot
-								/ Footer goes here
+					
 
 

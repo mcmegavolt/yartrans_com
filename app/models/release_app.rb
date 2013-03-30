@@ -5,7 +5,8 @@ class ReleaseApp < ActiveRecord::Base
                   :recipient,
                   :vehicle,
                   :notes, 
-  								:user_id
+  								:user_id,
+                  :release_items_attributes
 
 
   belongs_to :user

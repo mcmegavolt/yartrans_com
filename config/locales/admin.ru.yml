@@ -8,9 +8,22 @@ ru:
       manage_users: "Все пользователи"
       add_user: "Создать пользователя"
       dashboard: "Панель управления"
+      settings: "Настройки"
+      news_items: "Новости"
+      manage_news_items: "Все новости"
+      add_news_item: "Добавить новость"
       main_site: "Перейти на сайт"
       my_profile: "Мой профиль"
       logout: "Выйти"
+
+    news_items:
+      index:
+        title: "Менеджер новостей"
+        news_items_list: "Список новостей"
+      edit:
+        title: "Редактирование новости"
+      new:
+        title: "Создание новости"
 
     users:
       index:
@@ -28,6 +41,22 @@ ru:
       new:
         title: "Новый пользователь"
         form_title: "Заполните форму"
+      edit:
+        widgets:
+          tariffs: "Текущие тарифы"
+          profile: "Профиль"
+          main: "Основные данные"
+
+    settings:
+      title: "Настройки сайта"
+      main_settings: "Основные настройки"
+      messages:
+        saved: "Настройки сохранены"
+      items:
+        admission_apps:
+          manager_email: "Email для заявок на прием"
+        release_apps:
+          manager_email: "Email для заявок на выдачу"
 
 
 

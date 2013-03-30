@@ -9,33 +9,39 @@
 						%thead
 							%tr
 								%th #
-								%th Cargo Name
-								%th Unit
-								%th Unit count
-								%th Date
-								%th Actions
+								%th= t(:'applications.release.index.created_at')
+								%th= t(:'applications.release.index.adm_date')
+								%th= t(:'applications.release.index.adm_time')
+								%th= t(:'applications.release.index.items_count')
+								%th= t(:'applications.release.index.vehicle')
+								%th= t(:'applications.release.index.actions')
 						%tbody
 							- release_apps.each do |app|
 								%tr
 									%td= app.id
-									%td= link_to app.cargo_name, cabinet_release_app_path(app)
-									%td= app.unit
-									%td= app.unit_count
 									%td= l app.created_at, :format => :short
+									%td= l app.release_date, :format => :short
+									%td= app.release_time.strftime("%H:%M") 
+									%td= app.release_items.count
+									%td= app.vehicle
 									%td
-										= link_to cabinet_release_app_path(app), :method => :delete, :confirm => '???' do
-											%i.icon-trash
-											Delete
-										&nbsp;
-										= link_to edit_cabinet_release_app_path(app) do
-											%i.icon-pencil
-											Edit
+										- if can? [:edit, :destroy], ReleaseApp
+											= link_to cabinet_release_app_path(app), :method => :delete, :confirm => '???' do
+												%i.icon-trash
+												= t(:'actions.delete')
+											&nbsp;
+											= link_to edit_cabinet_release_app_path(app) do
+												%i.icon-pencil
+												= t(:'actions.edit')
+										- else
+											= link_to '#', :class => 'link-tooltip', :title => t(:"applications.admission.tooltips.not_permitted") do
+												%i.icon-lock
 				- else
-					You don't have release applications yet.
+					= t(:'applications.release.index.no_apps_yet')
 
 				.button
 					= link_to new_cabinet_release_app_path do
-						Create a new application
+						= t(:'applications.release.index.create')
 
 
 

@@ -10,6 +10,7 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, ReleaseApp
+    release_app.release_items.build
   end
 
   def create
@@ -17,9 +18,14 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
 
     release_app.user = current_user
     if release_app.save
-      flash[:success] = 'New release_app was successfully created.'
+
+      ReleaseAppMailer.new_app_to_manager(release_app).deliver 
+      ReleaseAppMailer.new_app_to_client(release_app).deliver
+
+      flash[:success] = t(:'applications.release.flash.created')
       redirect_to cabinet_release_apps_path
     else
+      flash[:error] = t(:'applications.release.flash.not_created')
       render :action => "new"
     end
   end
@@ -33,9 +39,10 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
     authorize! :edit, ReleaseApp
 
     if release_app.update_attributes(params[:release_app])
-      flash[:success] = 'release app was successfully updated.'
+      flash[:success] = t(:'applications.release.flash.updated')
       redirect_to cabinet_release_apps_path
     else
+      flash[:success] = t(:'applications.release.flash.not_updated')
       render "edit"
     end
   end
@@ -44,7 +51,7 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
     authorize! :destroy, ReleaseApp
 
     if release_app.destroy
-      flash[:success] = 'release app was successfully destroyed!'
+      flash[:success] = t(:'applications.release.flash.destroyed')
       redirect_to cabinet_release_apps_path
     end
   end

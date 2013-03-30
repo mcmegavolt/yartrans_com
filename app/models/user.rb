@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
                   :role_ids, 
                   :profile_attributes,
                   :admission_app_attributes,
-                  :release_app_attributes
+                  :release_app_attributes,
+                  :tariff_attributes
 
   attr_accessor :updated_by
 
@@ -23,6 +24,9 @@ class User < ActiveRecord::Base
 
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
+
+  has_one :tariff, :dependent => :destroy
+  accepts_nested_attributes_for :tariff
 
   has_many :admission_apps, :dependent => :destroy
   has_many :release_apps, :dependent => :destroy

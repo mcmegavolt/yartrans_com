@@ -1,0 +1,42 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-flag
+			= t(:'admin.news_items.index.title')
+		.clearfix
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							= t(:'admin.news_items.index.news_items_list')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+						.widget-content
+							.padd
+								- collection.each do |item|
+									%ul.recent
+										%li
+											.recent-content
+												.recent-meta Posted on #{item.created_at}
+												%div
+													= item.body
+												.btn-group
+													= link_to edit_admin_news_item_path(item), :class => 'btn btn-mini' do
+														%i.icon-pencil
+
+													= link_to admin_news_item_path(item), :method => :delete, :confirm => '???', :class => 'btn btn-mini' do
+														%i.icon-remove
+												.clearfix
+
+
+							.widget-foot
+								/ = paginate news_items
+								.clearfix
+
+.clearfix
+

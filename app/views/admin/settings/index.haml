@@ -1,0 +1,40 @@
+= render 'admin/shared/sidebar'
+.mainbar
+
+	.page-head
+		%h2.pull-left
+			%i.icon-wrench
+			= t(:'admin.settings.title')
+		.clearfix
+
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span6
+					.widget
+						.widget-head
+							= t(:'admin.settings.main_settings')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								/ %a.wclose{:href => "#"}
+								/ 	%i.icon-remove
+						.widget-content
+							- @settings.each do |item|
+								%table.table
+									%tr
+										%td= t(:"admin.settings.items.#{item.var}")   
+										%td= item.value
+										%td= item.thing_id
+										%td= item.thing_type
+										%td= link_to 'Edit', edit_admin_setting_path(item)
+
+							.widget-foot
+								/ = paginate users
+								.clearfix
+
+				
+
+.clearfix

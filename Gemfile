@@ -25,7 +25,7 @@ gem 'devise'
 gem "cancan"
 gem 'kaminari'
 gem 'ransack'
-gem 'ledermann-rails-settings', :require => 'rails-settings'
+gem "rails-settings-cached", "0.2.4"
 gem 'unicorn'
 gem 'mailboxer'
 gem 'simple_form' 

@@ -31,6 +31,8 @@ Yartrans::Application.routes.draw do
     end
     resource :dashboard
     resources :activity_feeds
+    resources :settings
+    resources :news_items
   end
 
   namespace :cabinet do

@@ -3,7 +3,7 @@
 		.row
 			.span8
 				%h2= t(:'applications.release.show.title')
-				%h4 #{release_app.cargo_name } (##{release_app.id})
+				%h4 #{release_app.id}
 				%br/
 				%table.table.table-condensed.table-hover
 					%tbody
@@ -12,6 +12,22 @@
 							%td
 								= l release_app.created_at, :format => :short
 								(#{time_ago_in_words release_app.created_at} ago)
+						%tr
+							%th Barcode
+							%td= release_app.barcode
+						%tr
+							%th Expected date
+							%td
+								= l release_app.expected_date, :format => :long
+								(
+								= distance_of_time_in_words_to_now release_app.expected_date
+								)
+						%tr
+							%th Notes
+							%td= release_app.notes
+						%tr
+							%th Vehicle
+							%td= release_app.vehicle
 						%tr
 							%th Cargo name
 							%td= release_app.cargo_name

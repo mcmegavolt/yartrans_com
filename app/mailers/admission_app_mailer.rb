@@ -4,10 +4,39 @@ class AdmissionAppMailer < ActionMailer::Base
 
   default from: "admission@yartrans.ua"
 
-  def new_app_to_manager(admission_app)
+  def new_app_to_manager(app)
 
-  	@app = app = admission_app
+    @app = app
+    p = render_xlsx_file(app)
+    app_file_name = "#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}_admission_app.xlsx"
+    app_file = p.to_stream()
+    File.open('sample.xlsx', 'w') { |f| f.write(app_file.read) }
+    attachments[app_file_name] = File.read('sample.xlsx')
 
+    mail_to = SiteSettings["admission_apps.manager_email"]
+    subject = t(:"applications.admission.mailer.new_app.to_manager.subject", :client => app.user.profile.name)
+
+    mail(:to => mail_to, :subject => subject)
+
+  end
+
+  def new_app_to_client(app)
+
+    @app = app
+    p = render_xlsx_file(app)
+    app_file_name = "#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}_admission_app.xlsx"
+    app_file = p.to_stream()
+    File.open('sample.xlsx', 'w') { |f| f.write(app_file.read) }
+    attachments[app_file_name] = File.read('sample.xlsx')
+
+    mail_to = app.user.email
+    subject = t(:"applications.admission.mailer.new_app.to_client.subject")
+
+    mail(:to => mail_to, :subject => subject)
+
+  end
+
+  def render_xlsx_file(app)
 
     p = Axlsx::Package.new
 
@@ -24,14 +53,14 @@ class AdmissionAppMailer < ActionMailer::Base
         ws.add_row ['ЗАЯВКА НА ПРИМЕМ ГРУЗА'], :style => title
         ws.add_row [app.user.profile.name], :style => title
 
-        ws.merge_cells 'A1:E1'
-        ws.merge_cells 'A2:E2'
+        ws.merge_cells 'A1:J1'
+        ws.merge_cells 'A2:J2'
 
         ws.add_row
         ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Примечания' ], :style => table_header
         ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.admission_date.to_formatted_s(:db).first(10), app.admission_time.to_formatted_s(:db).last(8), app.notes ], :style => default
         ws.add_row
-        ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки', 'Объем коробки', 'Доп. услуги' ], :style => table_header
+        ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки', 'Объем коробки', 'Доп. информация' ], :style => table_header
         for item in app.admission_items do
           ws.add_row [  item.name,
                         item.code_number,
@@ -48,17 +77,8 @@ class AdmissionAppMailer < ActionMailer::Base
       end
 
     end
-
-    app_file_name = "#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}_admission_app.xlsx"
-
-    app_file = p.to_stream()
-
-    File.open('sample.xlsx', 'w') { |f| f.write(app_file.read) }
-
-    attachments[app_file_name] = File.read('sample.xlsx')
-
-  	mail(:to => 'mcmegavolt@gmail.com', :subject => 'New admission app created!')
-
+    p
   end
+  helper_method :render_xlsx_file
 
 end
