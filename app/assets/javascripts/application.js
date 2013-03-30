@@ -64,4 +64,5 @@ $(document).ready(function() {
       // task.fadeOut('fast');
       task.animate({ height: "0px", opacity: 0 }, 300 );
     });
+    
 });
