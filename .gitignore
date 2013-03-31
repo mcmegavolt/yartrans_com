@@ -5,6 +5,7 @@ log/*.log
 tmp/
 *.log
 public/uploads
+public/assets
 doc/api
 doc/app
 *.swp
