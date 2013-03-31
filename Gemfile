@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.1'
 gem 'haml'
 gem 'inherited_resources'
@@ -31,8 +31,6 @@ gem 'mailboxer'
 gem 'simple_form' 
 gem 'cocoon'
 gem 'axlsx_rails'
-
-gem 'rake', '10.0.3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
