@@ -34,7 +34,9 @@
 
 
 $(document).ready(function() {
+
   // example showing manipulating the inserted/removed item
+
   $('#admission_items')
     .bind('cocoon:before-insert', function(e,task_to_be_added) {
       task_to_be_added.fadeIn('fast');

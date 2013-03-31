@@ -32,6 +32,8 @@ gem 'simple_form'
 gem 'cocoon'
 gem 'axlsx_rails'
 
+gem 'rake', '10.0.3'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.1'
