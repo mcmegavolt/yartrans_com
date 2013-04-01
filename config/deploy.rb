@@ -53,4 +53,11 @@ namespace :deploy do
   task :stop do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
+
+  task :migrate_database do
+    run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
+  end
+
 end
+
+after  "deploy:finalize_update", "deploy:migrate_database"
