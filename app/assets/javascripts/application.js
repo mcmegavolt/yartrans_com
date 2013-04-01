@@ -1,5 +1,3 @@
-///*
-
 // = require jquery.min
 // = require admin/jquery.noty
 // = require admin/layouts/bottom
@@ -24,7 +22,6 @@
 // = require_self
 // = require custom
 
-*///
 
   $(function() {
     $(".datetimepicker").datetimepicker({
