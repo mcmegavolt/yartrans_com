@@ -12,3 +12,4 @@ doc/app
 *.swo
 *~
 .DS_Store
+*.xlsx
