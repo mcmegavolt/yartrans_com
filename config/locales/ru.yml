@@ -112,6 +112,7 @@ ru:
     tariffs:
       title: "Текущие тарифы"
       updated: "Обновлено:"
+      no_file: "Файл с тарифами не прикреплен"
   mailbox:
     title: "Сообщения"
     sender: "От кого"

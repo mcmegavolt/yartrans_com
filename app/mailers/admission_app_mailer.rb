@@ -24,7 +24,7 @@ class AdmissionAppMailer < ActionMailer::Base
 
     @app = app
     p = render_xlsx_file(app)
-    app_file_name = "#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}_admission_app.xlsx"
+    app_file_name = "priem_#{app.id.to_s}_ot_#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}.xlsx"
     app_file = p.to_stream()
     File.open('sample.xlsx', 'w') { |f| f.write(app_file.read) }
     attachments[app_file_name] = File.read('sample.xlsx')
@@ -71,7 +71,8 @@ class AdmissionAppMailer < ActionMailer::Base
                         item.box_count,
                         item.box_weight,
                         item.box_size,
-                        item.add_services ], :style => default
+                        item.add_services ], :style => default,
+                        :types => [:string, :string, :string, :string, :integer, :integer, :integer, :integer, :integer, :string ]
         end
         ws.column_widths nil, 20, 20, 20, 20, 20, 20, 20, 20, nil
       end

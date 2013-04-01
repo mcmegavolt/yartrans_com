@@ -24,7 +24,7 @@ class ReleaseAppMailer < ActionMailer::Base
 
     @app = app
     p = render_xlsx_file(app)
-    app_file_name = "#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}_release_app.xlsx"
+    app_file_name = "vydacha_#{app.id.to_s}_ot_#{app.created_at.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-')}.xlsx"
     app_file = p.to_stream()
     File.open('sample.xlsx', 'w') { |f| f.write(app_file.read) }
     attachments[app_file_name] = File.read('sample.xlsx')
@@ -66,7 +66,8 @@ class ReleaseAppMailer < ActionMailer::Base
                         item.unit,
                         item.unit_count,
                         item.box_count,
-                        item.add_services ], :style => default
+                        item.add_services ], :style => default,
+                        :types => [:string, :string, :string, :string, :integer, :integer, :string ]
         end
         ws.column_widths 40, 20, 20, 20, 20, 20, 20, 20, 20, 40
       end
