@@ -7,7 +7,7 @@
 
 					- recipients = Role.find_by_name("Director").users + Role.find_by_name("Manager").users
 
-					= f.input :recipients, :label => t(:'mailbox.recipient'), :collection => recipients, :label_method => lambda { |obj| "#{obj.profile.name} (#{t(:"user.roles.#{obj.role.downcase}")})" }, :value_method => :email, :prompt => t(:'mailbox.select_recipient'), :input_html => { :class => "span6" }
+					/ = f.input :recipients, :label => t(:'mailbox.recipient'), :collection => recipients, :label_method => lambda { |obj| "#{obj.profile.name} (#{t(:"user.roles.#{obj.role.downcase}")})" }, :value_method => :email, :prompt => t(:'mailbox.select_recipient'), :input_html => { :class => "span6" }
 					= f.input :subject, :label => t(:'mailbox.subject'), :input_html => { :class => "span6" }
 					= f.input :body, :as => :text, :label => t(:'mailbox.body'), :input_html => { :rows => 8, :class => 'span6' }
 					/ = f.input :attachment, :as => :file, :label => t(:'mailbox.attachment')
