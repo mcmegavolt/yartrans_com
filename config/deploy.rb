@@ -24,7 +24,7 @@ set :copy_exclude, [".git"]
 set :deploy_to, "/home/yartrans/yartrans"
 set :normalize_asset_timestamps, false
 
-set :rake, "#{rake} --trace"
+# set :rake, "#{rake} --trace"
 
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
