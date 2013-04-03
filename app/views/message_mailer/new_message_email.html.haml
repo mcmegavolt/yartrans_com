@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1
+      Новое сообщение: #{@message.subject.html_safe? ? @message.subject : strip_tags(@message.subject)}
+    %p
+      %b Отправитель: 
+      #{@message.sender.profile.name} (#{t(:"user.roles.#{@message.sender.role.downcase}")})
+    %p
+      %b Текст сообщения:
+    %blockquote
+      %p
+        = raw @message.body
+    %p
+      Вы можете зайти на #{link_to 'сайт', new_user_session_path} и ответить на это сообщение в личном кабинете.

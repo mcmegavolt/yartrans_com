@@ -2,51 +2,29 @@
 	.container
 		.row
 			.span12
-				%nav
-					= link_to new_cabinet_mailbox_message_path, class: 'compose' do
-						%i.icon-pencil
-						= t(:'mailbox.compose')
-					&nbsp;|&nbsp;
-					= link_to cabinet_mailbox_messages_path(box: 'inbox'), style: ('text-decoration: underline;' if @box == 'inbox') do
-						%i.icon-inbox
-						= t(:'mailbox.inbox')
-						= current_user.mailbox.inbox({:read => false}).count
-					&nbsp;|&nbsp;
-					= link_to cabinet_mailbox_messages_path(box: 'sent'), style: ('text-decoration: underline;' if @box == 'sent') do
-						%i.icon-upload-alt
-						= t(:'mailbox.sent')
-						= current_user.mailbox.sentbox.count
-					&nbsp;|&nbsp;
-					= link_to cabinet_mailbox_messages_path(box: 'trash'), style: ('text-decoration: underline;' if @box == 'trash') do
-						%i.icon-trash
-						= t(:'mailbox.trash')
-						= current_user.mailbox.trash.count
-				- if @box == 'inbox'
-					%h3= t(:'mailbox.inbox')
-				- if @box == 'sent'
-					%h3= t(:'mailbox.sent')
-				- if @box == 'trash'
-					%h3= t(:'mailbox.trash')
-
-				= form_tag trash_cabinet_mailbox_messages_path, method: :delete do
-					= hidden_field_tag 'current_box', @box
-					%table.table.table-striped.table-condensed
-						%tr
-							- unless @box == 'trash'
-								%th
-							%th= t(:'mailbox.sender')
-							%th= t(:'mailbox.subject')
-							%th= t(:'mailbox.messages')
-							%th
-						- @messages.each do |m|
-							%tr{ style: "#{ 'font-weight: bold;' if m.is_unread?(current_user) }" }
+				= render 'nav'
+				- if @messages.present?
+					= form_tag trash_cabinet_mailbox_messages_path, method: :delete do
+						= hidden_field_tag 'current_box', @box
+						%table.table.table-striped.table-condensed
+							%tr
 								- unless @box == 'trash'
-									%td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
-								%td= link_to m.last_sender, cabinet_mailbox_message_path(m)
-								%td= link_to m.subject, cabinet_mailbox_message_path(m)
-								%td= link_to m.count_messages, cabinet_mailbox_message_path(m)
-								%td= link_to truncate(m.last_message.body), cabinet_mailbox_message_path(m)
-					- unless @box == 'trash'
-						= button_tag type: 'submit', id: 'delete_multiple_button', class: 'btn' do
-							%i.icon-trash
-							= t(:'mailbox.delete_checked')
+									%th
+								%th= t(:'mailbox.sender')
+								%th= t(:'mailbox.subject')
+								%th= t(:'mailbox.messages')
+								%th
+							- @messages.each do |m|
+								%tr{ style: "#{ 'font-weight: bold;' if m.is_unread?(current_user) }" }
+									- unless @box == 'trash'
+										%td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
+									%td= link_to m.last_sender, cabinet_mailbox_message_path(m)
+									%td= link_to m.subject, cabinet_mailbox_message_path(m)
+									%td= link_to m.count_messages, cabinet_mailbox_message_path(m)
+									%td= link_to truncate(m.last_message.body), cabinet_mailbox_message_path(m)
+						- unless @box == 'trash'
+							= button_tag type: 'submit', id: 'delete_multiple_button', class: 'btn' do
+								%i.icon-trash
+								= t(:'mailbox.delete_checked')
+				- else
+					нет сообщений

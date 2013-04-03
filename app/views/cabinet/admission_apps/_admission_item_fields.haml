@@ -18,10 +18,9 @@
 		.span2
 			= f.input :box_count, :input_html => { :class => 'span2' }
 		.span2
-			= f.input :box_weight, :input_html => { :class => 'span2' }
+			= f.input :box_weight, :input_html => { :class => 'span2' }, :label => t(:'applications.admission.items.weight_unit')
 		.span2
-			= f.input :box_size, :input_html => { :class => 'span2' }
-			
+			= f.input :box_size, :input_html => { :class => 'span2' }, :label => t(:'applications.admission.items.size_unit_html')
 
 	= link_to_remove_association f do
 		%i.icon-trash

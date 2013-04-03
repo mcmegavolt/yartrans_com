@@ -35,14 +35,14 @@ ru:
         title: "Позиции"
         add_item: "Добавить позицию"
         remove_item: "Удалить позицию"
+        weight_unit: "Вес коробки, кг"
+        size_unit_html: "Объем коробки, м<sup>3</sup>"
       mailer:
         new_app:
           to_manager:
             subject: "Новая заявка на прием груза. %{client}"
           to_client:
             subject: "Новая заявка на прием груза"
-
-
     release:
       index:
         title: "Мои заявки на выдачу груза"
@@ -146,7 +146,7 @@ ru:
     untrash_conver: "Восстановить"
     dont_have_permission: "У Вас нет прав для просмотра этой цепочки сообщений."
     msg_sent: "Сообщение отправлено."
-    msg_sent_to_trash: "Сообщение отправлены в корзину"
+    msg_sent_to_trash: "Сообщение отправлено в корзину"
     msgs_sent_to_trash: "Сообщения отправлены в корзину"
     msg_untrashed: "Сообщение восстановлено из корзины"
 
@@ -171,6 +171,11 @@ ru:
     back: "Назад"
     edit: "Изменить"
     save: "Сохранить"
+
+  mailboxer:
+    message_mailer:
+      subject_reply: "Новый ответ на сообщение. «ЯрТранс Лоджистик»"
+      subject_new: "Получено новое сообщение. «ЯрТранс Лоджистик»"
 
   activerecord: 
     models:

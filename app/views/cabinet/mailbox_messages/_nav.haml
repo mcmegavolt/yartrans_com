@@ -1,0 +1,26 @@
+%nav
+	= link_to new_cabinet_mailbox_message_path, class: 'compose' do
+		%i.icon-pencil
+		= t(:'mailbox.compose')
+	&nbsp;|&nbsp;
+	= link_to cabinet_mailbox_messages_path(box: 'inbox'), style: ('text-decoration: underline;' if @box == 'inbox') do
+		%i.icon-inbox
+		= t(:'mailbox.inbox')
+		= current_user.mailbox.inbox({:read => false}).count
+	&nbsp;|&nbsp;
+	= link_to cabinet_mailbox_messages_path(box: 'sent'), style: ('text-decoration: underline;' if @box == 'sent') do
+		%i.icon-upload-alt
+		= t(:'mailbox.sent')
+		= current_user.mailbox.sentbox.count
+	&nbsp;|&nbsp;
+	= link_to cabinet_mailbox_messages_path(box: 'trash'), style: ('text-decoration: underline;' if @box == 'trash') do
+		%i.icon-trash
+		= t(:'mailbox.trash')
+		= current_user.mailbox.trash.count
+%hr/
+- if @box == 'inbox'
+	%h3= t(:'mailbox.inbox')
+- if @box == 'sent'
+	%h3= t(:'mailbox.sent')
+- if @box == 'trash'
+	%h3= t(:'mailbox.trash')

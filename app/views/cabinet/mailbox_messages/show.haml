@@ -2,6 +2,7 @@
   .container
     .row
       .span8
+        = render 'nav'
         .posts
           - if @conversation.is_trashed?(current_user)
             = link_to untrash_cabinet_mailbox_message_path(@conversation), class: :button, method: :post do

@@ -57,10 +57,10 @@ class AdmissionAppMailer < ActionMailer::Base
         ws.merge_cells 'A2:J2'
 
         ws.add_row
-        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Примечания' ], :style => table_header
-        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.admission_date.to_formatted_s(:db).first(10), app.admission_time.to_formatted_s(:db).last(8), app.notes ], :style => default
+        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания' ], :style => table_header
+        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.admission_date.to_formatted_s(:db).first(10), app.admission_time.to_formatted_s(:db).last(8), app.vehicle, app.notes ], :style => default
         ws.add_row
-        ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки', 'Объем коробки', 'Доп. информация' ], :style => table_header
+        ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки, кг', 'Объем коробки, м3', 'Доп. информация' ], :style => table_header
         for item in app.admission_items do
           ws.add_row [  item.name,
                         item.code_number,
