@@ -8,27 +8,27 @@
             .widget
               %h5= t(:'footer.contacts')
               %hr/
-              %p Praesent ultricies enim ac ipsum aliquet . Nullam justo nunc, dignissim at convallis posuere, sodales eu orci.
+              %p Компания &laquo;ЯрТранс Лоджистик&raquo; - современный 4PL оператор на Украинском рынке логистических услуг.
               %hr/
               %i.icon-home
-              \  123, Some Area. Los Angeles, CA, 54321.
+              \  г. Киев, ул. В.Верховинца, 12.
               %hr/
               %i.icon-phone
-              \  +239-3823-3434
+              \  +380 (44) 495-50-10, 20 (тел/факс)
               %hr/
               %i.icon-envelope-alt
               \ 
-              %a{:href => "mailto:office@yartrans.ua"} office@yartrans.ua
-              %hr/
-              .social
-                %a{:href => "#"}
-                  %i.icon-facebook.facebook
-                %a{:href => "#"}
-                  %i.icon-twitter.twitter
-                %a{:href => "#"}
-                  %i.icon-linkedin.linkedin
-                %a{:href => "#"}
-                  %i.icon-google-plus.google-plus
+              = mail_to "office@yartrans.ua", "Написать", :encode => "hex"
+              / %hr/
+              / .social
+              /   %a{:href => "#"}
+              /     %i.icon-facebook.facebook
+              /   %a{:href => "#"}
+              /     %i.icon-twitter.twitter
+              /   %a{:href => "#"}
+              /     %i.icon-linkedin.linkedin
+              /   %a{:href => "#"}
+              /     %i.icon-google-plus.google-plus
           - root_article_categories.each do |c|
             .span3
               .widget

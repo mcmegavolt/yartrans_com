@@ -1,6 +1,5 @@
 # Русский перевод для https://github.com/plataformatec/devise/tree/v1.4.2
 # Другие переводы на https://github.com/plataformatec/devise/wiki/I18n
- 
 ru:
   errors:
     messages:
@@ -13,8 +12,32 @@ ru:
         few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         many: "%{resource}: сохранение не удалось из-за %{count} ошибок"
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки"
- 
   devise:
+    login:
+      title: "Вход в личный кабинет"
+      description: "Только для клиентов компании"
+      form_title: "Введите свои данные"
+      remember_me: "Запомнить меня"
+      submit: "Войти"
+    forgot_pass:
+      title: "Забыли свой пароль?"
+      description: "С помощью этой формы Вы можете восстановить пароль"
+      form_title: "Введите свой email"
+      submit: "Выслать инструкции"
+    tools:
+      title: "Нужна помощь?"
+      sign_in: "Войти"
+      forgot_pass: "Забыли свой пароль?"
+      didnt_receive_conf_instr: "Не получили инструкции по подтверждению?"
+      didnt_receive_unlock_instr: "Не получили инструкции по расблокировке?"
+    edit:
+      title: "Изменение учетной записи"
+      leave_blank: "Оставьте это поле пустым, если Вы не собираетесь еог менять"
+      need_current_pass: "Укажите свой старый пароль, чтобы подтвердить изменения"
+      submit: "Сохранить изменения"
+   
+
+
     failure:
       already_authenticated: "Вы уже вошли в систему."
       unauthenticated: "Вам необходимо войти в систему или зарегистрироваться."

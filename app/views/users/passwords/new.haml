@@ -1,0 +1,23 @@
+.page-head
+  .container
+    .row
+      .span12
+        %h2= t(:'devise.forgot_pass.title')
+        %h4= t(:'devise.forgot_pass.description')
+.content
+  .container
+    .row
+      .span6
+        .formy.well
+          %h4.title= t(:'devise.forgot_pass.form_title')
+          .form
+            = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
+              .control-group
+                = f.label :email, :class => 'control-label'
+                .controls
+                  = f.email_field :email, :autofocus => true, :class => 'input-large'
+              .form-actions
+                = f.submit t(:'devise.forgot_pass.submit'), :class => 'btn'
+      .span6
+        %h4.title= t(:'devise.tools.title')
+        = render "users/shared/links"

@@ -1,0 +1,32 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-flag
+			= t(:'admin.mailbox.index.title')
+		.clearfix
+		= render 'nav'
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							= t(:'mailbox.compose')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+						.widget-content
+							.padd
+								= simple_form_for [:admin, @message], :html => { :class => 'form-horizontal' } do |f|
+
+									- recipients = Role.find_by_name("Client").users
+
+									= f.input :recipients, :label => t(:'mailbox.recipient'), :collection => recipients, :label_method => lambda { |obj| "#{obj.profile.name} (#{t(:"user.roles.#{obj.role.downcase}")})" }, :value_method => :email, :prompt => t(:'mailbox.select_recipient'), :input_html => { :class => "span6" }
+									= f.input :subject, :label => t(:'mailbox.subject'), :input_html => { :class => "span6" }
+									= f.input :body, :as => :text, :label => t(:'mailbox.body'), :input_html => { :rows => 8, :class => 'span6' }
+									/ = f.input :attachment, :as => :file, :label => t(:'mailbox.attachment')
+									.form-actions
+										= f.button :submit, t(:'mailbox.send_message')
+

@@ -47,62 +47,11 @@
 					= link_to new_admin_news_item_path do
 						%i.icon-plus
 						= t(:'admin.menu.add_news_item')
-		
-
-		/ %li.has_sub
-		/ 	%a{:href => "#"}
-		/ 		%i.icon-file-alt
-		/ 		Pages #1
-		/ 		%span.pull-right
-		/ 			%i.icon-chevron-right
-		/ 	%ul
-		/ 		%li
-		/ 			%a{:href => "post.html"} Post
-		/ 		%li
-		/ 			%a{:href => "login.html"} Login
-		/ 		%li
-		/ 			%a{:href => "register.html"} Register
-		/ 		%li
-		/ 			%a{:href => "support.html"} Support
-		/ 		%li
-		/ 			%a{:href => "invoice.html"} Invoice
-		/ 		%li
-		/ 			%a{:href => "profile.html"} Profile
-		/ 		%li
-		/ 			%a{:href => "gallery.html"} Gallery
-		/ %li.has_sub
-		/ 	%a{:href => "#"}
-		/ 		%i.icon-file-alt
-		/ 		Pages #2
-		/ 		%span.pull-right
-		/ 			%i.icon-chevron-right
-		/ 	%ul
-		/ 		%li
-		/ 			%a{:href => "media.html"} Media
-		/ 		%li
-		/ 			%a{:href => "statement.html"} Statement
-		/ 		%li
-		/ 			%a{:href => "error.html"} Error
-		/ 		%li
-		/ 			%a{:href => "error-log.html"} Error Log
-		/ 		%li
-		/ 			%a{:href => "calendar.html"} Calendar
-		/ 		%li
-		/ 			%a{:href => "grid.html"} Grid
-		/ %li
-		/ 	%a{:href => "charts.html"}
-		/ 		%i.icon-bar-chart
-		/ 		Charts
-		/ %li
-		/ 	%a{:href => "tables.html"}
-		/ 		%i.icon-table
-		/ 		Tables
-		/ %li
-		/ 	%a{:href => "forms.html"}
-		/ 		%i.icon-tasks
-		/ 		Forms
-		/ %li
-		/ 	%a{:href => "ui.html"}
-		/ 		%i.icon-magic
-		/ 		User Interface
-/ Sidebar ends
+		%li
+			= link_to admin_mailbox_messages_path, :class => ('open' if controller_name == 'mailbox_messages') do
+				%i.icon-envelope
+				= t(:'admin.menu.messages')
+				&nbsp;
+				- unless current_user.mailbox.inbox({:read => false}).count == 0
+					%span.badge.badge-warning= current_user.mailbox.inbox({:read => false}).count
+	

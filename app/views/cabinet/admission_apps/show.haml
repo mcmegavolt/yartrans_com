@@ -2,57 +2,43 @@
 	.container
 		.row
 			.span8
-				%h2= t(:'applications.admission.show.title')
-				%h4 #{admission_app.id}
+				%h4
+					= t(:'applications.admission.show.title')
+					\##{admission_app.id}
 				%br/
 				%table.table.table-condensed.table-hover
 					%tbody
 						%tr
-							%th Created at
+							%th= t(:'applications.admission.show.id')
+							%td #{admission_app.id}
+						%tr
+							%th= t(:'applications.admission.index.created_at')
 							%td
 								= l admission_app.created_at, :format => :short
-								(#{time_ago_in_words admission_app.created_at} ago)
+								(#{time_ago_in_words admission_app.created_at} #{t(:'most_common.ago')})
 						%tr
-							%th Barcode
-							%td= admission_app.barcode
+							%th= t(:'applications.admission.index.adm_date')
+							%td= l admission_app.admission_date, :format => :long
 						%tr
-							%th Expected date
-							%td
-								= l admission_app.expected_date, :format => :long
-								(
-								= distance_of_time_in_words_to_now admission_app.expected_date
-								)
+							%th= t(:'applications.admission.index.adm_time')
+							%td= admission_app.admission_time.strftime("%H:%M")
 						%tr
-							%th Notes
+							%th= t(:'applications.admission.show.notes')
 							%td= admission_app.notes
 						%tr
-							%th Vehicle
+							%th= t(:'applications.admission.show.vehicle')
 							%td= admission_app.vehicle
-						%tr
-							%th Cargo name
-							%td= admission_app.cargo_name
-						%tr
-							%th Cod number
-							%td= admission_app.code_number
-						%tr
-							%th Unit
-							%td= admission_app.unit
-						%tr
-							%th Unit count
-							%td= admission_app.unit_count
-						%tr
-							%th In box count
-							%td= admission_app.in_box_count
-						%tr
-							%th Box count
-							%td= admission_app.box_count
-						%tr
-							%th Additional info
-							%td= admission_app.additional_info
+				%hr/
+				%b
+					= t(:'applications.admission.show.items_count')
+					\:
+				= admission_app.admission_items.count
+				/ - for item in admission_app.admission_items do
+				/ 	= item
 			.span4
 				.sidebar
 					.widget
 						%h4= t(:'cabinet.my_admission_apps')
 						%ul
 							- current_user.admission_apps.each do |app|
-								%li= link_to app.cargo_name + " (##{app.id})", cabinet_admission_app_path(app), :style => ('font-weight:bold;' if app == admission_app)
+								%li= link_to (l admission_app.admission_date, :format => :long) + " (##{app.id})", cabinet_admission_app_path(app), :style => ('font-weight:bold;' if app == admission_app)

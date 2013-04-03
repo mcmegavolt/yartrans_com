@@ -2,14 +2,14 @@
   .container
     .row
       .span12
-        %h2 Client sign in
-        %h4 Only for certificated clients
+        %h2= t(:'devise.login.title')
+        %h4= t(:'devise.login.description')
 .content
   .container
     .row
       .span6
         .formy.well
-          %h4.title Login in your account
+          %h4.title= t(:'devise.login.form_title')
           .form
             = form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal'} do |f|
               .control-group
@@ -25,9 +25,9 @@
                   - if devise_mapping.rememberable?
                     %label.checkbox
                       = f.check_box :remember_me
-                      Remember me
-                  = f.submit "Sign in", :class => 'btn'
+                      = t(:'devise.login.remember_me')
+                  = f.submit t(:'devise.login.submit'), :class => 'btn'
           
       .span6
-        %h4.title Need help?
-        = render "devise/shared/links"
+        %h4.title= t(:'devise.tools.title')
+        = render "users/shared/links"

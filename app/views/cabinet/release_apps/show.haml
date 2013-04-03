@@ -2,57 +2,44 @@
 	.container
 		.row
 			.span8
-				%h2= t(:'applications.release.show.title')
-				%h4 #{release_app.id}
+				%h4
+					= t(:'applications.release.show.title')
+					\##{release_app.id}
 				%br/
 				%table.table.table-condensed.table-hover
 					%tbody
 						%tr
-							%th Created at
+							%th= t(:'applications.release.show.id')
+							%td #{release_app.id}
+						%tr
+							%th= t(:'applications.release.index.created_at')
 							%td
 								= l release_app.created_at, :format => :short
-								(#{time_ago_in_words release_app.created_at} ago)
+								(#{time_ago_in_words release_app.created_at} #{t(:'most_common.ago')})
 						%tr
-							%th Barcode
-							%td= release_app.barcode
+							%th= t(:'applications.release.index.adm_date')
+							%td= l release_app.release_date, :format => :long
 						%tr
-							%th Expected date
-							%td
-								= l release_app.expected_date, :format => :long
-								(
-								= distance_of_time_in_words_to_now release_app.expected_date
-								)
+							%th= t(:'applications.release.index.adm_time')
+							%td= release_app.release_time.strftime("%H:%M")
 						%tr
-							%th Notes
+							%th= t(:'applications.release.show.notes')
 							%td= release_app.notes
 						%tr
-							%th Vehicle
+							%th= t(:'applications.release.show.vehicle')
 							%td= release_app.vehicle
 						%tr
-							%th Cargo name
-							%td= release_app.cargo_name
-						%tr
-							%th Cod number
-							%td= release_app.code_number
-						%tr
-							%th Unit
-							%td= release_app.unit
-						%tr
-							%th Unit count
-							%td= release_app.unit_count
-						%tr
-							%th In box count
-							%td= release_app.in_box_count
-						%tr
-							%th Box count
-							%td= release_app.box_count
-						%tr
-							%th Additional info
-							%td= release_app.additional_info
+							%th= t(:'applications.release.show.recipient')
+							%td= release_app.recipient
+				%hr/
+				%b
+					= t(:'applications.release.show.items_count')
+					\:
+				= release_app.release_items.count
 			.span4
 				.sidebar
 					.widget
 						%h4= t(:'cabinet.my_release_apps')
 						%ul
 							- current_user.release_apps.each do |app|
-								%li= link_to app.cargo_name + " (##{app.id})", cabinet_release_app_path(app), :style => ('font-weight:bold;' if app == release_app)
+								%li= link_to (l release_app.release_date, :format => :long) + " (##{app.id})", cabinet_release_app_path(app), :style => ('font-weight:bold;' if app == release_app)

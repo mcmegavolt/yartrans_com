@@ -13,6 +13,11 @@ ru:
         items_count: "Позиций"
       show:
         title: "Детали заявки"
+        id: "Номер заявки"
+        notes: "Доп. информация"
+        vehicle: "Информация об авто"
+        items_count: "Количество позиций"
+
       edit:
         title: "Редактирование заявки на прием груза"
       new:
@@ -51,6 +56,11 @@ ru:
         items_count: "Позиций"        
       show:
         title: "Детали заявки"
+        id: "Номер заявки"
+        notes: "Доп. информация"
+        vehicle: "Информация об авто"
+        items_count: "Количество позиций"
+        recipient: "Кому выдать товар"        
       edit:
         title: "Редактирование заявки на выдачу груза"
       new:
@@ -86,6 +96,7 @@ ru:
       director: "Директор"
       manager: "Менеджер"
       client: "Клиент"
+
   ckeditor:
     page_title: "Файловый менеджер"
     confirm_delete: "Удалить файл?"
@@ -98,10 +109,12 @@ ru:
     title: "Кабинет"
     my_cabinet: "Мой кабинет"
     admin_panel: "Админ-панель"
-    my_admission_apps: "Мои заявки на прием груза"
-    admission_apps: "Заявки на прием груза"
-    my_release_apps: "Мои заявки на выдачу груза"
-    release_apps: "Заявки на выдачу груза"
+    admission_apps:
+      title: "Заявки на прием груза"
+      show_all: "Показать все"
+    release_apps:
+      title: "Заявки на выдачу груза"
+      show_all: "Показать все"
     my_profile: "Моя учетная запись"
     edit_profile: "Изменить учетную запись"
     hello: "Приветствую, "
@@ -155,6 +168,9 @@ ru:
   most_common:
     ago: "назад"
     download: "Скачать"
+    back: "Назад"
+    edit: "Изменить"
+    save: "Сохранить"
 
   activerecord: 
     models:
@@ -171,6 +187,9 @@ ru:
         email: "Эл. почта"
         password: "Пароль"
         role: "Роль"
+        password_confirmation: "Подтвердите пароль"
+        current_password: "Текущий пароль"
+        new_password: "Новый пароль"
       profile:
         name: "Имя"
         personal_id: "Персональный номер"

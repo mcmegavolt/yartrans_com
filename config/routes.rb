@@ -29,6 +29,15 @@ Yartrans::Application.routes.draw do
         get :confirm
       end
     end
+    resources :mailbox_messages, :path => 'msg' do
+      member do
+        delete 'trash'
+        post 'untrash'
+      end
+      collection do
+        delete 'trash'
+      end
+    end
     resource :dashboard
     resources :activity_feeds
     resources :settings

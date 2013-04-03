@@ -1,5 +1,7 @@
 .widget
-	%h4= link_to t(:'cabinet.my_admission_apps'), cabinet_admission_apps_path
+	%h4= link_to t(:'cabinet.admission_apps.title'), cabinet_admission_apps_path
 	%ul
 		- admission_apps.each do |adm_app|
 			%li= link_to adm_app.created_at, cabinet_admission_app_path(adm_app)
+	= link_to cabinet_admission_apps_path do
+		= t(:'cabinet.admission_apps.show_all')

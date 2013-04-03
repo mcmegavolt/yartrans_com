@@ -1,0 +1,52 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-flag
+			= t(:'admin.mailbox.index.title')
+		.clearfix
+		= render 'nav'
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							- if @box == 'inbox'
+								= t(:'mailbox.inbox')
+							- if @box == 'sent'
+								= t(:'mailbox.sent')
+							- if @box == 'trash'
+								= t(:'mailbox.trash')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+						.widget-content
+							.padd
+								- unless @messages.empty?
+									= form_tag trash_admin_mailbox_messages_path, method: :delete do
+										= hidden_field_tag 'current_box', @box
+										%table.table.table-striped.table-condensed
+											%tr
+												- unless @box == 'trash'
+													%th
+												%th= t(:'mailbox.sender')
+												%th= t(:'mailbox.subject')
+												%th= t(:'mailbox.messages')
+												%th
+											- @messages.each do |m|
+												%tr{ style: "#{ 'font-weight: bold;' if m.is_unread?(current_user) }" }
+													- unless @box == 'trash'
+														%td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: "conversations[]"
+													%td= link_to m.last_sender, admin_mailbox_message_path(m)
+													%td= link_to m.subject, admin_mailbox_message_path(m)
+													%td= link_to m.count_messages, admin_mailbox_message_path(m)
+													%td= link_to truncate(m.last_message.body), admin_mailbox_message_path(m)
+										- unless @box == 'trash'
+											.form-actions
+												= button_tag type: 'submit', id: 'delete_multiple_button', class: 'btn' do
+													%i.icon-trash
+													= t(:'mailbox.delete_checked')
+								- else
+									нет сообщений

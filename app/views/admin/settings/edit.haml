@@ -28,7 +28,7 @@
 									= f.input :var, :as => :hidden
 									= f.input :value, :as => :string, :label => t(:"admin.settings.items.#{f.object.var}")
 								.form-actions
-									= f.button :submit, "Save"
+									= f.button :submit, t(:'most_common.save')
 
 							.widget-foot
 								/ = paginate users
