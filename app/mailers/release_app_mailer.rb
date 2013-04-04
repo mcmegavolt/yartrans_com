@@ -2,7 +2,7 @@ class ReleaseAppMailer < ActionMailer::Base
 
   require 'axlsx' 
 
-  default from: "release@yartrans.ua"
+  default from: "\"YarTrans Logistic, site service\" <service@yartrans.ua>"
 
   def new_app_to_manager(app)
 

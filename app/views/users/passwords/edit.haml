@@ -1,0 +1,28 @@
+.page-head
+	.container
+		.row
+			.span12
+				%h2= t(:'devise.edit_pass.title')
+.content
+	.container
+		.row
+			.span6
+				.formy.well
+					%h4.title= t(:'devise.edit_pass.form_title')
+					.form
+						= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-horizontal'  }) do |f|
+							= devise_error_messages!
+							= f.hidden_field :reset_password_token
+							.control-group
+								= f.label :new_password, :class => 'control-label'
+								.controls
+									= f.password_field :password, :autofocus => true
+							.control-group
+								= f.label :password_confirmation, :class => 'control-label'
+								.controls
+									= f.password_field :password_confirmation
+							.form-actions
+								= f.submit t(:'devise.edit_pass.submit'), :class => 'btn'
+			.span6
+				%h4.title= t(:'devise.tools.title')
+				= render "users/shared/links"

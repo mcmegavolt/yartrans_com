@@ -1,0 +1,4 @@
+%p
+  Приветствуем, #{@email}!
+%p Вы можете подтвердить учетную запись пройдя по ссылке ниже:
+%p= link_to 'Подтвердить учетную запись', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)

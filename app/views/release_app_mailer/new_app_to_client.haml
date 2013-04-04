@@ -8,4 +8,7 @@
 		%p
 			Дата заполнения: #{l @app.created_at, :format => :short}
 		%p  
-			Количество позиций: #{@app.release_items.count.to_s}
+			Количество позиций: #{@app.release_items.count.to_s}\
+		%hr/
+		%p
+			Это письмо сгенерировано автоматически, не отвечайте на него.

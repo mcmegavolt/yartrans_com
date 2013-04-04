@@ -72,8 +72,6 @@ ru:
         updated: "Заявка на выдачу груза обновлена"
         not_updated: "Ошибка сохранения, проверьте заполненные поля"
         destroyed: "Заявка на выдачу груза удалена"
-
-
       items:
         title: "Позиции"
         add_item: "Добавить позицию"
@@ -81,9 +79,9 @@ ru:
       mailer:
         new_app:
           to_manager:
-            subject: "Новая заявка на прием груза. %{client}"
+            subject: "Новая заявка на выдачу груза. %{client}"
           to_client:
-            subject: "Новая заявка на прием груза"
+            subject: "Новая заявка на выдачу груза"
     unit_types:
       shtuk: "шт."
       butil: "бут."

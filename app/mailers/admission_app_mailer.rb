@@ -2,7 +2,7 @@ class AdmissionAppMailer < ActionMailer::Base
 
   require 'axlsx' 
 
-  default from: "admission@yartrans.ua"
+  default from: "\"YarTrans Logistic, site service\" <service@yartrans.ua>"
 
   def new_app_to_manager(app)
 
@@ -14,6 +14,7 @@ class AdmissionAppMailer < ActionMailer::Base
     attachments[app_file_name] = File.read('sample.xlsx')
 
     mail_to = SiteSettings["admission_apps.manager_email"]
+    
     subject = t(:"applications.admission.mailer.new_app.to_manager.subject", :client => app.user.profile.name)
 
     mail(:to => mail_to, :subject => subject)
