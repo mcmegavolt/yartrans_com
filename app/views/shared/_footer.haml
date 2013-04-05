@@ -60,9 +60,9 @@
           Copyright © #{Time.now.year} |
           = link_to root_url do
             YARTRANS
-          \-
-          = link_to root_url do
-            Home
+          / \-
+          / = link_to root_url do
+          /   Главная
           - static_article_pages.each do |static|
             |
             = link_to static.title, page_path(static)

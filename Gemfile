@@ -31,6 +31,7 @@ gem 'mailboxer'
 gem 'simple_form' 
 gem 'cocoon'
 gem 'axlsx_rails'
+gem 'state_machine'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.6'
