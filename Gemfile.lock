@@ -60,7 +60,7 @@ GEM
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
     chronic (0.9.1)
-    ckeditor (4.0.3)
+    ckeditor (4.0.2)
       mime-types
       orm_adapter
     client_side_validations (3.2.5)
@@ -254,7 +254,7 @@ DEPENDENCIES
   cancan
   capistrano
   carrierwave
-  ckeditor
+  ckeditor (= 4.0.2)
   client_side_validations
   cocoon
   coffee-rails (~> 3.2.1)

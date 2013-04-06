@@ -15,10 +15,9 @@ gem 'delayed_job_active_record'
 gem 'client_side_validations'
 gem 'ancestry'
 gem 'font-awesome-sass-rails'
-gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'ckeditor'
+gem 'ckeditor', '4.0.2'
 gem "carrierwave"
 gem "mini_magick"
 gem 'devise'
