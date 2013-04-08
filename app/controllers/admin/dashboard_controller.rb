@@ -18,4 +18,11 @@ class Admin::DashboardController < ApplicationController
   end
   helper_method :admission_apps
 
+  def news_items
+    @news_items ||= NewsItem.all
+  end
+  helper_method :news_items
+
+  
+
 end

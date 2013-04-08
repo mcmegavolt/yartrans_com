@@ -15,145 +15,153 @@
 				%ul.nav.nav-pills
 					/ Comment button with number of latest comments count
 					%li.dropdown.dropdown-big
-						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-							%i.icon-comments
-							Chats
-							%span.badge.badge-info 6
+						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => 'padding: 10px;'}
+							%i.icon-flag
+							= t(:'admin.quick_menu.news.title')
+							/ %span.badge.badge-info= news_items.count
 						%ul.dropdown-menu
 							%li
 								/ Heading - h5
 								%h5
-									%i.icon-comments
-									Chats
+									%i.icon-flag
+									= t(:'admin.quick_menu.news.title')
 								/ Use hr tag to add border
 								%hr/
-							%li
-								/ List item heading h6
-								%h6
-									%a{:href => "#"} Hi :)
-									%span.label.label-warning.pull-right 10:42
-								.clearfix
-								%hr/
-							%li
-								%h6
-									%a{:href => "#"} How are you?
-									%span.label.label-warning.pull-right 20:42
-								.clearfix
-								%hr/
-							%li
-								%h6
-									%a{:href => "#"} What are you doing?
-									%span.label.label-warning.pull-right 14:42
-								.clearfix
-								%hr/
+							
+							- for item in news_items do
+								%li
+									%span.label.label-info
+										= l item.created_at, :format => :long
+									%h6
+										= link_to item.title.truncate(40), admin_news_item_path(item)
+									.clearfix
+									%hr/
+							
 							%li
 								.drop-foot
-									%a{:href => "#"} View All
-					/ Message button with number of latest messages count
+									= link_to t(:'admin.quick_menu.news.show_all'), admin_news_items_path
+									|
+									= link_to new_admin_news_item_path do
+										%i.icon-pencil
+										= t(:'admin.quick_menu.news.create')
+					
 					%li.dropdown.dropdown-big
 						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
 							%i.icon-envelope-alt
 							= t(:'admin.menu.messages')
 							- unless current_user.mailbox.inbox({:read => false}).count == 0
 								%span.badge.badge-warning= current_user.mailbox.inbox({:read => false}).count
+							- else
+								%span.badge 0
+						
 						%ul.dropdown-menu
-							%li
-								/ Heading - h5
-								%h5
-									%i.icon-envelope-alt
-									Messages
-								/ Use hr tag to add border
-								%hr/
-							%li
-								/ List item heading h6
-								%h6
-									%a{:href => "#"} Hello how are you?
-								/ List item para
-								%p Quisque eu consectetur erat eget  semper...
-								%hr/
-							%li
-								%h6
-									%a{:href => "#"} Today is wonderful?
-								%p Quisque eu consectetur erat eget  semper...
+							- unless current_user.mailbox.inbox({:read => false}).count == 0
+								%li
+									/ Heading - h5
+									%h5
+										%i.icon-envelope-alt
+										= t(:'admin.quick_menu.msg.unread')
+									/ Use hr tag to add border
+									%hr/
+								- for conversation in current_user.mailbox.inbox({:read => false}) do
+									%li
+										%h6
+											= link_to conversation.subject, admin_mailbox_message_path(conversation)
+										%p
+											= conversation.last_message.body.truncate(100)
+										%p
+											%i.icon-user
+											= conversation.last_message.sender
+										%hr/
+							- else
+								%li
+								%h5= t(:'admin.quick_menu.msg.no_msgs')
 								%hr/
 							%li
 								.drop-foot
-									= link_to 'View all', admin_mailbox_messages_path
+									= link_to t(:'admin.quick_menu.msg.show_all'), admin_mailbox_messages_path
 									|
-									= link_to 'Create new', new_admin_mailbox_message_path
-					/ Members button with number of latest members count
+									= link_to new_admin_mailbox_message_path do
+										%i.icon-pencil
+										= t(:'admin.quick_menu.msg.create')
+					
+
+
 					%li.dropdown.dropdown-big
-						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+						%a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => 'padding: 10px;'}
 							%i.icon-user
-							Users
-							%span.badge.badge-success 6
+							= t(:'admin.quick_menu.users.title')
 						%ul.dropdown-menu
 							%li
 								/ Heading - h5
 								%h5
 									%i.icon-user
-									Users
+									= t(:'admin.quick_menu.users.title')
 								/ Use hr tag to add border
 								%hr/
-							%li
-								/ List item heading h6
-								%h6
-									%a{:href => "#"} Ravi Kumar
-									%span.label.label-warning.pull-right Free
-								.clearfix
-								%hr/
-							%li
-								%h6
-									%a{:href => "#"} Balaji
-									%span.label.label-important.pull-right Premium
-								.clearfix
-								%hr/
-							%li
-								%h6
-									%a{:href => "#"} Kumarasamy
-									%span.label.label-warning.pull-right Free
-								.clearfix
-								%hr/
+							/ %li
+							/ 	/ List item heading h6
+							/ 	%h6
+							/ 		%a{:href => "#"} Ravi Kumar
+							/ 		%span.label.label-warning.pull-right Free
+							/ 	.clearfix
+							/ 	%hr/
+							/ %li
+							/ 	%h6
+							/ 		%a{:href => "#"} Balaji
+							/ 		%span.label.label-important.pull-right Premium
+							/ 	.clearfix
+							/ 	%hr/
+							/ %li
+							/ 	%h6
+							/ 		%a{:href => "#"} Kumarasamy
+							/ 		%span.label.label-warning.pull-right Free
+							/ 	.clearfix
+							/ 	%hr/
 							%li
 								.drop-foot
-									%a{:href => "#"} View All
+									= link_to t(:'admin.quick_menu.users.show_all'), admin_users_path
+									|
+									= link_to new_admin_user_path do
+										%i.icon-pencil
+										= t(:'admin.quick_menu.users.create')
 			/ Data section
-			.span4
-				.header-data
-					/ Traffic data
-					.hdata
-						.mcol-left
-							/ Icon with red background
-							%i.icon-signal.bred
-						.mcol-right
-							/ Number of logins
-							%p
-								%a{:href => "#"}
-									777
-								%em logins
-						.clearfix
-					/ Members data
-					.hdata
-						.mcol-left
-							/ Icon with blue background
-							= link_to admin_users_path do
-								%i.icon-user.bblue
-						.mcol-right
-							/ Number of visitors
-							%p
-								= link_to admin_users_path do
-									= User.all.count
-								%em users
-						.clearfix
-					/ revenue data
-					.hdata
-						.mcol-left
-							/ Icon with green background
-							%i.icon-money.bgreen
-						.mcol-right
-							/ Number of visitors
-							%p
-								%a{:href => "#"} 0
-								%em orders
-						.clearfix
+			/ .span4
+			/ 	.header-data
+			/ 		/ Traffic data
+			/ 		.hdata
+			/ 			.mcol-left
+			/ 				/ Icon with red background
+			/ 				%i.icon-signal.bred
+			/ 			.mcol-right
+			/ 				/ Number of logins
+			/ 				%p
+			/ 					%a{:href => "#"}
+			/ 						777
+			/ 					%em logins
+			/ 			.clearfix
+			/ 		/ Members data
+			/ 		.hdata
+			/ 			.mcol-left
+			/ 				/ Icon with blue background
+			/ 				= link_to admin_users_path do
+			/ 					%i.icon-user.bblue
+			/ 			.mcol-right
+			/ 				/ Number of visitors
+			/ 				%p
+			/ 					= link_to admin_users_path do
+			/ 						= User.all.count
+			/ 					%em users
+			/ 			.clearfix
+			/ 		/ revenue data
+			/ 		.hdata
+			/ 			.mcol-left
+			/ 				/ Icon with green background
+			/ 				%i.icon-money.bgreen
+			/ 			.mcol-right
+			/ 				/ Number of visitors
+			/ 				%p
+			/ 					%a{:href => "#"} 0
+			/ 					%em orders
+			/ 			.clearfix
 / Header ends
