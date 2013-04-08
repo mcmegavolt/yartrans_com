@@ -1,4 +1,10 @@
 ru:
+  seo:
+    meta:
+      site_name: "Yartrans Logistic"
+      home_title: "— современный 4PL оператор на Украинском рынке логистических услуг"
+      home_description: "Компания «ЯрТранс Лоджистик» — современный 4PL оператор на Украинском рынке логистических услуг."
+      home_keywords: ""
   applications:
     admission:
       index:
