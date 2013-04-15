@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
 
   has_many :admission_apps, :dependent => :destroy
   has_many :release_apps, :dependent => :destroy
+  has_many :reports, :dependent => :destroy
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)

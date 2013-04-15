@@ -1,14 +1,18 @@
 .content
 	.container
 		.row
-			.span4
+			.span8
+				.row
+					.span4
+						.sidebar
+							= render 'profile'
+							= render 'admission_apps', :admission_apps => admission_apps
+					.span4
+						.sidebar
+							= render 'tariffs'
+							= render 'release_apps', :release_apps => release_apps
 				.sidebar
-					= render 'profile'
-					= render 'admission_apps', :admission_apps => admission_apps
-			.span4
-				.sidebar
-					= render 'tariffs'
-					= render 'release_apps', :release_apps => release_apps
+					= render 'reports', :reports => reports
 			.span4
 				.sidebar
 					= render 'news_items', :news_items => news_items

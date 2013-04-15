@@ -1,10 +1,12 @@
 ru:
   seo:
     meta:
-      site_name: "Yartrans Logistic"
+      site_name: "YarTrans Logistic"
       home_title: "— современный 4PL оператор на Украинском рынке логистических услуг"
       home_description: "Компания «ЯрТранс Лоджистик» — современный 4PL оператор на Украинском рынке логистических услуг."
       home_keywords: ""
+      admin_site_name: "Администрирование"
+      admin_home_title: "YarTrans Logistic"
   applications:
     admission:
       index:
@@ -17,6 +19,7 @@ ru:
         vehicle: "Данные об авто"
         actions: "Действия"
         items_count: "Позиций"
+        file: "Загруженный файл"
       show:
         title: "Детали заявки"
         id: "Номер заявки"
@@ -59,7 +62,8 @@ ru:
         adm_time: "Желаемое время"
         vehicle: "Данные об авто"
         actions: "Действия"
-        items_count: "Позиций"        
+        items_count: "Позиций"  
+        file: "Загруженный файл"      
       show:
         title: "Детали заявки"
         id: "Номер заявки"
@@ -100,6 +104,11 @@ ru:
       director: "Директор"
       manager: "Менеджер"
       client: "Клиент"
+
+  reports:
+    categories:
+      hranenie: "Храниние"
+      uslugi: "Услуги"
 
   ckeditor:
     page_title: "Файловый менеджер"
@@ -191,6 +200,7 @@ ru:
       release_app: "Заявка на выдачу груза"
       release_item: "Позиция"
       tariff: "Текущие тарифы"
+      report: "Отчет"
     attributes:
       user:
         email: "Эл. почта"
@@ -209,7 +219,9 @@ ru:
         admission_time: "Желаемое время"
         vehicle: "Данные об автомобиле"
         notes: "Примечания"
-        admission_items: "Позиции"      
+        admission_items: "Позиции"   
+        file: "Файл заявки"  
+        remove_file: "Удалить файл"
       release_app:
         release_date: "Дата приема"
         release_time: "Желаемое время"
@@ -217,6 +229,8 @@ ru:
         notes: "Примечания"
         release_items: "Позиции"
         recipient: "Кому выдать"
+        file: "Файл заявки"   
+        remove_file: "Удалить файл"
       admission_item:
         name: "Название"
         code_number: "Артикул"
@@ -243,6 +257,10 @@ ru:
         notes: "Примечание"
         file: "Файл"
         remove_file: "Удалить файл"
+      report:
+        file: "Файл отчета"
+        report_category_id: "Категория"
+        submit: "Создать"
 
   errors:
     messages:

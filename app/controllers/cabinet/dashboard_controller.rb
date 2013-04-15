@@ -23,4 +23,9 @@ class Cabinet::DashboardController < ApplicationController
   end
   helper_method :news_items
 
+  def reports
+    @reports ||= current_user.reports
+  end
+  helper_method :reports
+
 end

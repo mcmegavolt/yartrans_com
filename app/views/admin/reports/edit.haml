@@ -1,0 +1,27 @@
+= render 'admin/shared/sidebar'
+.mainbar
+
+	.page-head
+		%h2.pull-left
+			%i.icon-user
+			#{@user.profile.name}
+			(#{@user.profile.personal_id})
+		.clearfix
+
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span6
+					.widget
+						.widget-head
+							Редактирование отчета ##{resource.id}
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								/ %a.wclose{:href => "#"}
+								/ 	%i.icon-remove
+						.widget-content
+							.padd
+								= render 'report_form'

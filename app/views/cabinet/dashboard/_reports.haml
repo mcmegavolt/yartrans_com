@@ -1,0 +1,13 @@
+.widget
+	%h4 Отчеты
+	%table.table.table-condensed.table-striped
+		- for r in reports do
+			%tr
+				%td
+					= l r.created_at, :format => :long
+				%td
+					= File.basename(r.file_url)
+				%td
+					= link_to r.file_url do
+						%i.icon-download
+						Скачать

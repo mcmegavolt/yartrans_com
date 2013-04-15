@@ -1,0 +1,52 @@
+= render 'admin/shared/sidebar'
+.mainbar
+
+	.page-head
+		%h2.pull-left
+			%i.icon-user
+			#{@user.profile.name}
+			(#{@user.profile.personal_id})
+		.clearfix
+
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span6
+					.widget
+						.widget-head
+							Отчеты
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+								/ %a.wclose{:href => "#"}
+								/ 	%i.icon-remove
+						.widget-content
+							.padd
+								= link_to new_resource_path, :class => 'btn' do
+									%i.icon-plus-sign
+									Создать отчет
+								%hr/
+								%table.table.table-bordered.table-condensed.table-striped
+									- for report in collection do
+										%tr
+											%td
+												- if report.report_category_id == 0
+													%span.label.label-info= report.category
+												- if report.report_category_id == 1
+													%span.label.label-success= report.category
+
+											%td= report.created_at.to_formatted_s(:db)
+											%td
+												= link_to report.file_url do
+													%i.icon-download
+													= t(:'most_common.download')
+
+											%td= link_to t(:'most_common.edit'), edit_resource_path(report)
+
+							.widget-foot
+								/ = paginate users
+								.clearfix
+
+.clearfix

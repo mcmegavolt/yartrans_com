@@ -4,14 +4,26 @@
 		.span4
 			= f.input :admission_date
 			= f.input :admission_time
-		.span4
-			= f.input :vehicle, :input_html => { :rows => 4, :class => 'span4' }
-		.span4
-			= f.input :notes, :input_html => { :rows => 4, :class => 'span4' }
+		.span3
+			= f.input :vehicle, :input_html => { :rows => 4, :class => 'span3' }
+		.span2
+			= f.input :notes, :input_html => { :rows => 4, :class => 'span2' }
+		.span3
+			= f.input :file, :as => :file
+			- unless f.object.file.blank?
+				= f.input :remove_file, :as => :boolean
+			= link_to download_sample_cabinet_admission_apps_path do
+				%i.icon-file
+				Скачать бланк
+
 	%hr/
 	.row
 		.span12		
-			%h4= t(:'applications.admission.items.title')
+			.row
+				.span6
+					%h4= t(:'applications.admission.items.title')
+				.span6
+					
 			%hr/
 			#admission_items
 				= f.simple_fields_for :admission_items do |item|

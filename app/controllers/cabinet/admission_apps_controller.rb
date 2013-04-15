@@ -10,7 +10,7 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, AdmissionApp
-    admission_app.admission_items.build
+    # admission_app.admission_items.build
   end
 
   def create
@@ -53,6 +53,13 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
       flash[:success] = t(:'applications.admission.flash.destroyed')
       redirect_to cabinet_admission_apps_path
     end
+  end
+
+  def download_sample
+    require 'app_file_generator'
+    send_data AppFileGenerator.admission_app_sample(current_user.profile).to_stream.read,
+              :filename => "priem_" + l(Time.now, :format => "%Y-%m-%d_%I-%M") + "_blank.xlsx",
+              :type => "application/xlsx"
   end
 
   def admission_apps

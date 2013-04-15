@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130408090440) do
+ActiveRecord::Schema.define(:version => 20130414231301) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130408090440) do
     t.datetime "updated_at",     :null => false
     t.time     "admission_time"
     t.date     "admission_date"
+    t.string   "file"
   end
 
   create_table "admission_items", :force => true do |t|
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(:version => 20130408090440) do
     t.time     "release_time"
     t.text     "recipient"
     t.text     "vehicle"
+    t.string   "file"
   end
 
   create_table "release_items", :force => true do |t|
@@ -171,6 +173,16 @@ ActiveRecord::Schema.define(:version => 20130408090440) do
   end
 
   add_index "release_items", ["release_app_id"], :name => "index_release_items_on_release_app_id"
+
+  create_table "reports", :force => true do |t|
+    t.string   "file"
+    t.integer  "report_category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "reports", ["user_id"], :name => "index_reports_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

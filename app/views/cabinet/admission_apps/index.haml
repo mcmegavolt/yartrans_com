@@ -4,6 +4,10 @@
 			.span12
 				%h4= t(:'applications.admission.index.title')
 				%hr/
+				.button
+					= link_to new_cabinet_admission_app_path do
+						= t(:'applications.admission.index.create')
+				%hr/
 				- unless admission_apps.blank?
 					%table.table.table-condensed.table-hover
 						%thead
@@ -20,10 +24,34 @@
 								%tr
 									%td= app.id
 									%td= l app.created_at, :format => :short
-									%td= l app.admission_date, :format => :short
-									%td= app.admission_time.strftime("%H:%M") 
-									%td= app.admission_items.count
-									%td= app.vehicle
+									%td
+										- if app.file.blank?
+											= l app.admission_date, :format => :short
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.admission_time.strftime("%H:%M") 
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.admission_items.count
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.vehicle
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
 									%td
 										- if can? [:edit, :destroy], ReleaseApp
 											= link_to cabinet_admission_app_path(app), :method => :delete, :confirm => '???' do
@@ -38,10 +66,11 @@
 												%i.icon-lock
 				- else
 					= t(:'applications.admission.index.no_apps_yet')
-
-				.button
-					= link_to new_cabinet_admission_app_path do
-						= t(:'applications.admission.index.create')
+				
+				- if admission_apps.count > 10
+					.button
+						= link_to new_cabinet_admission_app_path do
+							= t(:'applications.admission.index.create')
 
 
 

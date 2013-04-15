@@ -21,6 +21,7 @@ Yartrans::Application.routes.draw do
 
   namespace :admin do
   	resources :users do
+      resources :reports
       collection do
         match 'search' => 'users#search', :via => [:get, :post], :as => :search
         get 'page/:page', :action => :index
@@ -45,8 +46,20 @@ Yartrans::Application.routes.draw do
   end
 
   namespace :cabinet do
-  	resources :admission_apps, :path => 'admission'
-  	resources :release_apps, :path => 'release'
+  	
+    resources :admission_apps, :path => 'admission' do
+      collection do
+        get :download_sample
+      end
+    end
+  	
+    resources :release_apps, :path => 'release' do
+      collection do
+        get :download_sample
+      end
+    end
+
+    resources :reports
 
     resources :mailbox_messages, :path => 'msg' do
       member do

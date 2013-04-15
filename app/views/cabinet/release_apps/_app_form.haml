@@ -3,8 +3,16 @@
 	.row
 		.span4
 			= f.input :release_date
-		.span4
+		.span3
 			= f.input :release_time
+		.span3
+			= f.input :file, :as => :file
+			- unless f.object.file.blank?
+				= f.input :remove_file, :as => :boolean
+		.span2
+			= link_to download_sample_cabinet_release_apps_path do
+				%i.icon-file
+				Скачать бланк
 	.row
 		.span4
 			= f.input :recipient, :input_html => { :rows => 2, :class => 'span4' }

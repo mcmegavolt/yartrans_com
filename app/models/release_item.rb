@@ -7,7 +7,7 @@ class ReleaseItem < ActiveRecord::Base
   validates_presence_of :name
 
   validates_presence_of :unit_count, :unless => :box_count?
-  validates_presence_of :box_count, :unless => :unit_count?
+  # validates_presence_of :box_count, :unless => :unit_count?
 
   attr_accessor :unit
 

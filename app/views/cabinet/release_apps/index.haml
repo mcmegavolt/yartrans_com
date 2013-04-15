@@ -4,6 +4,10 @@
 			.span12
 				%h4= t(:'applications.release.index.title')
 				%hr/
+				.button
+					= link_to new_cabinet_release_app_path do
+						= t(:'applications.release.index.create')
+				%hr/
 				- unless release_apps.blank?
 					%table.table.table-condensed.table-hover
 						%thead
@@ -20,10 +24,32 @@
 								%tr
 									%td= app.id
 									%td= l app.created_at, :format => :short
-									%td= l app.release_date, :format => :short
-									%td= app.release_time.strftime("%H:%M") 
-									%td= app.release_items.count
-									%td= app.vehicle
+									%td
+										- if app.file.blank?
+											= l app.release_date, :format => :short
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.release_time.strftime("%H:%M") 
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.release_items.count
+										- else
+											= link_to app.file_url do
+												%i.icon-download
+												= t(:'applications.admission.index.file')
+									%td
+										- if app.file.blank?
+											= app.vehicle
+										- else
+											\---
 									%td
 										- if can? [:edit, :destroy], ReleaseApp
 											= link_to cabinet_release_app_path(app), :method => :delete, :confirm => '???' do
@@ -38,10 +64,10 @@
 												%i.icon-lock
 				- else
 					= t(:'applications.release.index.no_apps_yet')
-
-				.button
-					= link_to new_cabinet_release_app_path do
-						= t(:'applications.release.index.create')
+				- if release_apps.count > 10
+					.button
+						= link_to new_cabinet_release_app_path do
+							= t(:'applications.release.index.create')
 
 
 

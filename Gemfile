@@ -26,7 +26,7 @@ gem 'kaminari'
 gem 'ransack'
 gem "rails-settings-cached", "0.2.4"
 gem 'unicorn'
-gem 'mailboxer', '0.9.0'
+gem 'mailboxer'#, '0.9.0'
 gem 'simple_form' 
 gem 'cocoon'
 gem 'axlsx_rails'

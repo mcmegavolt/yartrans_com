@@ -7,8 +7,11 @@
 			Новая заявка ##{@app.id} на выдачу груза (#{@app.user.profile.name})
 		%p
 			Дата заполнения: #{l @app.created_at, :format => :short}
-		%p  
-			Количество позиций: #{@app.release_items.count.to_s}
+		%p
+			- if @app.file.blank?
+				Количество позиций: #{@app.release_items.count.to_s}
+			-else
+				Заявка подана в виде загружаемого файла.
 		%hr/
 		%p
 			Это письмо сгенерировано автоматически, не отвечайте на него.			

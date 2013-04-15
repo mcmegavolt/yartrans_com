@@ -8,7 +8,10 @@
 		%p
 			Дата заполнения: #{l @app.created_at, :format => :short}
 		%p  
-			Количество позиций: #{@app.release_items.count.to_s}\
+			- if @app.file.blank?
+				Количество позиций: #{@app.release_items.count.to_s}
+			-else
+				Заявка подана в виде загружаемого файла.
 		%hr/
 		%p
 			Это письмо сгенерировано автоматически, не отвечайте на него.

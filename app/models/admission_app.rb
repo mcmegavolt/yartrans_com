@@ -5,6 +5,8 @@ class AdmissionApp < ActiveRecord::Base
   								:vehicle,
                   :admission_date,
                   :admission_time,
+                  :file,
+                  :remove_file,
                   :admission_items_attributes
 
   belongs_to :user
@@ -12,7 +14,9 @@ class AdmissionApp < ActiveRecord::Base
   has_many :admission_items, :dependent => :destroy
   accepts_nested_attributes_for :admission_items, :reject_if => :all_blank, :allow_destroy => true
 
-  validates_presence_of :vehicle, :admission_date
+  mount_uploader :file, AdmissionFileUploader
+
+  # validates_presence_of :vehicle, :admission_date
 
   default_scope order('created_at DESC') 
 

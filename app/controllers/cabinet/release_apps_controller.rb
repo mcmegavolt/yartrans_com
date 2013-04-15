@@ -10,7 +10,7 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, ReleaseApp
-    release_app.release_items.build
+    # release_app.release_items.build
   end
 
   def create
@@ -54,6 +54,13 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
       flash[:success] = t(:'applications.release.flash.destroyed')
       redirect_to cabinet_release_apps_path
     end
+  end
+
+  def download_sample
+    require 'app_file_generator'
+    send_data AppFileGenerator.release_app_sample(current_user.profile).to_stream.read,
+              :filename => "vydacha_" + l(Time.now, :format => "%Y-%m-%d_%I-%M") + "_blank.xlsx",
+              :type => "application/xlsx"
   end
 
   def release_apps

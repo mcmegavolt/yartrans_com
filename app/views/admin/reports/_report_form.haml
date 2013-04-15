@@ -1,0 +1,7 @@
+= simple_form_for [:admin, @user, resource], html: { class: 'form-horizontal' } do |f|
+	= f.input :file, :as => :file
+	= f.input :file_cache, :as => :hidden
+	/ = f.input :report_category_id, :collection => Report::REPORT_CATEGORIES, :prompt => 'Выберите категорию'
+	= f.input :report_category_id, :collection => Report::REPORT_CATEGORIES.collect{|r| [t(:"applications.unit_types.#{r}"), Report::REPORT_CATEGORIES.index(r)]}, :prompt => 'Выберите категорию'
+	.form-actions
+		= f.submit nil

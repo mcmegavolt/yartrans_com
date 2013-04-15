@@ -22,6 +22,7 @@
 				.span12
 					.widget
 						.widget-head
+							&nbsp;
 							.widget-icons.pull-right
 								%a.wminimize{:href => "#"}
 									%i.icon-chevron-up
@@ -45,6 +46,8 @@
 												= u.id
 											%td
 												= "#{u.email}"
+												|
+												= link_to 'Отчеты', admin_user_reports_path(u)
 											%td
 												= "#{u.profile.name}"
 											%td
@@ -83,6 +86,7 @@
 												- else	
 													%i.icon-lock
 													Locked
+
 								
 							.widget-foot
 								= paginate users
