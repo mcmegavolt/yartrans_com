@@ -2,6 +2,7 @@ require "rvm/capistrano"
 require "bundler/capistrano"
 
 set :rvm_type, :system  # Copy the exact line. I really mean :user here
+set :rvm_path, "/usr/local/rvm"
 
 set :application, "yartrans"
 set :scm, :git
