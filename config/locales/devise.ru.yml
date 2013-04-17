@@ -76,8 +76,8 @@ ru:
       failure: "Вы не можете войти в систему с учётной записью из %{kind}, т.к. \"%{reason}\"."
     mailer:
       confirmation_instructions:
-        subject: "Инструкции по подтверждению учётной записи"
+        subject: "Регистрация в Кабинете Клиента. YarTrans Logistic"
       reset_password_instructions:
-        subject: "Инструкции по восстановлению пароля"
+        subject: "Инструкции по восстановлению пароля. YarTrans Logistic"
       unlock_instructions:
-        subject: "Инструкции по разблокировке учётной записи"
+        subject: "Инструкции по разблокировке учётной записи. YarTrans Logistic"
