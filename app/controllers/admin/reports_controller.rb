@@ -9,7 +9,11 @@ class Admin::ReportsController < Admin::DashboardController
   defaults :route_prefix => 'admin'
 
   def create
-  	create!(:notice => "Отчет успешно создан.")
+  	create!(:notice => "Отчет успешно создан")
+	end
+
+	def destroy
+  	destroy!(:notice => "Отчет удален!")
 	end
 
 end

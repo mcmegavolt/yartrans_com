@@ -43,7 +43,15 @@
 													%i.icon-download
 													= t(:'most_common.download')
 
-											%td= link_to t(:'most_common.edit'), edit_resource_path(report)
+											%td
+												= link_to edit_resource_path(report) do
+													%i.icon-pencil
+													= t(:'most_common.edit')
+												|
+												= link_to resource_path(report), :method => :delete, :confirm => 'Удалить отчет?' do
+													%i.icon-trash
+													= t(:'most_common.destroy')
+
 
 							.widget-foot
 								/ = paginate users

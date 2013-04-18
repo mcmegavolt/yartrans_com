@@ -184,6 +184,7 @@ ru:
     back: "Назад"
     edit: "Изменить"
     save: "Сохранить"
+    destroy: "Удалить"
 
   mailboxer:
     message_mailer:
