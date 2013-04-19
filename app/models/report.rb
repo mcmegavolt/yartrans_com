@@ -1,7 +1,9 @@
 class Report < ActiveRecord::Base
 
 	REPORT_CATEGORIES = %w(hranenie uslugi)
+  
   belongs_to :user
+  
   attr_accessible :file, :file_cache, :report_category_id
 
   mount_uploader :file, ReportFileUploader
