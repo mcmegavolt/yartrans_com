@@ -24,7 +24,7 @@ class Admin::UsersController < Admin::DashboardController
     authorize! :create, user
 
     if user.save
-      flash[:success] = 'Новый пользователь успешно создан.'
+      flash[:success] = t(:'admin.users.flash.user_created')
       redirect_to admin_users_path
     else
       render :action => "new"
@@ -48,7 +48,7 @@ class Admin::UsersController < Admin::DashboardController
     end
 
     if user.update_attributes(params[:user])
-      flash[:success] = 'User was successfully updated.' #+ user.profile.name
+      flash[:success] = t(:'admin.users.flash.user_updated')
       redirect_to admin_users_path
     else
       render "edit"
@@ -59,7 +59,7 @@ class Admin::UsersController < Admin::DashboardController
     authorize! :destroy, user
 
     if user.destroy
-      flash[:success] = 'User was successfully destroyed!'
+      flash[:success] = t(:'admin.users.flash.user_destroyed')
       redirect_to admin_users_path
     end
   end
@@ -98,7 +98,7 @@ class Admin::UsersController < Admin::DashboardController
 
   def confirm
     if user.confirm!
-      flash[:success] = 'User was successfully confirmed.'
+      flash[:success] = t(:'admin.users.flash.user_confirmed')
       redirect_to admin_users_path
     else
       flash[:error] = 'Confirmation error.'
