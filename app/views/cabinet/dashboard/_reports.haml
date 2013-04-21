@@ -4,6 +4,11 @@
 		- for r in reports do
 			%tr
 				%td
+					- if r.report_category_id == 0
+						%span.label.label-info= r.category
+					- if r.report_category_id == 1
+						%span.label.label-success= r.category
+				%td
 					= l r.created_at, :format => :long
 				%td
 					= File.basename(r.file_url)

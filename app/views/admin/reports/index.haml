@@ -37,7 +37,7 @@
 												- if report.report_category_id == 1
 													%span.label.label-success= report.category
 
-											%td= report.created_at.to_formatted_s(:db)
+											%td= l report.created_at, :format => :short
 											%td
 												= link_to report.file_url do
 													%i.icon-download

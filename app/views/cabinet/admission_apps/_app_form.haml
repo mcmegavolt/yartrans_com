@@ -3,94 +3,52 @@
 	.row
 		.span4
 			= f.input :admission_date
+			= f.input :vehicle, :input_html => { :rows => 3, :class => 'span4' }
+		.span8
 			= f.input :admission_time
-		.span3
-			= f.input :vehicle, :input_html => { :rows => 4, :class => 'span3' }
-		.span2
-			= f.input :notes, :input_html => { :rows => 4, :class => 'span2' }
-		.span3
-			= f.input :file, :as => :file
-			- unless f.object.file.blank?
-				= f.input :remove_file, :as => :boolean
-			= link_to download_sample_cabinet_admission_apps_path do
-				%i.icon-file
-				Скачать бланк
+			= f.input :notes, :input_html => { :rows => 3, :class => 'span4' }
 
 	%hr/
-	.row
-		.span12		
-			.row
-				.span6
-					%h4= t(:'applications.admission.items.title')
-				.span6
-					
-			%hr/
-			#admission_items
-				= f.simple_fields_for :admission_items do |item|
-					= render 'admission_item_fields', :f => item
-				.links
-					= link_to_add_association f, :admission_items, :render_options => {:wrapper => 'bootstrap' } do
-						%i.icon-plus-sign
-						= t(:'applications.admission.items.add_item')
+
+	#accordion2.accordion
+		.accordion-group
+			.accordion-heading
+				%a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseOne"}
+					%h4
+						= t(:'applications.admission.items.title')
+			#collapseOne.accordion-body.collapse.in
+				.accordion-inner
+					#admission_items
+						= f.simple_fields_for :admission_items do |item|
+							= render 'admission_item_fields', :f => item
+						.links
+							= link_to_add_association f, :admission_items, :render_options => {:wrapper => 'bootstrap' } do
+								%i.icon-plus-sign
+								= t(:'applications.admission.items.add_item')
+
+		.accordion-group
+			.accordion-heading
+				%a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTwo"}
+					%h4
+						= t(:'applications.admission.new.file_section')
+			#collapseTwo.accordion-body.collapse
+				.accordion-inner
+					.row
+						.span5
+							%p
+								= t(:'applications.admission.new.file_help_html', :link => download_sample_cabinet_admission_apps_path)
+								%span{:style => "margin-left: 8px;"}
+									= link_to download_sample_cabinet_admission_apps_path do
+										%i.icon-file
+										Скачать бланк
+						.span6
+							= f.input :file, :as => :file
+							- unless f.object.file.blank?
+								= f.input :remove_file, :as => :boolean
+
+
+
+
 	.form-actions	
 		= button_tag :submit, :class => 'btn btn-large' do
 			= t(:'applications.admission.new.submit')
-
-
-/ = form_for admission_app, :url => ( admission_app.new_record? ? cabinet_admission_apps_path : cabinet_admission_app_path(admission_app) ), :html => { :class => 'form-horizontal', :multipart => true } do |f|
-/ 	= render :partial => 'shared/form_errors', :locals => { :object => admission_app }
-	
-/ 	.row
-/ 		.span6
-/ 			.control-group
-/ 				= f.label :barcode, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_field :barcode, :placeholder => 'bar code'
-/ 			.control-group
-/ 				= f.label :expected_date, :class => 'control-label'
-/ 				.controls
-/ 					.datetimepicker.input-append
-/ 						= f.text_field :expected_date, "data-format" => "yyyy-MM-dd hh:mm:ss", :style => 'width: 179px;'
-/ 						%span.add-on{ :style => 'margin-top: 5px; cursor: pointer;'}
-/ 							%i.icon-time{"data-date-icon" => "icon-calendar", "data-time-icon" => "icon-time"}
-
-/ 			.control-group
-/ 				= f.label :notes, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_field :notes
-/ 			.control-group
-/ 				= f.label :vehicle, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_field :vehicle
-/ 			.control-group
-/ 				= f.label :cargo_name, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_field :cargo_name
-/ 			.control-group
-/ 				= f.label :code_number, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_field :code_number
-/ 		.span6
-/ 			.control-group
-/ 				= f.label :unit_id, t(:"applications.unit_types.label"), :class => 'control-label'
-/ 				.controls
-/ 					= f.select :unit_id, AdmissionApp::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), AdmissionApp::UNITS.index(u)]}, :prompt => '---'
-/ 			.control-group
-/ 				= f.label :unit_count, :class => 'control-label'
-/ 				.controls
-/ 					= f.number_field :unit_count, :class => 'span1'
-/ 			.control-group
-/ 				= f.label :in_box_count, :class => 'control-label'
-/ 				.controls
-/ 					= f.number_field :in_box_count, :class => 'span1'
-/ 			.control-group
-/ 				= f.label :box_count, :class => 'control-label'
-/ 				.controls
-/ 					= f.number_field :box_count, :class => 'span1'
-/ 			.control-group
-/ 				= f.label :additional_info, :class => 'control-label'
-/ 				.controls
-/ 					= f.text_area :additional_info, :rows => 5
-
-/ 	.form-actions
-/ 		= f.submit "Save App", :class => 'btn btn-success'

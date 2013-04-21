@@ -10,12 +10,17 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, AdmissionApp
-    # admission_app.admission_items.build
+    admission_app.admission_items.build
   end
 
   def create
     authorize! :create, AdmissionApp
     admission_app.user = current_user
+
+    unless admission_app.file.blank?
+      admission_app.admission_items.destroy_all
+    end
+
     if admission_app.save
 
       AdmissionAppMailer.new_app_to_manager(admission_app).deliver 

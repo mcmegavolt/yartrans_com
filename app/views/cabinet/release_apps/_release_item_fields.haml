@@ -6,8 +6,8 @@
 			= f.input :code_number, :input_html => { :class => 'span2' }
 		.span2
 			= f.input :bar_code, :input_html => { :class => 'span2' }
-		.span4
-			= f.input :add_services, :as => :string, :input_html => { :class => 'span4'}
+		.span3
+			= f.input :add_services, :as => :string, :input_html => { :class => 'span3'}
 	.row
 		.span2
 			= f.input :unit_id, :collection => ReleaseItem::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), ReleaseItem::UNITS.index(u)]}, :selected => 0, :input_html => { :class => 'span2' }

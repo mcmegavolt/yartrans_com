@@ -17,7 +17,7 @@ class ReleaseApp < ActiveRecord::Base
 
   mount_uploader :file, ReleaseFileUploader
 
-  # validates_presence_of :release_date, :recipient, :vehicle
+  # validates_presence_of :recipient, :vehicle
 
   default_scope order('created_at DESC')   
 

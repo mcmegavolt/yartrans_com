@@ -10,13 +10,18 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
 
   def new
     authorize! :create, ReleaseApp
-    # release_app.release_items.build
+    release_app.release_items.build
   end
 
   def create
     authorize! :create, ReleaseApp
 
     release_app.user = current_user
+
+    unless release_app.file.blank?
+      release_app.release_items.destroy_all
+    end
+
     if release_app.save
 
       ReleaseAppMailer.new_app_to_manager(release_app).deliver 

@@ -22,21 +22,17 @@
 									%ul.recent
 										%li
 											.recent-content
-												.recent-meta Posted on #{item.created_at}
+												.recent-meta #{l item.created_at, :format => :long}
 												%div
 													= item.body
 												.btn-group
 													= link_to edit_admin_news_item_path(item), :class => 'btn btn-mini' do
 														%i.icon-pencil
-
 													= link_to admin_news_item_path(item), :method => :delete, :confirm => '???', :class => 'btn btn-mini' do
 														%i.icon-remove
 												.clearfix
-
-
 							.widget-foot
 								/ = paginate news_items
 								.clearfix
-
 .clearfix
 

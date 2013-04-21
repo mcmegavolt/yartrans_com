@@ -3,16 +3,9 @@
 	.row
 		.span4
 			= f.input :release_date
-		.span3
+		.span8
 			= f.input :release_time
-		.span3
-			= f.input :file, :as => :file
-			- unless f.object.file.blank?
-				= f.input :remove_file, :as => :boolean
-		.span2
-			= link_to download_sample_cabinet_release_apps_path do
-				%i.icon-file
-				Скачать бланк
+			
 	.row
 		.span4
 			= f.input :recipient, :input_html => { :rows => 2, :class => 'span4' }
@@ -20,18 +13,41 @@
 			= f.input :vehicle, :input_html => { :rows => 2, :class => 'span4' }
 		.span4
 			= f.input :notes, :input_html => { :rows => 2, :class => 'span4' }
+
 	%hr/
-	.row
-		.span12		
-			%h4= t(:'applications.release.items.title')
-			%hr/
-			#release_items
-				= f.simple_fields_for :release_items do |item|
-					= render 'release_item_fields', :f => item
-				.links
-					= link_to_add_association f, :release_items, :render_options => {:wrapper => 'bootstrap' } do
-						%i.icon-plus-sign
-						= t(:'applications.release.items.add_item')
+
+	#accordion2.accordion
+		.accordion-group
+			.accordion-heading
+				%a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseOne"}
+					%h4= t(:'applications.release.items.title')
+			#collapseOne.accordion-body.collapse.in
+				.accordion-inner		
+					#release_items
+						= f.simple_fields_for :release_items do |item|
+							= render 'release_item_fields', :f => item
+						.links
+							= link_to_add_association f, :release_items, :render_options => {:wrapper => 'bootstrap' } do
+								%i.icon-plus-sign
+								= t(:'applications.release.items.add_item')
+		.accordion-group
+			.accordion-heading
+				%a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTwo"}
+					%h4= t(:'applications.admission.new.file_section')
+			#collapseTwo.accordion-body.collapse
+				.accordion-inner	
+					.span5
+						%p
+							= t(:'applications.admission.new.file_help_html', :link => download_sample_cabinet_release_apps_path)
+							%span{:style => "margin-left: 8px;"}
+								= link_to download_sample_cabinet_release_apps_path do
+									%i.icon-file
+									Скачать бланк
+					.span6
+						= f.input :file, :as => :file
+						- unless f.object.file.blank?
+							= f.input :remove_file, :as => :boolean	
+
 	.form-actions	
 		= button_tag :submit, :class => 'btn btn-large' do
 			= t(:'applications.release.new.submit')

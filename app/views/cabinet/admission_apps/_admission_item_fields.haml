@@ -1,16 +1,16 @@
 .nested-fields	
 	.row
-		.span4
-			= f.input :name, :input_html => { :class => 'span4' }
+		.span3
+			= f.input :name, :input_html => { :class => 'span3' }
 		.span2
 			= f.input :code_number, :input_html => { :class => 'span2' }
 		.span2
 			= f.input :bar_code, :input_html => { :class => 'span2' }
-		.span4
+		.span3
 			= f.input :add_services, :as => :string, :input_html => { :class => 'span4'}
 	.row
-		.span2
-			= f.input :unit_id, :collection => AdmissionItem::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), AdmissionItem::UNITS.index(u)]}, :selected => 0, :input_html => { :class => 'span2' }
+		.span1
+			= f.input :unit_id, :collection => AdmissionItem::UNITS.collect{|u| [t(:"applications.unit_types.#{u}"), AdmissionItem::UNITS.index(u)]}, :selected => 0, :input_html => { :class => 'span1' }
 		.span2
 			= f.input :unit_count, :input_html => { :class => 'span2'}
 		.span2

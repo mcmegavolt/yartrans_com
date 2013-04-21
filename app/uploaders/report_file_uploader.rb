@@ -42,14 +42,16 @@ class ReportFileUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(zip rar doc docx xls xlsx pdf)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    if original_filename
+      @name ||= "schet_" + "#{Russian::transliterate(model.category).downcase}_" + Time.now.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-') + ".#{file.extension}"
+    end
+  end
 
 end
