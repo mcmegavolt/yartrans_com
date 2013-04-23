@@ -49,7 +49,9 @@ class AdmissionFileUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    @name = "original_priem_" +  Time.now.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-') + ".#{file.extension}"
+    if original_filename
+      @name = "original_priem_" +  Time.now.to_datetime.to_formatted_s(:db).tr(' ', '_').tr(':', '-') + ".#{file.extension}"
+    end
   end
 
 end
