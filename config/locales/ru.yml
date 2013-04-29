@@ -98,7 +98,10 @@ ru:
       butil: "бут."
       upak: "уп."
       paleta: "пал."
+      metr_pog: "м.п."
+      rulon: "рул."
       label: "Единица"
+      
   user:
     roles:
       admin: "Администратор"

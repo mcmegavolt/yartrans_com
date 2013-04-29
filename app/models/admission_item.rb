@@ -8,7 +8,7 @@ class AdmissionItem < ActiveRecord::Base
 
   attr_accessor :unit
 
-  UNITS = %w(shtuk butil upak paleta);
+  UNITS = %w(shtuk butil upak paleta metr_pog rulon);
 
   def unit
     UNITS[unit_id]

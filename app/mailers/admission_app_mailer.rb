@@ -19,7 +19,7 @@ class AdmissionAppMailer < ActionMailer::Base
 
     mail_to = SiteSettings["admission_apps.manager_email"]
     subject = t(:"applications.admission.mailer.new_app.to_manager.subject", :client => app.user.profile.name)
-    mail(:to => mail_to, :subject => subject)
+    mail(:to => mail_to, :subject => subject, :from => "\"#{app.user.profile.name} (#{app.user.profile.personal_id})\" <service@yartrans.ua>")
 
   end
 
