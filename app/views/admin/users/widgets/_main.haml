@@ -9,5 +9,8 @@
 			.control-group
 				= f.label :password, :class => 'control-label'
 				.controls
-					= f.text_field :password, :autocomplete => "off"
+					= f.text_field :password, :autocomplete => "off", :disabled => true
+					%p.help-text
+						= t(:'admin.users.edit.widgets.main_help_pass')
+
 			= render :partial => 'role_select', :locals => { :f => f }

@@ -18,6 +18,7 @@ class Admin::UsersController < Admin::DashboardController
     authorize! :create, user
     user.build_profile
     user.build_tariff
+    user.staffs.build
   end
 
   def create
@@ -32,9 +33,10 @@ class Admin::UsersController < Admin::DashboardController
   end
 
   def edit
-    authorize! :destroy, user
+    authorize! :edit, user
     user.build_profile unless user.profile.present?
     user.build_tariff unless user.tariff.present?
+    user.staffs.build unless user.staffs.exists?
     user.skip_confirmation!
   end
 

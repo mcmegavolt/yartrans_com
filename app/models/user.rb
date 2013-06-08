@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  before_validation :generate_password, :on => :create
+
   # :token_authenticatable
   # :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :registerable, :confirmable
@@ -16,7 +18,8 @@ class User < ActiveRecord::Base
                   :profile_attributes,
                   :admission_app_attributes,
                   :release_app_attributes,
-                  :tariff_attributes
+                  :tariff_attributes,
+                  :staffs_attributes
 
   attr_accessor :updated_by
 
@@ -27,6 +30,9 @@ class User < ActiveRecord::Base
 
   has_one :tariff, :dependent => :destroy
   accepts_nested_attributes_for :tariff
+
+  has_many :staffs, :dependent => :destroy
+  accepts_nested_attributes_for :staffs, :reject_if => :all_blank, :allow_destroy => true
 
   has_many :admission_apps, :dependent => :destroy
   has_many :release_apps, :dependent => :destroy
@@ -50,6 +56,11 @@ class User < ActiveRecord::Base
 
   def mailboxer_email(object)
     email
+  end
+
+  def generate_password
+    o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
+    self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
   end
 
 end

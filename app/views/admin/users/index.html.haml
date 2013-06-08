@@ -48,6 +48,19 @@
 												= "#{u.email}"
 												|
 												= link_to 'Отчеты', admin_user_reports_path(u)
+												%br/
+												- if u.staffs.exists?
+													%i.icon-group
+													= u.staffs.count
+													&nbsp;
+												- if u.admission_apps.exists?
+													%i.icon-download-alt
+													= u.admission_apps.count
+													&nbsp;
+												- if u.release_apps.exists?
+													%i.icon-upload-alt
+													= u.release_apps.count
+														
 											%td
 												= "#{u.profile.name}"
 											%td

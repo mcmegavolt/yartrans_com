@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130414231301) do
+ActiveRecord::Schema.define(:version => 20130603214049) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -205,6 +205,16 @@ ActiveRecord::Schema.define(:version => 20130414231301) do
   end
 
   add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
+
+  create_table "staffs", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "staffs", ["user_id"], :name => "index_staffs_on_user_id"
 
   create_table "tariffs", :force => true do |t|
     t.text     "notes"

@@ -215,10 +215,13 @@ ru:
         current_password: "Текущий пароль"
         new_password: "Новый пароль"
       profile:
-        name: "Имя"
+        name: "Название"
         personal_id: "Персональный номер"
         phone_main: "Телефон 1"
         phone_alternate: "Телефон 2"
+      staff:
+        name: "Имя"
+        email: "Email"
       admission_app:
         admission_date: "Дата приема"
         admission_time: "Желаемое время"

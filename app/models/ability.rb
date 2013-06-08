@@ -40,7 +40,7 @@ class Ability
 
     elsif user.role? :manager ####### MANAGER #########
       can :log, [:admin_panel, :cabinet]
-      can [:edit, :destroy, :create], User do |user|
+      can [:edit, :create], User do |user|
         user.role? :client
       end
       can [:read, :create], User

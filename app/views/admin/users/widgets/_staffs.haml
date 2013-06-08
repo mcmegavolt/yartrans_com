@@ -1,0 +1,11 @@
+.widget
+	= render 'admin/users/widgets/widget_header', :title => t(:'admin.users.edit.widgets.staff')
+	.widget-content
+		.padd
+			#staffs
+				= f.fields_for :staffs do |staff|
+					= render 'admin/users/staff_fields', :f => staff
+				.links
+					= link_to_add_association f, :staffs, :render_options => {:wrapper => 'bootstrap' } do
+						%i.icon-plus-sign
+						= t(:'applications.admission.items.add_item')

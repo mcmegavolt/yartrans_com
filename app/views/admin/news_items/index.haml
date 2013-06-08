@@ -24,6 +24,7 @@
 											.recent-content
 												.recent-meta #{l item.created_at, :format => :long}
 												%div
+													%h5= item.title
 													= item.body
 												.btn-group
 													= link_to edit_admin_news_item_path(item), :class => 'btn btn-mini' do
