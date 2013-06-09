@@ -33,8 +33,11 @@ class ReleaseAppMailer < ActionMailer::Base
     end
 
     mail_to = app.user.email
+    mail_to += ', ' + app.user.profile.alt_email if app.user.profile.alt_email.present?
+
     subject = t(:"applications.release.mailer.new_app.to_client.subject")
     mail(:to => mail_to, :subject => subject)
+
   end
 
 end
