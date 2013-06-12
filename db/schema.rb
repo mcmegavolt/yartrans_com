@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609102939) do
+ActiveRecord::Schema.define(:version => 20130610181208) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -31,7 +31,10 @@ ActiveRecord::Schema.define(:version => 20130609102939) do
     t.time     "admission_time"
     t.date     "admission_date"
     t.string   "file"
+    t.integer  "staff_id"
   end
+
+  add_index "admission_apps", ["staff_id"], :name => "index_admission_apps_on_staff_id"
 
   create_table "admission_items", :force => true do |t|
     t.string   "name"
@@ -158,7 +161,10 @@ ActiveRecord::Schema.define(:version => 20130609102939) do
     t.text     "recipient"
     t.text     "vehicle"
     t.string   "file"
+    t.integer  "staff_id"
   end
+
+  add_index "release_apps", ["staff_id"], :name => "index_release_apps_on_staff_id"
 
   create_table "release_items", :force => true do |t|
     t.string   "name"

@@ -4,9 +4,15 @@
 		.span4
 			= f.input :admission_date
 			= f.input :vehicle, :input_html => { :rows => 3, :class => 'span4' }
-		.span8
+		.span5
 			= f.input :admission_time
 			= f.input :notes, :input_html => { :rows => 3, :class => 'span4' }
+		.span3
+			- if current_user.staffs.present?
+				= f.input :staff_id, :collection => current_user.staffs.collect{|s| [s.name, s.id]}, :input_html => { :class => 'span3' }, :include_blank => "не выбрано", :label => t(:'applications.admission.index.staff')
+				%span.help-block
+					%i.icon-lightbulb.color
+					= t(:'applications.admission.new.staff_help')
 
 	%hr/
 

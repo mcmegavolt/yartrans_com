@@ -29,8 +29,8 @@ class AppFileGenerator
         ws.add_row
         ws.merge_cells 'A3:J3'
         ws.add_row
-        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания' ], :style => table_header
-        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.admission_date.to_formatted_s(:db).first(10), app.admission_time.to_formatted_s(:db).last(8), app.vehicle, app.notes ], :style => default
+        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания', 'Менеджер' ], :style => table_header
+        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.admission_date.to_formatted_s(:db).first(10), app.admission_time.to_formatted_s(:db).last(8), app.vehicle, app.notes, app.staff.present? ? app.staff.name : 'не указан' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки, кг', 'Объем коробки, м3', 'Доп. информация' ], :style => table_header
         for item in app.admission_items do
@@ -115,8 +115,8 @@ class AppFileGenerator
         ws.add_row [profile.name, '', '', '', '', profile.personal_id], :style => title
         ws.add_row
         ws.merge_cells 'A3:J3'
-        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания' ], :style => table_header
-        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-' ], :style => default
+        ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания', 'Менеджер'  ], :style => table_header
+        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки, кг', 'Объем коробки, м3', 'Доп. информация' ], :style => table_header
 

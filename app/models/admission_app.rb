@@ -7,9 +7,11 @@ class AdmissionApp < ActiveRecord::Base
                   :admission_time,
                   :file,
                   :remove_file,
-                  :admission_items_attributes
+                  :admission_items_attributes,
+                  :staff_id
 
   belongs_to :user
+  belongs_to :staff
 
   has_many :admission_items, :dependent => :destroy
   accepts_nested_attributes_for :admission_items, :reject_if => :all_blank, :allow_destroy => true

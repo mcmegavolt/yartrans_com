@@ -11,6 +11,7 @@ class ReleaseApp < ActiveRecord::Base
                   :release_items_attributes
 
   belongs_to :user
+  belongs_to :staff
   
   has_many :release_items, :dependent => :destroy
   accepts_nested_attributes_for :release_items, :reject_if => :all_blank, :allow_destroy => true
