@@ -12,6 +12,12 @@
 				Количество позиций: #{@app.admission_items.count.to_s}
 			- else
 				Заявка подана в виде загружаемого файла.
+		%p
+			%b Менеджер:
+			- if @app.staff.present?
+				#{@app.staff.name} (#{@app.staff.email})
+			- else
+				не указан
 		%hr/
 		%p
 			Это письмо сгенерировано автоматически, не отвечайте на него.

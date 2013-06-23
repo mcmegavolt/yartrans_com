@@ -3,8 +3,14 @@
 	.row
 		.span4
 			= f.input :release_date
-		.span8
+		.span3
 			= f.input :release_time
+		.span5
+			- if current_user.staffs.present?
+				= f.input :staff_id, :collection => current_user.staffs.collect{|s| [s.name, s.id]}, :input_html => { :class => 'span3' }, :include_blank => "не выбрано", :label => t(:'applications.admission.index.staff')
+				%span.help-block
+					%i.icon-lightbulb.color
+					= t(:'applications.admission.new.staff_help')
 			
 	.row
 		.span4

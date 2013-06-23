@@ -69,12 +69,12 @@ class AppFileGenerator
 
       wb.add_worksheet(name: 'Заявка на выдачу груза') do  |ws|
 
-        ws.add_row ['ЗАЯВКА НА ВЫДАЧУ ГРУЗА','', '', '', '', '', 'Код клиента'], :style => title
+        ws.add_row ['ЗАЯВКА НА ВЫДАЧУ ГРУЗА', '', '', '', '', '', 'Код клиента'], :style => title
         ws.add_row [app.user.profile.name,'', '', '', '', '', app.user.profile.personal_id], :style => title
         ws.add_row
-        ws.merge_cells 'A3:G3'
-        ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания' ], :style => table_header
-        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.release_date.to_formatted_s(:db).first(10), app.release_time.to_formatted_s(:db).last(8), app.recipient, app.vehicle ,app.notes ], :style => default
+        ws.merge_cells 'A3:H3'
+        ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания', 'Менеджер' ], :style => table_header
+        ws.add_row [app.id, app.created_at.to_formatted_s(:db).first(10), app.release_date.to_formatted_s(:db).first(10), app.release_time.to_formatted_s(:db).last(8), app.recipient, app.vehicle ,app.notes, app.staff.present? ? app.staff.name : '' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'Кол. коробок', 'Доп. информация' ], :style => table_header
         for item in app.release_items do
@@ -144,8 +144,8 @@ class AppFileGenerator
         ws.add_row [profile.name,'', '', '', '', '', profile.personal_id], :style => title
         ws.add_row
         ws.merge_cells 'A3:G3'
-        ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания' ], :style => table_header
-        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-' ], :style => default
+        ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания', 'Менеджер' ], :style => table_header
+        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'Кол. коробок', 'Доп. информация' ], :style => table_header
         ws.column_widths 40, 20, 20, 20, 20, 20, 20, 20, 20, 40

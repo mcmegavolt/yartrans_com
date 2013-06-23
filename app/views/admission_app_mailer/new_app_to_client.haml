@@ -6,12 +6,21 @@
 		%h1
 			Заявка ##{@app.id} на прием груза принята в обработку.
 		%p
-			Дата заполнения: #{l @app.created_at, :format => :short}
+			%b Дата заполнения: 
+			#{l @app.created_at, :format => :short}
 		%p
 			- if @app.file_url.blank?  
-				Количество позиций: #{@app.admission_items.count.to_s}
+				%b Количество позиций: 
+				#{@app.admission_items.count.to_s}
 			- else
 				Заявка подана в виде загружаемого файла.
+		%p
+			%b Менеджер:
+			- if @app.staff.present?
+				#{@app.staff.name} (#{@app.staff.email})
+			- else
+				не указан
+
 		%hr/
 		%p
 			Это письмо сгенерировано автоматически, не отвечайте на него.

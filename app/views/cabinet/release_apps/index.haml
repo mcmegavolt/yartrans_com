@@ -14,16 +14,21 @@
 							%tr
 								%th #
 								%th= t(:'applications.release.index.created_at')
+								%th= t(:'applications.admission.index.staff')
 								%th= t(:'applications.release.index.adm_date')
 								%th= t(:'applications.release.index.adm_time')
 								%th= t(:'applications.release.index.items_count')
-								%th= t(:'applications.release.index.vehicle')
 								%th= t(:'applications.release.index.actions')
 						%tbody
 							- release_apps.each do |app|
 								%tr
 									%td= app.id
 									%td= l app.created_at, :format => :short
+									%td
+										- if app.staff.present?
+											= app.staff.name
+										- else
+											= t(:'applications.admission.index.no_staff')
 									%td
 										- if app.file.blank?
 											= l app.release_date, :format => :short
@@ -45,11 +50,6 @@
 											= link_to app.file_url do
 												%i.icon-download
 												= t(:'applications.admission.index.file')
-									%td
-										- if app.file.blank?
-											= app.vehicle
-										- else
-											\---
 									%td
 										- if can? [:edit, :destroy], ReleaseApp
 											= link_to cabinet_release_app_path(app), :method => :delete, :confirm => '???' do

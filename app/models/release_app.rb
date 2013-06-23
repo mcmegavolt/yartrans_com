@@ -8,7 +8,8 @@ class ReleaseApp < ActiveRecord::Base
   								:user_id,
                   :file,
                   :remove_file,
-                  :release_items_attributes
+                  :release_items_attributes,
+                  :staff_id
 
   belongs_to :user
   belongs_to :staff

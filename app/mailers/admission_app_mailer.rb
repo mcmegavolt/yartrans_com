@@ -37,6 +37,7 @@ class AdmissionAppMailer < ActionMailer::Base
 
     mail_to = app.user.email
     mail_to += ', ' + app.user.profile.alt_email if app.user.profile.alt_email.present?
+    mail_to += ', ' + app.staff.email if app.staff.email.present?
     subject = t(:"applications.admission.mailer.new_app.to_client.subject")
 
     mail(:to => mail_to, :subject => subject)
