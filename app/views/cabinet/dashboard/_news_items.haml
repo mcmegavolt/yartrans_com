@@ -1,10 +1,16 @@
 .widget
 	%h4= t(:'cabinet.news')			
-	- news_items.each do |item|
-		%h6.color
-			= item.title
-		%span
-			%i
+	- news_items.each_with_index do |item, i|
+		- if i <= 5
+			%h6.color
+				= item.title
+			%span
 				= item.created_at.strftime("%m/%d/%Y | %H:%M")
-				%span.muted (#{time_ago_in_words item.created_at} #{t(:'most_common.ago')})
-		%p= item.body
+				%span.muted
+					%small (#{time_ago_in_words item.created_at} #{t(:'most_common.ago')})
+			%p= item.body
+		- else 
+			%h6.color
+				= item.title
+				%span.muted
+					%small (#{time_ago_in_words item.created_at} #{t(:'most_common.ago')})

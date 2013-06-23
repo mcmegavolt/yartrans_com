@@ -19,7 +19,7 @@ class Cabinet::DashboardController < ApplicationController
   helper_method :release_apps
 
   def news_items
-    @news_items ||= NewsItem.last(5)
+    @news_items ||= NewsItem.last(25).reverse
   end
   helper_method :news_items
 
