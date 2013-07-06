@@ -23,8 +23,8 @@ class Cabinet::AdmissionAppsController < Cabinet::DashboardController
 
     if admission_app.save
 
-      AdmissionAppMailer.new_app_to_manager(admission_app).deliver 
-      AdmissionAppMailer.new_app_to_client(admission_app).deliver
+      AdmissionAppMailer.delay.new_app_to_manager(admission_app)
+      AdmissionAppMailer.delay.new_app_to_client(admission_app)
 
       flash[:success] = t(:'applications.admission.flash.created')
       redirect_to cabinet_admission_apps_path
