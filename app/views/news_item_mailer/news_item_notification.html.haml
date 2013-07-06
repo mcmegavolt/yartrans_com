@@ -1,5 +1,5 @@
 %h4= @news_item.title
-%p= @news_item.body
+= @news_item.body.html_safe
 %hr/
 %p Все новости Вы можете прочитать в #{link_to 'личном кабинете', new_user_session_url}.
 %hr/

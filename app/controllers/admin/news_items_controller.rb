@@ -8,7 +8,11 @@ class Admin::NewsItemsController < Admin::DashboardController
     create!(:notice => "News item was created!")
 
     for user in Role.find_by_name("Client").users do
-      NewsItemMailer.news_item_notification(resource, user.email).deliver
+
+      # NewsItemMailer.news_item_notification(resource, user.email).deliver
+
+      NewsItemMailer.delay.news_item_notification(resource, user.email)
+
     end
 
     # emails = Role.find_by_name("Client").users.map(&:email).join(', ')

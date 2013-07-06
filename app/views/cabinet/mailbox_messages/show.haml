@@ -2,8 +2,8 @@
   .container
     .row
       .span8
-        = render 'nav'
         .posts
+          = render 'nav'
           - if @conversation.is_trashed?(current_user)
             = link_to untrash_cabinet_mailbox_message_path(@conversation), class: :button, method: :post do
               = t(:'mailbox.untrash_conver')
@@ -11,23 +11,27 @@
             = link_to trash_cabinet_mailbox_message_path(@conversation), class: :button, method: :delete do
               %i.icon-trash
               = t(:'mailbox.trash_conver')
-
-        %h2.subject= @conversation.subject
-        - @conversation.messages.each do |message|
-          .entry
-            %h4= message.sender
-            .meta
-              #{message.created_at.to_s(:long)}
-              #{time_ago_in_words(message.created_at)}
-              = t(:'most_common.ago')
-            %p= message.body
-            - if message.attachment.url
-              .attachment
-                = link_to message.attachment_identifier, message.attachment.url
-        #reply
-          = simple_form_for [:cabinet, @message], :html => { :class => 'form-horizontal' } do |f|
-            = f.input :conversation_id, as: :hidden
-            = f.input :body, as: :text, label: t(:'mailbox.reply'), :input_html => { :rows => 8, :class => 'span6' }
-            / = f.input :attachment, as: :file, :label => t(:'mailbox.attachment')
-            .form-actions
-              = f.button :submit, t(:'mailbox.send_message')
+          .comments.well
+            .title
+              %h4= @conversation.subject
+              %ul.comment-list
+                - @conversation.messages.each do |message|
+                  %li.comment
+                    .comment-author= message.sender
+                    .cmeta
+                      #{message.created_at.to_s(:long)}
+                      #{time_ago_in_words(message.created_at)}
+                      = t(:'most_common.ago')
+                    %p= message.body
+                    - if message.attachment.url
+                      .attachment
+                        = link_to message.attachment_identifier, message.attachment.url
+          #reply.respond.well
+            .title
+              %h4 Написать ответ
+            = simple_form_for [:cabinet, @message], :html => { :class => 'form-horizontal' } do |f|
+              = f.input :conversation_id, as: :hidden
+              = f.input :body, as: :text, label: t(:'mailbox.reply'), :input_html => { :rows => 8, :class => 'span6' }
+              / = f.input :attachment, as: :file, :label => t(:'mailbox.attachment')
+              .form-actions
+                = f.button :submit, t(:'mailbox.send_message')

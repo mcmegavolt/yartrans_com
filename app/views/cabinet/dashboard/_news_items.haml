@@ -8,7 +8,7 @@
 				= item.created_at.strftime("%m/%d/%Y | %H:%M")
 				%span.muted
 					%small (#{time_ago_in_words item.created_at} #{t(:'most_common.ago')})
-			%p= item.body
+			%p= item.body.html_safe
 		- else 
 			%h6.color
 				= item.title

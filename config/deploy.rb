@@ -1,6 +1,11 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 
+
+require "delayed/recipes"
+set :rails_env, "production" #added for delayed job  
+
+
 set :rvm_type, :system  # Copy the exact line. I really mean :user here
 set :rvm_path, "/usr/local/rvm"
 
@@ -62,3 +67,7 @@ namespace :deploy do
 end
 
 after  "deploy:finalize_update", "deploy:migrate_database"
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
