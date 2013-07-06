@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   # :token_authenticatable
   # :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :registerable, :confirmable, :async
+  devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :timeoutable, :lockable, :registerable, :confirmable
 
   include Mailboxer::Models::Messageable
   acts_as_messageable
