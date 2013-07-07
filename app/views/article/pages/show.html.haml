@@ -4,8 +4,6 @@
       .span12
         %h2= article_page.title
         %h4= article_page.entry.html_safe
-
-
 .content.blog
   .container
     .row
@@ -13,6 +11,8 @@
         .posts
           .entry
             = article_page.body.html_safe
+            - if article_page.slogan.present?
+              %h5= article_page.slogan
           .meta
             - if can? :edit, Article::Page
               = link_to edit_page_path(article_page) do

@@ -274,6 +274,15 @@ ru:
         file: "Файл отчета"
         report_category_id: "Категория"
         submit: "Создать"
+      article/page:
+        slogan: "Слоган"
+        title: "Заголовок"
+        entry: "Вступление"
+        body: "Основной текст"
+        permalink: "Название ссылки"
+        category_id: "Категория"
+        published: "Опубликован?"
+        position: "Порядок"
 
   errors:
     messages:

@@ -15,7 +15,7 @@ class Article::Category < ActiveRecord::Base
   has_many :pages, :class_name => Article::Page, :dependent => :destroy
 
   before_save :generate_adv_cat_permalink
-
+  
   validates_uniqueness_of :permalink
 
   default_scope order('position ASC')
@@ -33,6 +33,5 @@ class Article::Category < ActiveRecord::Base
   def generate_adv_cat_permalink
     self.permalink = Russian.translit(name).parameterize if permalink.blank?
   end
-
 
 end

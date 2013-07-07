@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706153722) do
+ActiveRecord::Schema.define(:version => 20130707215305) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130706153722) do
     t.datetime "updated_at",                 :null => false
     t.string   "permalink"
     t.string   "icon"
+    t.string   "slogan"
   end
 
   create_table "article_pages", :force => true do |t|
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130706153722) do
     t.datetime "updated_at",                     :null => false
     t.text     "entry"
     t.boolean  "published",   :default => false
+    t.string   "slogan"
   end
 
   create_table "ckeditor_assets", :force => true do |t|

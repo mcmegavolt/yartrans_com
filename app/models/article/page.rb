@@ -2,7 +2,7 @@ class Article::Page < ActiveRecord::Base
 
   self.table_name = 'article_pages'
 
-  attr_accessible :title, :body, :category_id, :position, :permalink, :published, :entry
+  attr_accessible :title, :slogan, :body, :category_id, :position, :permalink, :published, :entry
 
   belongs_to :category, :class_name => Article::Category
 
