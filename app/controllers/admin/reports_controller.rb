@@ -10,6 +10,8 @@ class Admin::ReportsController < Admin::DashboardController
 
   def create
   	create!(:notice => "Отчет успешно создан")
+    # ReportMailer.delay.report_notification(resource)
+    ReportMailer.report_notification(resource).deliver
 	end
 
 	def destroy
