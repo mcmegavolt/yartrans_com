@@ -11,7 +11,13 @@ class ReportMailer < ActionMailer::Base
     
 	attachments[File.basename(report.file.path)] = File.read(report.file.path)
 
-   	mail(:to => report.user.email, :subject => subject)
+	mail_to = report.user.email
+
+    if report.user.profile.alt_email.present?
+      mail_to += ', ' + report.user.profile.alt_email
+    end
+
+   	mail(:to => mail_to, :subject => subject)
 
   end
 
