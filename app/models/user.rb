@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
                   :admission_app_attributes,
                   :release_app_attributes,
                   :tariff_attributes,
-                  :staffs_attributes
+                  :staffs_attributes,
+                  :state
 
   attr_accessor :updated_by
 

@@ -31,7 +31,7 @@ class TariffFileUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   def extension_white_list
-    %w(zip rar doc docx xls xlsx pdf)
+    %w(zip rar doc docx xls xlsx pdf jpg)
   end
 
   # Override the filename of the uploaded files:
