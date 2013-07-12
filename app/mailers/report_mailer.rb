@@ -7,7 +7,7 @@ class ReportMailer < ActionMailer::Base
   	@report = report
 
     # subject = 'Отчет о проделанной работе. Личный кабинет на Yartrans.ua'
-    subject = 'Счет за услуги. Личный кабинет на Yartrans.ua'
+    subject = 'Счет. Личный кабинет на Yartrans.ua'
     content_type = "multipart/mixed"
     
 	attachments[File.basename(report.file.path)] = File.read(report.file.path)
