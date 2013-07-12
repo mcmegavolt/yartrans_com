@@ -1,5 +1,19 @@
 class User < ActiveRecord::Base
 
+  state_machine :initial => :free do
+   
+    event :owes_money do
+      transition :free => :debtor
+    end
+
+    event :no_debt do
+      transition :debtor => :free
+    end
+
+    state nil
+
+  end
+
   before_validation :generate_password, :on => :create
 
   # :token_authenticatable
