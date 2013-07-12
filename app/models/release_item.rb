@@ -11,7 +11,7 @@ class ReleaseItem < ActiveRecord::Base
 
   attr_accessor :unit
 
-  UNITS = %w(shtuk butil upak paleta metr_pog rulon);
+  UNITS = %w(shtuk butil upak paleta metr_pog rulon bochka kont);
 
   def unit
     UNITS[unit_id]
