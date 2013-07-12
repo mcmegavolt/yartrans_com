@@ -1,6 +1,7 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 require "delayed/recipes"
+set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
 set :rails_env, "production" #added for delayed job  
