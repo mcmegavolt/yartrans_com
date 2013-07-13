@@ -1,17 +1,19 @@
 class User < ActiveRecord::Base
 
-  state_machine :initial => :free do
+  state_machine :state, :initial => :free do
+    after_transition :debtor => :suspended, :do => :send_suspend_warning
    
     event :owes_money do
       transition :free => :debtor
     end
 
-    event :no_debt do
-      transition :debtor => :free
+    event :suspend do
+      transition :debtor => :suspended
     end
 
-    state nil
-
+    event :no_debt do
+      transition [:debtor, :suspended] => :free
+    end
   end
 
   before_validation :generate_password, :on => :create
@@ -78,10 +80,8 @@ class User < ActiveRecord::Base
     self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
   end
 
-  # def self.debt_warning
-  #   User.with_state(:debtor).each do |u|
-  #     NotificationMailer.delay.debt_warning(u.email)
-  #   end
-  # end
+  def send_suspend_warning
+    
+  end
 
 end

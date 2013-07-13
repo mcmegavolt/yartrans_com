@@ -38,12 +38,12 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :keep_releases, 10
 
-# namespace :rvm do
-#   task :trust_rvmrc do
-#     run "rvm rvmrc trust #{release_path}"
-#   end
-# end
-# after "deploy", "rvm:trust_rvmrc"
+namespace :rvm do
+  task :trust_rvmrc do
+    run "rvm rvmrc trust #{release_path}"
+  end
+end
+after "deploy", "rvm:trust_rvmrc"
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
