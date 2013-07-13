@@ -13,8 +13,6 @@ set :rvm_path, "/usr/local/rvm"
 set :application, "yartrans"
 set :scm, :git
 set :repository,  ".git"
-# set :repository,  "/home/megavolt/Ubuntu\ One/rails_projects/yartrans/.git"
-# set :branch, "master"
 set :branch, "develop"
 
 role :web, "vps.yartrans.ua"                          # Your HTTP server, Apache/etc
@@ -38,12 +36,12 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :keep_releases, 10
 
-namespace :rvm do
-  task :trust_rvmrc do
-    run "rvm rvmrc trust #{release_path}"
-  end
-end
-after "deploy", "rvm:trust_rvmrc"
+# namespace :rvm do
+#   task :trust_rvmrc do
+#     run "rvm rvmrc trust #{release_path}"
+#   end
+# end
+# after "deploy", "rvm:trust_rvmrc"
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
