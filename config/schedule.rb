@@ -5,6 +5,6 @@ set :output, "/home/yartrans/yartrans/shared/log/cron_log.log"
 # end
 
 every 10.minutes do
-  runner "User.debt_warning"
+  rake "user:warn"
 end
 

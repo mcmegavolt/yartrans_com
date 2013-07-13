@@ -78,10 +78,10 @@ class User < ActiveRecord::Base
     self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
   end
 
-  def self.debt_warning
-    User.with_state(:debtor).each do |u|
-      NotificationMailer.delay.debt_warning(u.email)
-    end
-  end
+  # def self.debt_warning
+  #   User.with_state(:debtor).each do |u|
+  #     NotificationMailer.delay.debt_warning(u.email)
+  #   end
+  # end
 
 end
