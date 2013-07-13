@@ -28,6 +28,9 @@ Yartrans::Application.routes.draw do
       end
       member do
         get :confirm
+        get :owes_money
+        get :suspend
+        get :no_debt
       end
     end
     resources :mailbox_messages, :path => 'msg' do

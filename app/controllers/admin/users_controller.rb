@@ -108,4 +108,34 @@ class Admin::UsersController < Admin::DashboardController
     end
   end
 
+  def owes_money
+    if user.owes_money
+      flash[:success] = t(:'admin.users.flash.user_owes_money')
+      redirect_to admin_users_path
+    else
+      flash[:error] = t(:'admin.users.flash.operation_not_permitted')
+      redirect_to admin_users_path
+    end
+  end
+
+  def suspend
+    if user.suspend
+      flash[:success] = t(:'admin.users.flash.user_suspended')
+      redirect_to admin_users_path
+    else
+      flash[:error] = t(:'admin.users.flash.operation_not_permitted')
+      redirect_to admin_users_path
+    end
+  end
+
+  def no_debt
+    if user.no_debt
+      flash[:success] = t(:'admin.users.flash.user_has_no_debt')
+      redirect_to admin_users_path
+    else
+      flash[:error] = t(:'admin.users.flash.operation_not_permitted')
+      redirect_to admin_users_path
+    end
+  end
+
 end

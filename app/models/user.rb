@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 
   state_machine :state, :initial => :free do
-    after_transition :debtor => :suspended, :do => :send_suspend_warning
-   
     event :owes_money do
       transition :free => :debtor
     end
@@ -78,10 +76,6 @@ class User < ActiveRecord::Base
   def generate_password
     o =  [('a'..'z'), ('A'..'Z'), (0..9)].map{|i| i.to_a}.flatten
     self.password = self.password_confirmation = (0..16).map{ o[rand(o.length)] }.join if self.password.blank?
-  end
-
-  def send_suspend_warning
-    
   end
 
 end

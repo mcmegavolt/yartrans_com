@@ -11,9 +11,7 @@
 				Home
 			%span.divider /
 			%a.bread-current{:href => "#"} Users
-			
 		.clearfix
-
 	.matter
 		.container-fluid
 			.controls.controls-row
@@ -41,25 +39,64 @@
 										%th= t(:'admin.users.index.actions')
 								%tbody
 									- users.each do |u|
-										%tr
+										/ %tr{:class => ("suspended" if u.suspended?)} 
+										%tr 
 											%td
 												= u.id
 											%td
-												= "#{u.email}"
-												|
-												= link_to 'Отчеты', admin_user_reports_path(u)
-												%br/
-												- if u.staffs.exists?
-													%i.icon-group
-													= u.staffs.count
-													&nbsp;
-												- if u.admission_apps.exists?
-													%i.icon-download-alt
-													= u.admission_apps.count
-													&nbsp;
-												- if u.release_apps.exists?
-													%i.icon-upload-alt
-													= u.release_apps.count
+												%span{:class => (if u.debtor? then "label label-warning" elsif u.suspended? then "label label-important" end)}
+													= "#{u.email}"
+												.btn-group
+													%button.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown"}
+														%span.icon-cog
+													%ul.dropdown-menu
+														%li
+															%a{:href => "#"}
+																- if u.staffs.exists?
+																	%i.icon-group
+																	= u.staffs.count
+																	&nbsp;
+																- if u.admission_apps.exists?
+																	%i.icon-download-alt
+																	= u.admission_apps.count
+																	&nbsp;
+																- if u.release_apps.exists?
+																	%i.icon-upload-alt
+																	= u.release_apps.count
+														%li.divider
+														%li
+															= link_to admin_user_reports_path(u) do
+																%i.icon-bar-chart
+																Отчеты
+														%li.divider
+														- unless u.suspended? || u.debtor?
+															%li
+																= link_to owes_money_admin_user_path(u), :confirm => 'Предупреждать клиента от его задолженности?' do
+																	%i.icon-money
+																	Должник!
+														- else
+															%li
+																= link_to no_debt_admin_user_path(u), :style => 'color: #468847', :confirm => 'Не предупреждать о задолженности клиента?' do
+																	%i.icon-unlock
+																	Долг погашен!
+															- unless u.suspended? 
+																%li
+																	= link_to suspend_admin_user_path(u), :style => 'color: #b94a48', :confirm => 'Приостановить обслуживание клиента?' do
+																		%i.icon-lock
+																		Приостановить!
+
+
+
+
+														%li.divider
+														- if can? :edit, u
+															%li
+																= link_to edit_admin_user_path(u) do
+																	%i.icon-pencil
+																	= t(:'most_common.edit')
+																%span.muted
+
+
 														
 											%td
 												= "#{u.profile.name}"
@@ -90,12 +127,12 @@
 													- if can? :edit, u
 														= link_to edit_admin_user_path(u) do
 															%i.icon-pencil
-															Edit
+															= t(:'most_common.edit')
 														%span.muted
 													- if can? :destroy, u
 														= link_to admin_user_path(u), :method => :delete, :confirm => "Are you sure?" do
 															%i.icon-trash
-															Delete
+															= t(:'most_common.destroy')
 												- else	
 													%i.icon-lock
 													Locked
