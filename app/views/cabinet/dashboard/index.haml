@@ -1,5 +1,20 @@
 .content
 	.container
+		- if current_user.suspended?
+			.alert.alert-error
+				.pull-left{ style: "font-size: 55px; margin-right:15px;"}
+					%i.icon-lock
+				%h4 Простите, обслуживание Вашей компании приостановлено до полного погашения долга. 
+				%p Для уточнения информации обращайтесь в бухгалтерию по телефону (044) 495-50-10.
+		- elsif current_user.debtor?
+			.alert.alert-warning
+				.pull-left{ style: "font-size: 75px; margin-right:15px;"}
+					%i.icon-warning-sign
+				%h4 Уважаемый клиент, просим Вас оплатить счета в ближайшее время. 
+				%p В противном случае мы будем вынуждены приостановить обслуживание до полной оплаты.
+				%p Для уточнения информации обращайтесь в бухгалтерию по телефону (044) 495-50-10.
+
+
 		.row
 			.span8
 				.row
