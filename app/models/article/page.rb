@@ -2,7 +2,9 @@ class Article::Page < ActiveRecord::Base
 
   self.table_name = 'article_pages'
 
-  attr_accessible :title, :slogan, :body, :category_id, :position, :permalink, :published, :entry
+  attr_accessible :title, :slogan, :body, :category_id, :position, :permalink,
+                  :published, :entry,
+                  :icon, :icon_cache, :remove_icon
 
   belongs_to :category, :class_name => Article::Category
 
@@ -13,6 +15,8 @@ class Article::Page < ActiveRecord::Base
   default_scope order('position ASC')
 
   scope :static, where(:category_id => nil)
+
+  mount_uploader :icon, PageIconUploader
 
   def to_param
     permalink
