@@ -8,6 +8,6 @@
           %h5= root_cat.name
           %p= root_cat.description.truncate(190)
           .button
-            = link_to 'Check it Out', category_path(root_cat)
+            = link_to t(:'most_common.readmore'), category_path(root_cat)
     %hr/
 / Service style #1 ends

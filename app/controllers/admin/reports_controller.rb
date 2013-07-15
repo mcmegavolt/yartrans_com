@@ -9,12 +9,12 @@ class Admin::ReportsController < Admin::DashboardController
   defaults :route_prefix => 'admin'
 
   def create
-  	create!(:notice => "Отчет успешно создан")
-    ReportMailer.report_notification(resource).deliver
+  	create!(:notice => "Счет/Отчет успешно создан")
+    ReportMailer.delay.report_notification(resource)
 	end
 
 	def destroy
-  	destroy!(:notice => "Отчет удален!")
+  	destroy!(:notice => "Счет/Отчет удален!")
 	end
 
 end

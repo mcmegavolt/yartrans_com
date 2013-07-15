@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
 
-	REPORT_CATEGORIES = %w(hranenie uslugi)
+	REPORT_CATEGORIES = %w(hranenie uslugi schet)
   
   belongs_to :user
   

@@ -106,7 +106,6 @@ ru:
       bochka: "бочка"
       kont: "конт."
       label: "Единица"
-      
   user:
     roles:
       admin: "Администратор"
@@ -118,6 +117,7 @@ ru:
     categories:
       hranenie: "Хранение"
       uslugi: "Услуги"
+      schet: "Счет"
 
   ckeditor:
     page_title: "Файловый менеджер"
@@ -194,6 +194,7 @@ ru:
     edit: "Изменить"
     save: "Сохранить"
     destroy: "Удалить"
+    readmore: "Подробнее"
 
   mailboxer:
     message_mailer:

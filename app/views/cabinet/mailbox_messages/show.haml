@@ -17,11 +17,15 @@
               %ul.comment-list
                 - @conversation.messages.each do |message|
                   %li.comment
+                    .pull-left
+                      - if message.sender.role == 'Admin' || message.sender.role == 'Director' || message.sender.role == 'Manager'
+                        = image_tag 'icons/manager-avatar.png', :class => 'avatar'
+                      - elsif message.sender.role == 'Client'
+                        = image_tag 'icons/customer-avatar.png', :class => 'avatar'
                     .comment-author= message.sender
                     .cmeta
-                      #{message.created_at.to_s(:long)}
-                      #{time_ago_in_words(message.created_at)}
-                      = t(:'most_common.ago')
+                      #{l message.created_at, :format => :long}
+                      (#{time_ago_in_words(message.created_at)} #{t(:'most_common.ago')})
                     %p= message.body
                     - if message.attachment.url
                       .attachment
