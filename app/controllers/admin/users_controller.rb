@@ -110,6 +110,8 @@ class Admin::UsersController < Admin::DashboardController
 
   def owes_money
     if user.owes_money
+      @msg_body = "Уважаемый клиент, просим Вас оплатить счета в ближайшее время, в противном случае мы будем вынуждены приостановить обслуживание до полной оплаты. Для уточнения информации обращайтесь в бухгалтерию по телефону (044) 495-50-10."
+      current_user.send_message(user, @msg_body, "Предупреждение о задолженности")
       flash[:success] = t(:'admin.users.flash.user_owes_money')
       redirect_to admin_users_path
     else
@@ -120,6 +122,8 @@ class Admin::UsersController < Admin::DashboardController
 
   def suspend
     if user.suspend
+      @msg_body = "Обслуживание Вашей компании приостановлено до полного погашения долга. Для уточнения информации обращайтесь в бухгалтерию по телефону (044) 495-50-10."
+      current_user.send_message(user, @msg_body, "Приостановление обслуживания")
       flash[:success] = t(:'admin.users.flash.user_suspended')
       redirect_to admin_users_path
     else
@@ -130,6 +134,8 @@ class Admin::UsersController < Admin::DashboardController
 
   def no_debt
     if user.no_debt
+      @msg_body = "Обслуживание Вашей компании возобновлено. Спасибо."
+      current_user.send_message(user, @msg_body, "Возобновление обслуживания.")
       flash[:success] = t(:'admin.users.flash.user_has_no_debt')
       redirect_to admin_users_path
     else
