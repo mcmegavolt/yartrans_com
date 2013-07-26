@@ -3,14 +3,14 @@
 	.container-fluid
 		.row-fluid
 			/ Logo section
-			.span4
+			.span3
 				/ Logo.
 				/ .logo
 				= link_to admin_path do
 					= image_tag 'img/top-logo.png'
 				/ Logo ends
 			/ Button section
-			.span4
+			.span7
 				/ Buttons
 				%ul.nav.nav-pills
 					/ Comment button with number of latest comments count
@@ -99,25 +99,6 @@
 									= t(:'admin.quick_menu.users.title')
 								/ Use hr tag to add border
 								%hr/
-							/ %li
-							/ 	/ List item heading h6
-							/ 	%h6
-							/ 		%a{:href => "#"} Ravi Kumar
-							/ 		%span.label.label-warning.pull-right Free
-							/ 	.clearfix
-							/ 	%hr/
-							/ %li
-							/ 	%h6
-							/ 		%a{:href => "#"} Balaji
-							/ 		%span.label.label-important.pull-right Premium
-							/ 	.clearfix
-							/ 	%hr/
-							/ %li
-							/ 	%h6
-							/ 		%a{:href => "#"} Kumarasamy
-							/ 		%span.label.label-warning.pull-right Free
-							/ 	.clearfix
-							/ 	%hr/
 							%li
 								.drop-foot
 									= link_to t(:'admin.quick_menu.users.show_all'), admin_users_path
@@ -125,43 +106,12 @@
 									= link_to new_admin_user_path do
 										%i.icon-pencil
 										= t(:'admin.quick_menu.users.create')
-			/ Data section
-			/ .span4
-			/ 	.header-data
-			/ 		/ Traffic data
-			/ 		.hdata
-			/ 			.mcol-left
-			/ 				/ Icon with red background
-			/ 				%i.icon-signal.bred
-			/ 			.mcol-right
-			/ 				/ Number of logins
-			/ 				%p
-			/ 					%a{:href => "#"}
-			/ 						777
-			/ 					%em logins
-			/ 			.clearfix
-			/ 		/ Members data
-			/ 		.hdata
-			/ 			.mcol-left
-			/ 				/ Icon with blue background
-			/ 				= link_to admin_users_path do
-			/ 					%i.icon-user.bblue
-			/ 			.mcol-right
-			/ 				/ Number of visitors
-			/ 				%p
-			/ 					= link_to admin_users_path do
-			/ 						= User.all.count
-			/ 					%em users
-			/ 			.clearfix
-			/ 		/ revenue data
-			/ 		.hdata
-			/ 			.mcol-left
-			/ 				/ Icon with green background
-			/ 				%i.icon-money.bgreen
-			/ 			.mcol-right
-			/ 				/ Number of visitors
-			/ 				%p
-			/ 					%a{:href => "#"} 0
-			/ 					%em orders
-			/ 			.clearfix
-/ Header ends
+					%li.dropdown.dropdown-big
+						= link_to admin_admission_apps_path, :class => 'active' do
+							Admission
+							%span.badge.badge-warning #{admission_apps_count}
+					%li.dropdown.dropdown-big
+						= link_to admin_release_apps_path do
+							Release
+							%span.badge.badge-success #{release_apps_count}
+			

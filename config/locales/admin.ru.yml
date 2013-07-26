@@ -31,7 +31,9 @@ ru:
         title: "Пользователи"
         show_all: "Все пользователи"
         create: "Создать"
-
+    admission_apps:
+      index:
+        title: "Заявки на прием груза"
     news_items:
       index:
         title: "Менеджер новостей"

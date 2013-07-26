@@ -134,7 +134,7 @@ class Admin::UsersController < Admin::DashboardController
 
   def no_debt
     if user.no_debt
-      @msg_body = "Обслуживание Вашей компании возобновлено. Спасибо."
+      @msg_body = "Спасибо, мы увидели оплату, задолженность погашена. Мы ценим наше сотрудничество."
       current_user.send_message(user, @msg_body, "Возобновление обслуживания.")
       flash[:success] = t(:'admin.users.flash.user_has_no_debt')
       redirect_to admin_users_path

@@ -1,0 +1,48 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-flag
+			= t(:'admin.admission_apps.index.title')
+		.clearfix
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						/ .widget-head
+						/ 	= t(:'admin.admission_apps.index.admission_apps_list')
+						/ 	.widget-icons.pull-right
+						/ 		%a.wminimize{:href => "#"}
+						/ 			%i.icon-chevron-up
+						.widget-content
+							%table.table.table-striped.table-bordered.table-hover
+								%thead
+									%tr
+										%th #
+										%th Date
+										%th Client
+										%th Status
+										%th Actions
+								%tbody
+									- collection.each do |app|
+										%tr
+											%td
+												%h5 ##{app.id}
+											%td #{l app.admission_date, :format => :long}
+											%td
+												= app.user.profile.name
+											%td
+											%td
+												.btn-group
+													= link_to edit_admin_admission_app_path(app), :class => 'btn btn-mini' do
+														%i.icon-pencil
+													= link_to admin_admission_app_path(app), :method => :delete, :confirm => '???', :class => 'btn btn-mini' do
+														%i.icon-remove
+												.clearfix
+							.widget-foot
+								/ = paginate admission_apps
+								.clearfix
+.clearfix
+

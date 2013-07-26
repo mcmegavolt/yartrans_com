@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712122343) do
+ActiveRecord::Schema.define(:version => 20130726123354) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20130712122343) do
     t.date     "admission_date"
     t.string   "file"
     t.integer  "staff_id"
+    t.string   "state"
   end
 
   add_index "admission_apps", ["staff_id"], :name => "index_admission_apps_on_staff_id"
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130712122343) do
     t.text     "entry"
     t.boolean  "published",   :default => false
     t.string   "slogan"
+    t.string   "icon"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20130712122343) do
     t.text     "vehicle"
     t.string   "file"
     t.integer  "staff_id"
+    t.string   "state"
   end
 
   add_index "release_apps", ["staff_id"], :name => "index_release_apps_on_staff_id"

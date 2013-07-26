@@ -1,7 +1,9 @@
 .page-head
   .container
     .row
-      .span12
+      .span2
+        = image_tag article_page.icon_url(:medium)
+      .span10
         %h2= article_page.title
         %h4= article_page.entry.html_safe
 .content.blog

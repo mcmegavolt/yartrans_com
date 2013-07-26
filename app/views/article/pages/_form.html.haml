@@ -19,12 +19,20 @@
       .controls
         = f.text_field :slogan, :class => 'span10'
     .row
-      .span6
+      .span5
         .control-group
           = f.label :permalink, :class => 'control-label'
           .controls
             = f.text_field :permalink, :class => 'span4'
-      .span6
+      .span7
+        .control-group
+          = f.label :icon, :class => 'control-label'
+          .controls
+            = image_tag(article_page.icon_url(:medium)) if article_page.icon?
+            = f.file_field :icon
+            = f.hidden_field :icon_cache
+            = f.check_box :remove_icon
+            Remove icon
         .control-group
           = f.label :position, :class => 'control-label'
           .controls

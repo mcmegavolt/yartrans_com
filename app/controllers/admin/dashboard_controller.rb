@@ -23,6 +23,15 @@ class Admin::DashboardController < ApplicationController
   end
   helper_method :news_items
 
+  def admission_apps_count
+    @count = AdmissionApp.all.count
+  end
+  helper_method :admission_apps_count
+
+  def release_apps_count
+    @count = ReleaseApp.all.count
+  end
+  helper_method :release_apps_count
   
 
 end

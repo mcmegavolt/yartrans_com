@@ -1,4 +1,18 @@
 class AdmissionApp < ActiveRecord::Base
+
+  state_machine :state, :initial => :pending do
+    event :process do
+      transition [:pending, :stoped] => :processing
+    end
+
+    event :complete do
+      transition :processing => :completed
+    end
+
+    event :stop do
+      transition [:pending, :processing] => :stoped
+    end
+  end
   
   attr_accessible :notes, 
   								:user_id, 
