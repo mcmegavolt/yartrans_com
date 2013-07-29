@@ -33,8 +33,20 @@ Yartrans::Application.routes.draw do
         get :no_debt
       end
     end
-    resources :admission_apps, :path => 'admission'
-    resources :release_apps, :path => 'release'
+    resources :admission_apps, :path => 'admission' do
+      member do
+        get :process_app
+        get :stop_app
+        get :complete_app
+      end
+    end
+    resources :release_apps, :path => 'release' do
+      member do
+        get :process_app
+        get :stop_app
+        get :complete_app
+      end
+    end      
     resources :mailbox_messages, :path => 'msg' do
       member do
         delete 'trash'

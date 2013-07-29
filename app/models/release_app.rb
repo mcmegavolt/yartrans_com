@@ -1,5 +1,19 @@
 class ReleaseApp < ActiveRecord::Base
 
+  state_machine :state, :initial => :pending do
+    event :process_app do
+      transition [:pending, :stoped] => :processing
+    end
+
+    event :complete_app do
+      transition :processing => :completed
+    end
+
+    event :stop_app do
+      transition [:pending, :processing] => :stoped
+    end
+  end
+
   attr_accessible :release_date,
                   :release_time,
                   :recipient,

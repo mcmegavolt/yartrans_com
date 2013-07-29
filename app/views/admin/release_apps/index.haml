@@ -2,7 +2,7 @@
 	.page-head
 		%h2.pull-left
 			%i.icon-flag
-			= t(:'admin.admission_apps.index.title')
+			= t(:'admin.release_apps.index.title')
 		.clearfix
 	.matter
 		.container-fluid
@@ -12,21 +12,21 @@
 				.span12
 					.widget
 						.widget-head
-							= link_to admin_admission_apps_path(:state => :pending) do
+							= link_to admin_release_apps_path(:state => :pending) do
 								В ожидании
-								(#{AdmissionApp.with_state(:pending).count})
+								(#{ReleaseApp.with_state(:pending).count})
 							|
-							= link_to admin_admission_apps_path(:state => :processing) do
+							= link_to admin_release_apps_path(:state => :processing) do
 								В обработке
-								(#{AdmissionApp.with_state(:processing).count})
+								(#{ReleaseApp.with_state(:processing).count})
 							|
-							= link_to admin_admission_apps_path(:state => :completed) do
+							= link_to admin_release_apps_path(:state => :completed) do
 								Завершено
-								(#{AdmissionApp.with_state(:completed).count})
+								(#{ReleaseApp.with_state(:completed).count})
 							|
-							= link_to admin_admission_apps_path(:state => :stoped) do
+							= link_to admin_release_apps_path(:state => :stoped) do
 								Остановлено
-								(#{AdmissionApp.with_state(:stoped).count})
+								(#{ReleaseApp.with_state(:stoped).count})
 							.widget-icons.pull-right
 								%a.wminimize{:href => "#"}
 									%i.icon-chevron-up
@@ -43,8 +43,8 @@
 									- collection.each do |app|
 										%tr
 											%td
-												%h5= link_to "# #{app.id}", admin_admission_app_path(app)
-											%td #{l app.admission_date, :format => :long}
+												%h5= link_to "# #{app.id}", admin_release_app_path(app)
+											%td #{l app.release_date, :format => :long}
 											%td
 												= app.user.profile.name
 											%td
@@ -55,34 +55,29 @@
 													%ul.dropdown-menu
 														- if app.can_process_app?
 															%li
-																= link_to process_app_admin_admission_app_path(app), :style => 'color: #2f96b4', :confirm => 'Обработать заявку?' do
+																= link_to process_app_admin_release_app_path(app), :style => 'color: #2f96b4', :confirm => 'Обработать заявку?' do
 																	%i.icon-play
 																	Обработка
 														- if app.can_complete_app?
 															%li
-																= link_to complete_app_admin_admission_app_path(app), :style => 'color: green', :confirm => 'Завершить заявку?' do
+																= link_to complete_app_admin_release_app_path(app), :style => 'color: green', :confirm => 'Завершить заявку?' do
 																	%i.icon-check
 																	Завершить
 														- if app.can_stop_app?
 															%li
-																= link_to stop_app_admin_admission_app_path(app), :style => 'color: #b94a48', :confirm => 'Завершить заявку?' do
+																= link_to stop_app_admin_release_app_path(app), :style => 'color: #b94a48', :confirm => 'Завершить заявку?' do
 																	%i.icon-ban-circle
 																	Остановить
 
 											%td
 												.btn-group
-													= link_to edit_admin_admission_app_path(app), :class => 'btn btn-mini' do
+													= link_to edit_admin_release_app_path(app), :class => 'btn btn-mini' do
 														%i.icon-pencil
-													= link_to admin_admission_app_path(app), :method => :delete, :confirm => '???', :class => 'btn btn-mini' do
+													= link_to admin_release_app_path(app), :method => :delete, :confirm => '???', :class => 'btn btn-mini' do
 														%i.icon-remove
 												.clearfix
 							.widget-foot
 								= paginate collection
-								/ = paginate admission_apps, :params => { :per => params[:per] }
-								/ = form_tag admin_admission_apps_path, method: :get do
-								/ 	- if params[:page]
-								/ 		= hidden_field_tag :page, :value => params[:page] 
-								/ 	= select_tag :per, options_for_select([10, 20, 50], selected: params[:per] || 10), :onchange => 'submit()'
 								.clearfix
 .clearfix
 

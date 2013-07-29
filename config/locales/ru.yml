@@ -186,6 +186,7 @@ ru:
     last: "Последняя страница"
     next: "Следующая"
     previous: "Предыдущая"
+    truncate: "..."
 
   most_common:
     ago: "назад"
@@ -195,6 +196,11 @@ ru:
     save: "Сохранить"
     destroy: "Удалить"
     readmore: "Подробнее"
+    actions: "Действия"
+    status: "Статус"
+    client: "Клиент"
+    date: "Дата"
+    id: "Номер"
 
   mailboxer:
     message_mailer:
@@ -286,6 +292,22 @@ ru:
         category_id: "Категория"
         published: "Опубликован?"
         position: "Порядок"
+
+    state_machines:
+      admission_app:
+        state:
+          states:
+            stoped: "Приостановлено"
+            processing: "В обработке"
+            completed: "Завершено"
+            pending: "В ожидании"
+      release_app:
+        state:
+          states:
+            stoped: "Приостановлено"
+            processing: "В обработке"
+            completed: "Завершено"
+            pending: "В ожидании"
 
   errors:
     messages:

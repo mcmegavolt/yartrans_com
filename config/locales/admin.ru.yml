@@ -34,6 +34,11 @@ ru:
     admission_apps:
       index:
         title: "Заявки на прием груза"
+      flash:
+        processing: "Заявка обрабатывается"
+        completed: "Заявка завершена"
+        stoped: "Заявка приостановлена"
+        error: "Ошибка смены статуса заявки"
     news_items:
       index:
         title: "Менеджер новостей"

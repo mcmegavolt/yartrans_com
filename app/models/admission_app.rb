@@ -1,15 +1,15 @@
 class AdmissionApp < ActiveRecord::Base
 
   state_machine :state, :initial => :pending do
-    event :process do
+    event :process_app do
       transition [:pending, :stoped] => :processing
     end
 
-    event :complete do
+    event :complete_app do
       transition :processing => :completed
     end
 
-    event :stop do
+    event :stop_app do
       transition [:pending, :processing] => :stoped
     end
   end

@@ -1,0 +1,28 @@
+.mainbar
+	.page-head
+		%h2.pull-left
+			%i.icon-flag
+			= t(:'admin.news_items.index.title')
+		.clearfix
+	.matter
+		.container-fluid
+			.controls.controls-row
+				/ Some controls
+			.row-fluid
+				.span12
+					.widget
+						.widget-head
+							= t(:'admin.news_items.edit.title')
+							.widget-icons.pull-right
+								%a.wminimize{:href => "#"}
+									%i.icon-chevron-up
+						.widget-content
+							.padd
+								= render 'form'
+
+							.widget-foot
+								/ = paginate news_items
+								.clearfix
+
+.clearfix
+

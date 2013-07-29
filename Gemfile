@@ -23,6 +23,7 @@ gem "mini_magick"
 gem 'devise'
 gem "cancan"
 gem 'kaminari'
+gem 'has_scope'
 gem 'ransack'
 gem "rails-settings-cached", "0.2.4"
 gem 'unicorn'
