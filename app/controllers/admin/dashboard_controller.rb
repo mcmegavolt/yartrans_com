@@ -24,12 +24,12 @@ class Admin::DashboardController < ApplicationController
   helper_method :news_items
 
   def admission_apps_count
-    @count = AdmissionApp.all.count
+    @count = AdmissionApp.with_state(:pending).count
   end
   helper_method :admission_apps_count
 
   def release_apps_count
-    @count = ReleaseApp.all.count
+    @count = ReleaseApp.with_state(:pending).count
   end
   helper_method :release_apps_count
   

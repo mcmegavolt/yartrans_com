@@ -108,10 +108,14 @@
 										= t(:'admin.quick_menu.users.create')
 					%li.dropdown.dropdown-big
 						= link_to admin_admission_apps_path, :class => 'active' do
+							%i.icon-download-alt
 							На прием
-							%span.badge.badge-warning #{admission_apps_count}
+							- unless admission_apps_count == 0
+								%span.badge.badge-warning #{admission_apps_count}
 					%li.dropdown.dropdown-big
 						= link_to admin_release_apps_path do
+							%i.icon-upload-alt
 							На выдачу
-							%span.badge.badge-success #{release_apps_count}
+							- unless release_apps_count == 0
+								%span.badge.badge-success #{release_apps_count}
 			
