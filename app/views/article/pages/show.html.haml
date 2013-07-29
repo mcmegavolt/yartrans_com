@@ -6,10 +6,10 @@
       .span10
         %h2
           = article_page.title
-          %span.category
-            |
-            = link_to article_page.category.name, category_path(article_page.category)
-
+          - if article_page.category.present?
+            %span.category
+              |
+              = link_to article_page.category.name, category_path(article_page.category)
         %p.entry= article_page.entry.html_safe
 .content.blog
   .container
