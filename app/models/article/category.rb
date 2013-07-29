@@ -8,6 +8,7 @@ class Article::Category < ActiveRecord::Base
                   :position, 
                   :permalink, 
                   :parent_id,
+                  :is_featured,
                   :icon, :icon_cache, :remove_icon
 
   has_ancestry
@@ -22,6 +23,8 @@ class Article::Category < ActiveRecord::Base
 
   mount_uploader :icon, CategoryIconUploader
 
+  scope :featured, where(:is_featured => true)
+
   def to_param
     permalink
   end
@@ -33,5 +36,7 @@ class Article::Category < ActiveRecord::Base
   def generate_adv_cat_permalink
     self.permalink = Russian.translit(name).parameterize if permalink.blank?
   end
+
+
 
 end

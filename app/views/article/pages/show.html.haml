@@ -4,8 +4,13 @@
       .span2
         = image_tag article_page.icon_url(:medium)
       .span10
-        %h2= article_page.title
-        %h4= article_page.entry.html_safe
+        %h2
+          = article_page.title
+          %span.category
+            |
+            = link_to article_page.category.name, category_path(article_page.category)
+
+        %p.entry= article_page.entry.html_safe
 .content.blog
   .container
     .row
@@ -14,7 +19,7 @@
           .entry
             = article_page.body.html_safe
             - if article_page.slogan.present?
-              %h5= article_page.slogan
+              %p.slogan.test= article_page.slogan
           .meta
             - if can? :edit, Article::Page
               = link_to edit_page_path(article_page) do

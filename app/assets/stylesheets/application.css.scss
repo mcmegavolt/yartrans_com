@@ -7,12 +7,38 @@
  *= require flexslider
  *= require slider
  *= require refineslide
+ *= require admin/bootstrap-toggle-buttons
  *= require style
  *= require red
  *= require_self
 */
 
 body {
+
+	.page-head {
+		h2 {
+			font-size: 20px;
+			span.category {
+				font-size: 13px;
+				// font-weight: normal;
+			}
+		}
+		p {
+			&.entry {
+				// font-size: 14px;
+			}
+		}
+	}
+
+	.content {
+		&.blog {
+			p {
+				&.slogan {
+					font-weight: bold;
+				}
+			}
+		}
+	}
 
 	.nested-fields {
 	

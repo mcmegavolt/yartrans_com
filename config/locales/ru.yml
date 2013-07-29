@@ -219,6 +219,14 @@ ru:
       tariff: "Текущие тарифы"
       report: "Отчет"
     attributes:
+      article/category:
+        name: "Название"
+        description: "Описание"
+        parent_id: "Родительская категория"
+        icon: "Иконка"
+        permalink: "Пермалинк"
+        position: "Порядок"
+        is_featured: "Показывать на главной?"
       user:
         email: "Эл. почта"
         password: "Пароль"

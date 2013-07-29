@@ -2,12 +2,12 @@
 .service-one
   .container
     .row
-      - for root_cat in root_article_categories do
+      - for featured in Article::Category.featured do
         .span4
-          = image_tag root_cat.icon_url(:small)
-          %h5= root_cat.name
-          %p= root_cat.description.truncate(190)
+          = image_tag featured.icon_url(:small)
+          %h5= featured.name
+          %p= featured.description.truncate(190)
           .button
-            = link_to t(:'most_common.readmore'), category_path(root_cat)
+            = link_to t(:'most_common.readmore'), category_path(featured)
     %hr/
 / Service style #1 ends

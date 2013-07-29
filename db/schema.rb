@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726123354) do
+ActiveRecord::Schema.define(:version => 20130729175842) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130726123354) do
     t.string   "permalink"
     t.string   "icon"
     t.string   "slogan"
+    t.boolean  "is_featured"
   end
 
   create_table "article_pages", :force => true do |t|
