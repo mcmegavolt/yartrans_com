@@ -16,7 +16,7 @@
 body {
 
 	.page-head {
-		h2 {
+		h1, h2 {
 			font-size: 20px;
 			span.category {
 				font-size: 13px;
@@ -36,6 +36,11 @@ body {
 				&.slogan {
 					font-weight: bold;
 				}
+			}
+		}
+		&.process {
+			.sub-page-block {
+				margin-bottom: 20px;
 			}
 		}
 	}

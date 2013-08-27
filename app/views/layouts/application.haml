@@ -3,33 +3,33 @@
 /[if IE 7 ]    <html lang="en" class="no-js ie7">
 /[if IE 8 ]    <html lang="en" class="no-js ie8">
 /[if IE 9 ]    <html lang="en" class="no-js ie9">
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-%head
-  %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-  %meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
-  %meta{:charset => "utf-8"}/
-  / Title and other stuffs
-  = display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
-  %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-  
-  %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext", :rel => "stylesheet", :type => "text/css"}/
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+		%meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
+		%meta{:charset => "utf-8"}/
+		/ Title and other stuffs
+		= display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
+		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+		
+		%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext", :rel => "stylesheet", :type => "text/css"}/
 
-  = stylesheet_link_tag 'application'
+		= stylesheet_link_tag 'application'
 
-  /[if lt IE 9]
-    = javascript_include_tag 'html5shim'
-  / Favicon
-  %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
-  %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
-  = csrf_meta_tags
+		/[if lt IE 9]
+			= javascript_include_tag 'html5shim'
+		/ Favicon
+		%link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+		%link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+		= csrf_meta_tags
 
-%body
-  = render 'shared/header'
+	%body
+		= render 'shared/header'
 
-  = yield
-  / - if user_signed_in?  
-  /   = render 'users/shared/user_toolbar'
-  = render 'shared/footer'
+		= yield
+		/ - if user_signed_in?  
+		/   = render 'users/shared/user_toolbar'
+		= render 'shared/footer'
 
-  = javascript_include_tag 'application'
-  = render 'shared/flash_messages'
+		= javascript_include_tag 'application'
+		= render 'shared/flash_messages'

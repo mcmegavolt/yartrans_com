@@ -8,10 +8,6 @@ Yartrans::Application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  # namespace :article do
-  #   resources :categories, :path => 'c'
-  # end
-
   resources :categories, :controller => "article/categories", :path => 'c' do
     post 'sort', :on => :collection
   end

@@ -20,7 +20,6 @@ gem 'mini_magick'
 gem 'ckeditor', '4.0.2'
 gem "carrierwave"
 gem "mini_magick"
-gem 'devise'
 gem "cancan"
 gem 'kaminari'
 gem 'has_scope'

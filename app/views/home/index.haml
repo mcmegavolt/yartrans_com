@@ -1,7 +1,7 @@
 - set_meta_tags :title => t(:'seo.meta.home_title'), :description => t(:'seo.meta.home_description'), :keywords => t(:'seo.meta.home_keywords'), :separator => '', :reverse => false
 
-- if Rails.env.production?
-	= render 'shared/cta'
+/ - if Rails.env.production?
+/ 	= render 'shared/cta'
 = render :partial => 'shared/flexslider'
 / = render :partial => 'shared/newsletter'
 = render :partial => 'shared/service'
