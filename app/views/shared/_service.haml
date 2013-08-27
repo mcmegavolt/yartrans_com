@@ -4,7 +4,8 @@
     .row
       - for featured in Article::Category.featured do
         .span4
-          = image_tag featured.icon_url(:small)
+          = link_to category_path(featured) do
+            = image_tag featured.icon_url(:small)
           %h5= featured.name
           %p= featured.description.truncate(190)
           .button

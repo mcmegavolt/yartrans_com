@@ -66,6 +66,10 @@
           - static_article_pages.each do |static|
             |
             = link_to static.title, page_path(static)
+          | Created by
+          = link_to 'http://alexponomarenko.com', :target => '_blank' do
+            Aleksandr Ponomarenko
+            %i.icon-external-link
           %span.pull-right
             - if user_signed_in?
               = t(:'cabinet.hello')
@@ -86,6 +90,8 @@
             - else
               = link_to new_user_session_path do
                 = t(:'cabinet.login')
+                &nbsp;
+                %i.icon-signin
     .clearfix
 / Footer ends
 / Scroll to top

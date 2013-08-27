@@ -1,9 +1,9 @@
 .page-head
   .container
     .row
-      .span2
-        = image_tag article_page.icon_url(:medium)
-      .span10
+      - unless article_page.icon_url.include? "category-icon"
+        = image_tag article_page.icon_url(:medium) 
+      %div{:classs => (article_page.icon_url.include? "category-icon" ? 'span12' : 'span10')}
         %h2
           = article_page.title
           - if article_page.category.present?
@@ -11,6 +11,7 @@
               |
               = link_to article_page.category.name, category_path(article_page.category)
         %p.entry= article_page.entry.html_safe
+
 .content.blog
   .container
     .row
@@ -20,20 +21,21 @@
             = article_page.body.html_safe
             - if article_page.slogan.present?
               %p.slogan.test= article_page.slogan
-          .meta
-            - if can? :edit, Article::Page
-              = link_to edit_page_path(article_page) do
-                %i.icon-pencil
-                Edit
-              &nbsp;
-            - if can? :destroy, Article::Page  
-              = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
-                %i.icon-trash
-                Delete
-              &nbsp;
-            - if article_page.is_static?
-              %i.icon-folder-close
-              STATIC
-            - else
-              %i.icon-folder-open
-                = link_to article_page.category,  category_path(article_page.category)
+          - if user_signed_in?
+            .meta
+              - if can? :edit, Article::Page
+                = link_to edit_page_path(article_page) do
+                  %i.icon-pencil
+                  Edit
+                &nbsp;
+              - if can? :destroy, Article::Page  
+                = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
+                  %i.icon-trash
+                  Delete
+                &nbsp;
+              - if article_page.is_static?
+                %i.icon-folder-close
+                STATIC
+              - else
+                %i.icon-folder-open
+                  = link_to article_page.category,  category_path(article_page.category)
