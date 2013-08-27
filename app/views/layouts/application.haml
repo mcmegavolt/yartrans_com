@@ -24,6 +24,8 @@
 		= csrf_meta_tags
 
 	%body
+		- if user_signed_in?
+			= render 'shared/floating_toolbar'
 		= render 'shared/header'
 
 		= yield

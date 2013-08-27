@@ -29,7 +29,7 @@
               /     %i.icon-linkedin.linkedin
               /   %a{:href => "#"}
               /     %i.icon-google-plus.google-plus
-          - root_article_categories.each do |c|
+          - Article::Category.featured.each do |c|
             .span3
               .widget
                 %h5= link_to c.name, category_path(c)

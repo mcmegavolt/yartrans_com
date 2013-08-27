@@ -28,6 +28,10 @@ body {
 		p {
 			&.entry {
 				// font-size: 14px;
+				.page-icon {
+					margin-right: 20px;
+					float: left;
+				}
 			}
 		}
 	}
@@ -36,10 +40,18 @@ body {
 		margin-top: 25px;
 	}
 
+	.navbar *, .nav-collapse * {
+		font-size: 14px !important;
+	}
+
 	.content {
 		&.blog {
 			p {
 				&.slogan {
+					font-weight: bold;
+				}
+				&.phones {
+					font-size: 14px;
 					font-weight: bold;
 				}
 			}
@@ -97,6 +109,21 @@ body {
 		}
 
 	}
+
+	ul#floating-toolbar{  
+	  position:fixed;  
+	  left: 0px;
+	  top: 165px;
+	  li {
+	  	list-style: none;
+	  	a {
+		  	background: #ffffff;
+		  	&:hover {
+		  		background: #ff5d5e;
+		  	}
+	  	}
+	  }
+	}  
 
 
 }

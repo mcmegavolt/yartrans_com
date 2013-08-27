@@ -91,6 +91,8 @@ ru:
           manager_email: "Email для заявок на прием"
         release_apps:
           manager_email: "Email для заявок на выдачу"
+        contacts:
+          phones: "Контактные телефоны"
 
 
 
