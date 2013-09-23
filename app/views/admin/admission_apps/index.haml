@@ -1,3 +1,5 @@
+
+
 .mainbar
 	.page-head
 		%h2.pull-left
@@ -43,10 +45,19 @@
 									- collection.each do |app|
 										%tr
 											%td
-												%h5= link_to "# #{app.id}", admin_admission_app_path(app)
-											%td #{l app.admission_date, :format => :long}
+												%h5
+													- if app.file.blank?
+														= link_to admin_admission_app_path(app, format: "xlsx") do
+															= app.id
+															%i.icon-download
+													- else
+														= link_to app.file_url do
+															= app.id
+															%i.icon-download
+															%i.icon-file
 											%td
-												= app.user.profile.name
+												#{l app.admission_date, :format => :long}
+											%td= app.user.profile.name
 											%td
 												.btn-group
 													%button.btn.btn-mini.dropdown-toggle{"data-toggle" => "dropdown", :class => if app.processing? then "btn-info" elsif app.completed? then "btn-success" elsif app.stoped? then "btn-danger" end }

@@ -43,7 +43,16 @@
 									- collection.each do |app|
 										%tr
 											%td
-												%h5= link_to "# #{app.id}", admin_release_app_path(app)
+												%h5
+													- if app.file.blank?
+														= link_to admin_release_app_path(app, format: "xlsx") do
+															= app.id
+															%i.icon-download
+													- else
+														= link_to app.file_url do
+															= app.id
+															%i.icon-download
+															%i.icon-file
 											%td #{l app.release_date, :format => :long}
 											%td
 												= app.user.profile.name

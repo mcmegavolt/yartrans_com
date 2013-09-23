@@ -35,6 +35,8 @@
 
 $(document).ready(function() {
 
+  $('.tooltip').tooltip();
+
   // example showing manipulating the inserted/removed item
 
   $("#admission_items")

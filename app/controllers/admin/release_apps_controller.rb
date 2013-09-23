@@ -2,7 +2,15 @@ class Admin::ReleaseAppsController < Admin::DashboardController
 
 	inherit_resources
 
-	# actions :all, :except => [ :show ]
+  require 'app_file_generator'
+
+  def show
+    respond_to do |format|
+      format.xlsx {
+        send_data AppFileGenerator.render_release_xlsx_file(resource).to_stream.read.force_encoding("UTF-8"), filename: AppFileGenerator.release_file_name(resource)
+      }
+    end
+  end
 
   def update
     update!(:notice => "Release app was updated!")
