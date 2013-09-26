@@ -1,6 +1,7 @@
 .page-head
   .container
     %h2
+      %span.page-icon= image_tag article_page.icon_url(:small) 
       = article_page.title
       - if article_page.category.present?
         %span.category
@@ -9,7 +10,6 @@
     .row
       .span12
         %p.entry
-          %span.page-icon= image_tag article_page.icon_url(:medium) 
           = article_page.entry.html_safe
 
 .content.blog
@@ -25,6 +25,8 @@
             - unless article_page.is_static?
               %i.icon-folder-open
                 = link_to article_page.category,  category_path(article_page.category)
+            - else
+              &nbsp;
             .pull-right
               %p.phones
                 %i.icon-phone
