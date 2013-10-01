@@ -25,14 +25,37 @@ body {
 				// font-weight: normal;
 			}
 		}
-		p {
-			&.entry {
-				// font-size: 14px;
-				.page-icon {
-					margin-right: 20px;
-					float: left;
-				}
+		.page-icon {
+			margin-right: 10px;
+			float: left;
+			img {
+				width: 30px;
 			}
+		}
+	}
+
+	.content {
+		&.blog {
+			h2 {
+				font-size: 18px;
+			}
+			h3 {
+				font-size: 16px;
+			}
+			h4, h5 {
+				font-size: 14px;
+			}
+			p {
+				margin-bottom: 6px;
+			}
+		}
+	}
+
+	table {
+		caption {
+			font-size: 14px;
+			font-weight: bold;
+			margin-bottom: 10px;
 		}
 	}
 
