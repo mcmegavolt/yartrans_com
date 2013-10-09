@@ -1,0 +1,4 @@
+.entry
+  = article_page.body.html_safe
+  - if article_page.slogan.present?
+    %p.slogan.test= article_page.slogan

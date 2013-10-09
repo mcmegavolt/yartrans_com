@@ -7,6 +7,9 @@ ru:
       home_keywords: ""
       admin_site_name: "Администрирование"
       admin_home_title: "YarTrans Logistic"
+  article:
+    page:
+      recent: "Смотрите также"
   applications:
     admission:
       index:

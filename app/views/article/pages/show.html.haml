@@ -15,19 +15,24 @@
 .content.blog
   .container
     .row
-      .span12
-        .posts
-          .entry
-            = article_page.body.html_safe
-            - if article_page.slogan.present?
-              %p.slogan.test= article_page.slogan
-          .meta
-            - unless article_page.is_static?
-              %i.icon-folder-open
-                = link_to article_page.category,  category_path(article_page.category)
-            - else
-              &nbsp;
-            .pull-right
-              %p.phones
-                %i.icon-phone
-                = SiteSettings["contacts.phones"]
+      - unless article_page.is_static?
+        .span12
+          .row
+            .span9
+              .posts
+                = render 'body'
+            .span3
+              .sidebar
+                .widget
+                  %h4= t(:'article.page.recent')
+                  %ul
+                    - article_page.category.pages.each do |recent|
+                      - unless recent == article_page
+                        %li= link_to recent.title, page_path(recent)
+          = render 'meta'
+      - else
+        .span12
+          .posts
+            = render 'body'
+            = render 'meta'
+        

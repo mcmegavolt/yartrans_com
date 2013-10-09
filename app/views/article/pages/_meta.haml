@@ -1,0 +1,10 @@
+.meta
+  - unless article_page.is_static?
+    %i.icon-folder-open
+      = link_to article_page.category,  category_path(article_page.category)
+  - else
+    &nbsp;
+  .pull-right
+    %p.phones
+      %i.icon-phone
+      = SiteSettings["contacts.phones"]
