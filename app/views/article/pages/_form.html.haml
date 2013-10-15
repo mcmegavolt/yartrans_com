@@ -45,9 +45,20 @@
             = f.select :category_id, @categories_tree
       .span7
         .control-group
+          = f.label :published, class: "control-label"
           .controls
-            %label.checkbox.inline
-              = f.check_box :published
-              = f.label :published
+            .article-toggle-button
+              = f.check_box :published, id: "toggle-button"
+    .row
+      .span12
+        #accordion2.accordion
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle.collapsed{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
+                %h4 Meta Tags
+            #collapseOne.accordion-body.collapse{style: "height: 0px;"}
+              .accordion-inner
+                = f.fields_for :meta do |meta|
+                  = render 'shared/meta_fields', f: meta
     .form-actions
       = f.submit 'Save page', :class => 'btn btn-success'

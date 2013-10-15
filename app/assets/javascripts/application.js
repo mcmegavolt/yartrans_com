@@ -4,6 +4,7 @@
 // = require admin/layouts/topRight
 // = require admin/layouts/top
 // = require admin/themes/default
+// = require admin/jquery.toggle.buttons
 // = require jquery_ujs
 // = require bootstrap
 // = require admin/bootstrap-datetimepicker.min
@@ -23,17 +24,29 @@
 // = require custom
 
 
-  $(function() {
-    $(".datetimepicker").datetimepicker({
-      pickTime: true,
-      pickDate: true,
-      pickSeconds: true,
-      language: "ru-RU"
-    });
+$(function() {
+  $(".datetimepicker").datetimepicker({
+    pickTime: true,
+    pickDate: true,
+    pickSeconds: true,
+    language: "ru-RU"
   });
+});
 
+$('.article-toggle-button').toggleButtons({
+    width:100,
+    style: {
+        enabled: "success",
+        disabled: "danger"
+    },
+    label: {
+        enabled: "Да",
+        disabled: "Нет"
+    }
+});
 
 $(document).ready(function() {
+
 
   $('.tooltip').tooltip();
 

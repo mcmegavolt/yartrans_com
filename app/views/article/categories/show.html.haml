@@ -1,3 +1,6 @@
+- set_meta_tags :title => (article_category.meta.present? ? article_category.meta.title : article_category.name), :description => (article_category.meta.present? ? article_category.meta.description : ''), :keywords => (article_category.meta.present? ? article_category.meta.keywords : '')
+- if article_category.meta.present? && article_category.meta.use_article_title?
+  - set_meta_tags :title => article_category.name
 .page-head
   .container
     .row

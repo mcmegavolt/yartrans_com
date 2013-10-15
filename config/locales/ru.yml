@@ -221,6 +221,7 @@ ru:
       release_item: "Позиция"
       tariff: "Текущие тарифы"
       report: "Отчет"
+      meta: "Мета-теги"
     attributes:
       article/category:
         name: "Название"
@@ -303,6 +304,11 @@ ru:
         category_id: "Категория"
         published: "Опубликован?"
         position: "Порядок"
+      article/meta:
+        title: "Заголовок"
+        description: "Описание"
+        keywords: "Ключевые слова"
+        use_article_title: "Использовать заголовок материала?"
 
     state_machines:
       admission_app:

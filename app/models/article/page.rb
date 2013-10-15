@@ -1,12 +1,14 @@
 class Article::Page < ActiveRecord::Base
 
-  self.table_name = 'article_pages'
-
   attr_accessible :title, :slogan, :body, :category_id, :position, :permalink,
                   :published, :entry,
-                  :icon, :icon_cache, :remove_icon
+                  :icon, :icon_cache, :remove_icon,
+                  :meta_attributes
 
   belongs_to :category, :class_name => Article::Category
+
+  has_one :meta, :as => :metaable, :class_name => Article::Meta, :dependent => :destroy
+  accepts_nested_attributes_for :meta, :reject_if => proc { |attr| attr[:title].blank? && attr[:description].blank? && attr[:keywords].blank? }
 
   before_save :generate_adv_page_permalink
 

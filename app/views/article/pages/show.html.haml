@@ -1,3 +1,7 @@
+- set_meta_tags :title => (article_page.meta.present? ? article_page.meta.title : article_page.title), :description => (article_page.meta.present? ? article_page.meta.description : ''), :keywords => (article_page.meta.present? ? article_page.meta.keywords : '')
+- if article_page.meta.present? && article_page.meta.use_article_title?
+  - set_meta_tags :title => article_page.title
+
 .page-head
   .container
     %h2

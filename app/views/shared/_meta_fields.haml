@@ -1,0 +1,17 @@
+.control-group
+	= f.label :title, class: "control-label"
+	.controls
+		= f.text_field :title, class: "span6"
+.control-group
+	= f.label :description, class: "control-label"
+	.controls
+		= f.text_area :description, rows: 3, class: "span6"
+.control-group
+	= f.label :keywords, class: "control-label"
+	.controls
+		= f.text_area :keywords, rows: 3, class: "span6"
+.control-group
+	= f.label :use_article_title, class: "control-label"
+	.controls
+		.article-toggle-button
+			= f.check_box :use_article_title, id: "toogle-checkbox"

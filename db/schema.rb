@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729175842) do
+ActiveRecord::Schema.define(:version => 20131013103433) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -67,6 +67,20 @@ ActiveRecord::Schema.define(:version => 20130729175842) do
     t.string   "slogan"
     t.boolean  "is_featured"
   end
+
+  create_table "article_meta", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.boolean  "use_article_title", :default => false
+    t.integer  "metaable_id"
+    t.string   "metaable_type"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
+
+  add_index "article_meta", ["metaable_id"], :name => "index_article_meta_on_metaable_id"
+  add_index "article_meta", ["metaable_type"], :name => "index_article_meta_on_metaable_type"
 
   create_table "article_pages", :force => true do |t|
     t.string   "title"
