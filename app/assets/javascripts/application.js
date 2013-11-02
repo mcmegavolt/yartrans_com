@@ -1,27 +1,24 @@
 // = require jquery.min
+// = require jquery_ujs
+// = require fancybox
 // = require admin/jquery.noty
 // = require admin/layouts/bottom
 // = require admin/layouts/topRight
 // = require admin/layouts/top
 // = require admin/themes/default
 // = require admin/jquery.toggle.buttons
-// = require jquery_ujs
 // = require bootstrap
 // = require admin/bootstrap-datetimepicker.min
 // = require jquery.isotope
 // = require jquery.prettyPhoto
 // = require filter
-// = require jquery.tweet
-// = require jquery.flexslider-min
-// = require jquery.cslider
 // = require modernizr.custom.28468
 // = require jquery.carouFredSel-6.1.0-packed
 // = require jquery.refineslide.min
-
 // = require cocoon
-
+// = require ckeditor/init
+// = require jquery.cslider
 // = require_self
-// = require custom
 
 
 $(function() {
@@ -45,8 +42,13 @@ $('.article-toggle-button').toggleButtons({
     }
 });
 
+
+
 $(document).ready(function() {
 
+  $('.carousel').carousel()
+  
+  $("a.fancybox").fancybox();
 
   $('.tooltip').tooltip();
 
@@ -81,5 +83,31 @@ $(document).ready(function() {
       // task.fadeOut("fast");
       task.animate({ height: "0px", opacity: 0 }, 300 );
     });
+
+    /* Scroll to Top */
+
+    $(".totop").hide();
+
+    $(function(){
+      $(window).scroll(function(){
+        if ($(this).scrollTop()>600)
+        {
+          $('.totop').slideDown();
+        } 
+        else
+        {
+          $('.totop').slideUp();
+        }
+      });
+
+      $('.totop a').click(function (e) {
+        e.preventDefault();
+        $('body,html').animate({scrollTop: 0}, 500);
+      });
+
+    });
     
 });
+
+
+

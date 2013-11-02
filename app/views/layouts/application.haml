@@ -20,6 +20,7 @@
 		/ Favicon
 		%link{:href => "/favicon.ico", :rel => "shortcut icon"}/
 		%link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+		= javascript_include_tag 'application'
 		= csrf_meta_tags
 
 	%body
@@ -32,5 +33,4 @@
 		/   = render 'users/shared/user_toolbar'
 		= render 'shared/footer'
 
-		= javascript_include_tag 'application'
 		= render 'shared/flash_messages'

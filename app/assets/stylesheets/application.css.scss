@@ -10,6 +10,7 @@
  *= require admin/bootstrap-toggle-buttons
  *= require style
  *= require red
+ *= require fancybox
  *= require_self
 */
 
@@ -164,4 +165,24 @@ body {
 	}  
 
 
+}
+
+.carousel {
+
+	margin-top: 30px;
+
+	img {
+		width: 940px;
+		height: 350px;
+	}
+	
+	.carousel-control {
+		color: #ffffff;
+		background: none;
+		border: 0px none transparent;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+	}
+	
 }

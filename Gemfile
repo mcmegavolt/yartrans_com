@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'jquery-rails', '2.0.1'
+gem 'fancybox2-rails', '~> 0.2.4'
 gem 'haml'
 gem 'inherited_resources'
 gem 'thin'
@@ -15,9 +16,9 @@ gem 'delayed_job_active_record'
 gem 'client_side_validations'
 gem 'ancestry'
 gem 'font-awesome-sass-rails'
+gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'ckeditor', '4.0.2'
 gem "carrierwave"
 gem "mini_magick"
 gem "cancan"

@@ -22,17 +22,18 @@
       - unless article_page.is_static?
         .span12
           .row
-            .span9
+            .span12
+              // use .span9 abowe when using commented code below
               .posts
                 = render 'body'
-            .span3
-              .sidebar
-                .widget
-                  %h4= t(:'article.page.recent')
-                  %ul
-                    - article_page.category.pages.each do |recent|
-                      - unless recent == article_page
-                        %li= link_to recent.title, page_path(recent)
+            / .span3
+            /   .sidebar
+            /     .widget
+            /       %h4= t(:'article.page.recent')
+            /       %ul
+            /         - article_page.category.pages.each do |recent|
+            /           - unless recent == article_page
+            /             %li= link_to recent.title, page_path(recent)
           = render 'meta'
       - else
         .span12

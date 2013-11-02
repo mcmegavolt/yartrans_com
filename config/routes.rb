@@ -1,5 +1,7 @@
 Yartrans::Application.routes.draw do
 
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users, :path => 'client', :path_names => {:sign_in => 'login', :sign_out => 'logout'}
 
   mount Ckeditor::Engine => "/ckeditor"

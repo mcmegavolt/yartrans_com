@@ -1,29 +1,30 @@
-/ Flex Slider starts
-.container.flex-main
+.container
   .row
     .span12
-      .flex-image.flexslider
-        %ul.slides
-          %li
-            = image_tag "img/photos/l2.jpg"
-            .flex-caption
-              %h3 Превосходим ожидания
+      #myCarousel.carousel.slide
+        .carousel-inner
+          .active.item
+            = image_tag "img/photos/l2.jpg", class: "img-responsive"
+            .carousel-caption
+              %h4 Превосходим ожидания
               %p ЯрТранс Лоджистик
-          %li
-            = image_tag "img/photos/l1.jpg"
-            .flex-caption
-              %h3
-                Наша доставка &mdash;
-                %br
-                экономия Ваших ресурсов
+          .item
+            = image_tag "img/photos/l1.jpg", class: "img-responsive"
+            .carousel-caption
+              %h4 Наша доставка &mdash; экономия Ваших ресурсов
               %p ЯрТранс Лоджистик
-          %li
-            = image_tag "img/photos/l4.jpg"
-            .flex-caption
-              %h3 Достигнем успеха вместе!
+          .item
+            = image_tag "img/photos/l4.jpg", class: "img-responsive"
+            .carousel-caption
+              %h4 Достигнем успеха вместе!
               %p ЯрТранс Лоджистик
-          %li
-            = image_tag "img/photos/l3.jpg"
-            .flex-caption
-              %h3 Сложное делаем простым
+          .item
+            = image_tag "img/photos/l3.jpg", class: "img-responsive"
+            .carousel-caption
+              %h4 Сложное делаем простым
               %p ЯрТранс Лоджистик
+        / Carousel nav
+        %a.carousel-control.left{"data-slide" => "prev", href: "#myCarousel"}
+          %i.icon-angle-left
+        %a.carousel-control.right{"data-slide" => "next", href: "#myCarousel"}
+          %i.icon-angle-right
