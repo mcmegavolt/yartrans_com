@@ -186,3 +186,20 @@ body {
 	}
 	
 }
+
+
+.fred_carousel {
+    padding: 15px 0 15px 0px;
+    img {
+	    border: 1px solid #ccc;
+	    background-color: white;
+	    padding: 9px;
+	    margin: 7px;
+	    display: block;
+	    float: left;
+    }
+    a {
+	    display: block;
+	    float: left;
+    }
+}

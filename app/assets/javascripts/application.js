@@ -13,10 +13,10 @@
 // = require jquery.prettyPhoto
 // = require filter
 // = require modernizr.custom.28468
-// = require jquery.carouFredSel-6.1.0-packed
 // = require jquery.refineslide.min
 // = require cocoon
 // = require ckeditor/init
+// = require jquery.carouFredSel.min
 // = require jquery.cslider
 // = require_self
 
@@ -48,9 +48,40 @@ $(document).ready(function() {
 
   $('.carousel').carousel()
   
-  $("a.fancybox").fancybox();
+  $("a[rel=fancybox]").fancybox();
 
   $('.tooltip').tooltip();
+
+
+  $("#fred").carouFredSel({
+    responsive: true,
+    width: '100%',
+    pauseOnHover : true,
+    auto : true,
+    circular  : true,
+    infinite  : false,
+    swipe: {
+      onMouse: true,
+      onTouch: true
+    },
+    items: {
+      visible: {
+        min: 1,
+        max: 3
+      }
+    }
+  }); 
+  $("#fred a").fancybox({
+    beforeShow : function() {
+        $("#fred").trigger("pause");
+    },
+    afterClose: function() {
+        $("#fred").trigger("play");
+    }
+});
+
+
+
 
   // example showing manipulating the inserted/removed item
 
