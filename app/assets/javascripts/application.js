@@ -48,7 +48,7 @@ $(document).ready(function() {
 
   $('.carousel').carousel()
   
-  $("a[rel=fancybox]").fancybox();
+  $("a.fancybox").fancybox();
 
   $('.tooltip').tooltip();
 
