@@ -22,6 +22,7 @@ class Article::CategoriesController < ApplicationController
   def edit
     authorize! :edit, article_category
     article_category.build_meta unless article_category.meta
+    article_category.build_widget unless article_category.widget
   end
 
   def update

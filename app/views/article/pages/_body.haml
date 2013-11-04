@@ -1,3 +1,6 @@
+- if article_page.widget.present?
+  .widget
+    = article_page.widget.body.html_safe
 .entry
   = article_page.body.html_safe
   - if article_page.slogan.present?

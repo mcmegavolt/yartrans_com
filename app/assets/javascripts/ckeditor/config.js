@@ -10,9 +10,10 @@ For licensing, see LICENSE.html or http://ckeditor.com/license
 	Please, do not remove this comment when working with sample config file.
 */
 
+
+
 CKEDITOR.editorConfig = function( config )
 {
-
 
 	/* Filebrowser routes */
   // The location of an external file browser, that should be launched when "Browse Server" button is pressed.
@@ -74,7 +75,7 @@ CKEDITOR.editorConfig = function( config )
 			['NumberedList','BulletedList','-','Outdent','Indent','Blockquote','CreateDiv'],
 			
 			['Link','Unlink','Anchor'],
-			['Image','Flash','Table','HorizontalRule','SpecialChar']
+			['Image','Flash','Iframe','Table','HorizontalRule','SpecialChar']
 			
 		];
 		

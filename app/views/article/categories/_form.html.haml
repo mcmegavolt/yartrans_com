@@ -48,11 +48,19 @@
 					.accordion-group
 						.accordion-heading
 							%a.accordion-toggle.collapsed{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseOne"}
-								%h4 Meta Tags
+								%h4= t(:'article.meta')
 						#collapseOne.accordion-body.collapse{style: "height: 0px;"}
 							.accordion-inner
 								= f.fields_for :meta do |meta|
 									= render 'shared/meta_fields', f: meta
+					.accordion-group
+						.accordion-heading
+							%a.accordion-toggle.collapsed{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseTwo"}
+								%h4= t(:'article.widget')
+						#collapseTwo.accordion-body.collapse{style: "height: 0px;"}
+							.accordion-inner
+								= f.fields_for :widget do |w|
+									= render 'shared/widget_fields', f: w
 
 		.form-actions
-			= f.submit
+			= f.submit :class => 'btn btn-success btn-large'

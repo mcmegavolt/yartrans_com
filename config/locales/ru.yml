@@ -10,6 +10,8 @@ ru:
   article:
     page:
       recent: "Смотрите также"
+    widget: "Виджет"
+    meta: "Мета-теги"
   applications:
     admission:
       index:
@@ -309,6 +311,9 @@ ru:
         description: "Описание"
         keywords: "Ключевые слова"
         use_article_title: "Использовать заголовок материала?"
+      article/widget:
+        name: "Название"
+        body: "Код виджета"
 
     state_machines:
       admission_app:

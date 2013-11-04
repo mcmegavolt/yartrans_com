@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131013103433) do
+ActiveRecord::Schema.define(:version => 20131104201307) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(:version => 20131013103433) do
     t.boolean  "published",   :default => false
     t.string   "slogan"
     t.string   "icon"
+  end
+
+  create_table "article_widgets", :force => true do |t|
+    t.string   "name"
+    t.text     "body"
+    t.integer  "widgetable_id"
+    t.string   "widgetable_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|

@@ -8,6 +8,7 @@
 		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 		%meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
 		%meta{:charset => "utf-8"}/
+		%cfheader{:name =>"X-XSS-Protection", :value => "0"}/
 		/ Title and other stuffs
 		= display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/

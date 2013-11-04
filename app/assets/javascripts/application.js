@@ -21,31 +21,20 @@
 // = require_self
 
 
-$(function() {
-  $(".datetimepicker").datetimepicker({
-    pickTime: true,
-    pickDate: true,
-    pickSeconds: true,
-    language: "ru-RU"
-  });
-});
-
-$('.article-toggle-button').toggleButtons({
-    width:100,
-    style: {
-        enabled: "success",
-        disabled: "danger"
-    },
-    label: {
-        enabled: "Да",
-        disabled: "Нет"
-    }
-});
-
-
-
 $(document).ready(function() {
 
+  $('.article-toggle-button').toggleButtons({
+      width:100,
+      style: {
+          enabled: "success",
+          disabled: "danger"
+      },
+      label: {
+          enabled: "Да",
+          disabled: "Нет"
+      }
+  });
+  
   $('.carousel').carousel()
   
   $("a.fancybox").fancybox();
@@ -59,7 +48,7 @@ $(document).ready(function() {
     pauseOnHover : true,
     auto : true,
     circular  : true,
-    infinite  : false,
+    // infinite  : false,
     swipe: {
       onMouse: true,
       onTouch: true
@@ -67,7 +56,7 @@ $(document).ready(function() {
     items: {
       visible: {
         min: 1,
-        max: 3
+        max: 4
       }
     }
   }); 

@@ -8,7 +8,8 @@ class Article::Category < ActiveRecord::Base
                   :parent_id,
                   :is_featured,
                   :icon, :icon_cache, :remove_icon,
-                  :meta_attributes
+                  :meta_attributes,
+                  :widget_attributes
 
   has_ancestry
 
@@ -16,6 +17,9 @@ class Article::Category < ActiveRecord::Base
 
   has_one :meta, :as => :metaable, :class_name => Article::Meta, :dependent => :destroy
   accepts_nested_attributes_for :meta, :reject_if => proc { |attr| attr[:title].blank? && attr[:description].blank? && attr[:keywords].blank? }
+
+  has_one :widget, :as => :widgetable, :class_name => Article::Widget, :dependent => :destroy
+  accepts_nested_attributes_for :widget, :reject_if => proc { |attr| attr[:body].blank? }
 
   before_save :generate_adv_cat_permalink
   
