@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 
   $("#fred").carouFredSel({
-    responsive: true,
+    // responsive: true,
     width: '100%',
     pauseOnHover : true,
     auto : true,
@@ -67,7 +67,11 @@ $(document).ready(function() {
     afterClose: function() {
         $("#fred").trigger("play");
     }
-});
+  });
+
+  // Submit form by clicking link in the floating toolbar
+
+  $('#submitForm').on('click', function() { $('form').submit(); });
 
 
 

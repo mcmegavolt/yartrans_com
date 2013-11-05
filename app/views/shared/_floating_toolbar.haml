@@ -1,28 +1,40 @@
 - unless action_name == 'new'
   %ul.nav.nav-tabs.nav-stacked#floating-toolbar
     - if controller_name == 'pages'
-      - if can? :edit, Article::Page
+      - unless action_name == 'edit'
+        - if can? :edit, Article::Page
+          %li
+            = link_to edit_page_path(article_page) do
+              %i.icon-pencil
+              = t(:'most_common.edit')
+        - if can? :destroy, Article::Page  
+          %li
+            = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
+              %i.icon-trash
+              = t(:'most_common.destroy')
+      - else
         %li
-          = link_to edit_page_path(article_page) do
-            %i.icon-pencil
-            = t(:'most_common.edit')
-      - if can? :destroy, Article::Page  
-        %li
-          = link_to page_path(article_page), :confirm => 'Are you sure?', :method => :delete do
+          = link_to '#', :id => 'submitForm' do
             %i.icon-trash
-            = t(:'most_common.destroy')
+            = t(:'most_common.save')
     - if controller_name == 'categories'
-      - if can? :edit, Article::Category
+      - unless action_name == 'edit'
+        - if can? :edit, Article::Category
+          %li
+            = link_to edit_category_path(article_category) do
+              %i.icon-pencil
+              = t(:'most_common.edit')
+        - if can? :destroy, Article::Category 
+          %li
+            = link_to category_path(article_category), :confirm => 'Are you sure?', :method => :delete do
+              %i.icon-trash
+              = t(:'most_common.destroy')
+      - else
         %li
-          = link_to edit_category_path(article_category) do
-            %i.icon-pencil
-            = t(:'most_common.edit')
-      - if can? :destroy, Article::Category 
-        %li
-          = link_to category_path(article_category), :confirm => 'Are you sure?', :method => :delete do
+          = link_to '#', :id => 'submitForm' do
             %i.icon-trash
-            = t(:'most_common.destroy')
-    - if current_user.role? :admin || :director
+            = t(:'most_common.save')
+    - if (current_user.role? :admin || :director) && action_name != 'edit'
       %li
         = link_to destroy_user_session_path, :method => :delete do
           %i.icon-signout
