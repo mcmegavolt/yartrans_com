@@ -18,7 +18,7 @@
               %hr/
               %i.icon-envelope-alt
               \ 
-              = mail_to "office@yartrans.ua", "Написать", :encode => "hex"
+              = mail_to SiteSettings["contacts.email"], "Написать", :encode => "hex"
               / %hr/
               / .social
               /   %a{:href => "#"}
