@@ -14,14 +14,10 @@
   %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
   %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic", :rel => "stylesheet", :type => "text/css"}/
-
+  = favicon_link_tag 'favicon.ico'
   = stylesheet_link_tag 'application'
-
   /[if lt IE 9]
     = javascript_include_tag 'html5shim'
-  / Favicon
-  %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
-  %link{:href => "/apple-touch-icon.png", :rel => "apple-touch-icon"}/
   = csrf_meta_tags
 
 %body

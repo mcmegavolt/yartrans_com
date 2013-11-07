@@ -4,9 +4,11 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
+  
   config.mailer_sender = "service@yartrans.ua"
 
-
+  config.allow_insecure_token_lookup = true
+  
   config.secret_key = '4ac0fb919973f1866c1dd6060bb28ce85553d46639a56931946326b6b291c8ecb49dd471a2ce4317f55a78c1836ade4d2d9479895f24f22cbdc2e9f0c8fe9a6f'
 
 
