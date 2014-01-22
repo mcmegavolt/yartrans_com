@@ -93,6 +93,7 @@ ru:
           manager_email: "Email для заявок на выдачу"
         contacts:
           phones: "Контактные телефоны"
+          email: "Email для контактов"
         feedback:
           email: "Email обратного звонка"
 
