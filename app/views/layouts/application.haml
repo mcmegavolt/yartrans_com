@@ -4,31 +4,35 @@
 /[if IE 8 ]    <html lang="en" class="no-js ie8">
 /[if IE 9 ]    <html lang="en" class="no-js ie9">
 %html
-	%head
-		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-		%meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
-		%meta{:charset => "utf-8"}/
-		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
-		%cfheader{:name =>"X-XSS-Protection", :value => "0"}/
-		= csrf_meta_tags
-		= display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
-		%link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic", :rel => "stylesheet", :type => "text/css"}/
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{"http-equiv"=>"X-UA-Compatible", :content=>"IE=edge,chrome=1"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %cfheader{:name =>"X-XSS-Protection", :value => "0"}/
+    = csrf_meta_tags
+    = display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic", :rel => "stylesheet", :type => "text/css"}/
 
-		= stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'application'
 
-		/[if lt IE 9]
-			= javascript_include_tag 'html5shim'
-		= favicon_link_tag 'favicon.ico'
-		= javascript_include_tag 'application'
+    /[if lt IE 9]
+      = javascript_include_tag 'html5shim'
+    = favicon_link_tag 'favicon.ico'
+    = javascript_include_tag 'application'
 
-	%body
-		- if user_signed_in?
-			= render 'shared/floating_toolbar'
-		= render 'shared/header'
+  %body
+    - if user_signed_in?
+      = render 'shared/floating_toolbar'
+    = render 'shared/header'
 
-		= yield
-		/ - if user_signed_in?  
-		/   = render 'users/shared/user_toolbar'
-		= render 'shared/footer'
+    = yield
+    / - if user_signed_in?  
+    /   = render 'users/shared/user_toolbar'
+    = render 'shared/footer'
 
-		= render 'shared/flash_messages'
+    = render 'shared/flash_messages'
+    #feedback
+      = link_to new_feedback_path do
+        %i.icon-phone
+        Перезвоните мне

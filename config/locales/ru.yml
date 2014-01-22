@@ -212,6 +212,24 @@ ru:
       subject_reply: "Новый ответ на сообщение. «ЯрТранс Лоджистик»"
       subject_new: "Получено новое сообщение. «ЯрТранс Лоджистик»"
 
+  feedback:
+    form:
+      name: "Ваше Имя"
+      phone: "Номер телефона"
+      email: "E-mail"
+      message: "Сообщение"
+      submit: "Отправить заявку"
+    messages:
+      bad_form: "Заявка не была отправлена. Исправьте ошибки."
+      success: "Ваша заявка успешно отправлена, ожидайте звонка!"
+
+  activemodel:
+    attributes:
+      feedback:
+        name: "Имя"
+        phone: "Телефон"
+        email: "E-mail"
+
   activerecord: 
     models:
       news_item: "Новость"
@@ -224,7 +242,13 @@ ru:
       tariff: "Текущие тарифы"
       report: "Отчет"
       meta: "Мета-теги"
+      feedback: "Заявка на обратный звонок"
     attributes:
+      feedback:
+        name: "Ваше Имя"
+        phone: "Номер телефона"
+        email: "E-mail"
+        message: "Сообщение"
       article/category:
         name: "Название"
         description: "Описание"

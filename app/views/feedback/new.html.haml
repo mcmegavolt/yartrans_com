@@ -1,0 +1,41 @@
+.page-head
+  .container
+    .row
+      .span6
+        / %h2
+        /   %i.icon-phone
+        /   Заказ обратного звонка
+        = image_tag 'callback.jpg', class: 'img-rounded img-polaroid'
+.content.blog
+  .container
+    .row
+      .span12
+        %legend
+          Оставьте свои контакты и наши менеджеры свяжутся с Вами.
+        = form_for @feedback, :html => { :class => 'form-horizontal' }, :url => feedback_path do |form|
+          = render :partial => 'shared/form_errors', :locals => { :object => @feedback }
+          %fieldset
+            .control-group
+              = form.label t(:'feedback.form.name'), :class => 'control-label'
+              .controls
+                = form.text_field :name, :class => 'span4'
+                *
+            .control-group
+              = form.label t(:'feedback.form.phone'), :class => 'control-label'
+              .controls
+                = form.text_field :phone, :class => 'span4'
+                *
+            .control-group
+              = form.label t(:'feedback.form.email'), :class => 'control-label'
+              .controls
+                = form.text_field :email, :class => 'span4'            
+                %span.help-block
+                  Оставьте свой адрес электронной почты и мы вышлем Вам
+                  %br/
+                  общую презентацию о компании.
+            .control-group
+              = form.label t(:'feedback.form.message'), :class => 'control-label'
+              .controls
+                = form.text_area :message, :class => 'span4', rows: 5
+          .form-actions
+            = form.submit t(:'feedback.form.submit'), :class => 'btn btn-success btn-large'

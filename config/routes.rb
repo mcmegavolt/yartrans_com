@@ -17,6 +17,8 @@ Yartrans::Application.routes.draw do
     post 'sort', :on => :collection
   end
 
+  resources :feedback
+
   namespace :admin do
   	resources :users do
       resources :reports
@@ -88,9 +90,12 @@ Yartrans::Application.routes.draw do
 
   end
 
+  match 'feedback' => 'feedback#new', :as => 'feedback', :via => :get
+  match 'feedback' => 'feedback#create', :as => 'feedback', :via => :post
 
   match '/admin' => "admin/dashboard#index"
   match '/cabinet' => "cabinet/dashboard#index"
+
 
   root :to => 'home#index'
 

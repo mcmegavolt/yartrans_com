@@ -25,7 +25,8 @@
 							- @settings.each do |item|
 								%table.table
 									%tr
-										%td= t(:"admin.settings.items.#{item.var}")   
+										%td
+											= t(:"admin.settings.items.#{item.var}")   
 										%td= item.value
 										%td= item.thing_id
 										%td= item.thing_type

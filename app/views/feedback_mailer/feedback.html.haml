@@ -1,0 +1,13 @@
+%p Заявка на обратный звонок
+%p
+	%b Имя:
+	= @feedback.name
+%p
+	%b Телефон:
+	= @feedback.phone
+%p
+	%b Email:
+	= @feedback.email if @feedback.email
+%p
+	%b Сообщение:
+	= @feedback.message if @feedback.message

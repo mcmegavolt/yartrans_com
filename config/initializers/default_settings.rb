@@ -10,3 +10,6 @@ Setting.save_default('contacts.phones', "(067) 236-11-69, (044) 495-50-10")
 
 # Contact
 Setting.save_default('contacts.email', "office@yartrans.ua")
+
+# Feedback
+Setting.save_default('feedback.email', "info@yartrans.ua")
