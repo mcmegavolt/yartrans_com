@@ -28,6 +28,12 @@
             .span4
               .sidebar
                 .widget
+                  - if user_signed_in?
+                    - if can? :edit, Article::SubSectionItem
+                      = link_to new_article_sub_section_item_path do
+                        %i.icon-file
+                        Add new item
+                      %hr/
                   %h4= article_page.sub_section.title
                   - article_page.sub_section.sub_section_items.each do |item|
                     = image_tag item.photo_url(:thumb), class: 'pull-left img-rounded'

@@ -4,7 +4,8 @@ class Article::Page < ActiveRecord::Base
                   :published, :entry,
                   :icon, :icon_cache, :remove_icon,
                   :meta_attributes,
-                  :widget_attributes
+                  :widget_attributes,
+                  :sub_section_attributes
 
   belongs_to :category, :class_name => Article::Category
 

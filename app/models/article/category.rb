@@ -9,7 +9,8 @@ class Article::Category < ActiveRecord::Base
                   :is_featured,
                   :icon, :icon_cache, :remove_icon,
                   :meta_attributes,
-                  :widget_attributes
+                  :widget_attributes,
+                  :sub_section_attributes
 
   has_ancestry
 

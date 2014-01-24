@@ -67,5 +67,13 @@
               .accordion-inner
                 = f.fields_for :widget do |w|
                   = render 'shared/widget_fields', f: w
+          .accordion-group
+            .accordion-heading
+              %a.accordion-toggle.collapsed{"data-parent" => "#accordion2", "data-toggle" => "collapse", href: "#collapseThree"}
+                %h4= t(:'article.sub_section')
+            #collapseThree.accordion-body.collapse{style: "height: 0px;"}
+              .accordion-inner
+                = f.fields_for :sub_section do |sub|
+                  = render 'shared/sub_section_fields', f: sub
     .form-actions
       = f.submit :class => 'btn btn-success btn-large'

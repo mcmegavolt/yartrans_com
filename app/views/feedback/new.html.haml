@@ -18,17 +18,17 @@
             .control-group
               = form.label t(:'feedback.form.name'), :class => 'control-label'
               .controls
-                = form.text_field :name, :class => 'span4'
+                = form.text_field :name, :class => 'span5'
                 *
             .control-group
               = form.label t(:'feedback.form.phone'), :class => 'control-label'
               .controls
-                = form.text_field :phone, :class => 'span4'
+                = form.text_field :phone, :class => 'span5'
                 *
             .control-group
               = form.label t(:'feedback.form.email'), :class => 'control-label'
               .controls
-                = form.text_field :email, :class => 'span4'            
+                = form.text_field :email, :class => 'span5'            
                 %span.help-block
                   Оставьте свой адрес электронной почты и мы вышлем Вам
                   %br/
@@ -36,6 +36,14 @@
             .control-group
               = form.label t(:'feedback.form.message'), :class => 'control-label'
               .controls
-                = form.text_area :message, :class => 'span4', rows: 5
+                = form.text_area :message, :class => 'span5', rows: 5
+                %span.help-block
+                При желании обозначьте суть Вашего вопроса,
+                %br/
+                чтобы мы перезвонили Вам уже с подготовленной информацией.
+                %br/
+                Также можете оставить ваши замечания и пожелания.
+                %br/
+                Ваше мнение важно для нас. Спасибо!
           .form-actions
             = form.submit t(:'feedback.form.submit'), :class => 'btn btn-success btn-large'

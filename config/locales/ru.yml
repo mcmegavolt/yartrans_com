@@ -12,6 +12,7 @@ ru:
       recent: "Смотрите также"
     widget: "Виджет"
     meta: "Мета-теги"
+    sub_section: "Саб-секция"
   applications:
     admission:
       index:

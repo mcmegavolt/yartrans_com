@@ -28,6 +28,7 @@ class Article::PagesController < ApplicationController
     authorize! :edit, article_page
     article_page.build_meta unless article_page.meta
     article_page.build_widget unless article_page.widget
+    article_page.build_sub_section unless article_page.sub_section
     @categories_tree = Article::Category.all.each { |c| c.ancestry = c.ancestry.to_s + (c.ancestry != nil ? "/" : '') + c.id.to_s 
     }.sort {|x,y| x.ancestry <=> y.ancestry 
     }.map{ |c| ["-" * (c.depth - 1) + c.name,c.id] 
