@@ -19,25 +19,24 @@
 .content.blog
   .container
     .row
-      - unless article_page.is_static?
-        .span12
+      .span12
+        - if article_page.sub_section.present?
           .row
-            .span12
-              // use .span9 abowe when using commented code below
+            .span8
               .posts
                 = render 'body'
-            / .span3
-            /   .sidebar
-            /     .widget
-            /       %h4= t(:'article.page.recent')
-            /       %ul
-            /         - article_page.category.pages.each do |recent|
-            /           - unless recent == article_page
-            /             %li= link_to recent.title, page_path(recent)
-          = render 'meta'
-      - else
-        .span12
+            .span4
+              .sidebar
+                .widget
+                  %h4= article_page.sub_section.title
+                  - article_page.sub_section.sub_section_items.each do |item|
+                    = image_tag item.photo_url(:thumb), class: 'pull-left img-rounded'
+                    - unless item.title.blank?
+                      %h5= item.title
+                    %p= item.entry
+                    - unless item.caption.blank?
+                      %p= item.caption
+        - else
           .posts
             = render 'body'
-            = render 'meta'
-        
+        = render 'meta'

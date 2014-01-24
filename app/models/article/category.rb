@@ -21,6 +21,9 @@ class Article::Category < ActiveRecord::Base
   has_one :widget, :as => :widgetable, :class_name => Article::Widget, :dependent => :destroy
   accepts_nested_attributes_for :widget, :reject_if => proc { |attr| attr[:body].blank? }
 
+  has_one :sub_section, :as => :sub_sectionable, :class_name => Article::SubSection, :dependent => :destroy
+  accepts_nested_attributes_for :sub_section, :reject_if => proc { |attr| attr[:title].blank? }
+
   before_save :generate_adv_cat_permalink
   
   validates_uniqueness_of :permalink

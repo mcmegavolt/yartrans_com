@@ -1,0 +1,10 @@
+= simple_form_for resource, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title, :input_html => { :class => 'span8' }
+  = f.input :caption, :input_html => { :class => 'span8' }
+  = javascript_include_tag "ckeditor/init"
+  = f.input :entry
+  = f.input :body, :as => :ckeditor
+  = f.input :photo, :as => :file
+  = f.association :sub_section
+  .form-actions
+    = f.submit :class => 'btn'

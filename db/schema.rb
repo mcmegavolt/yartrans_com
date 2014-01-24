@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131104201307) do
+ActiveRecord::Schema.define(:version => 20140123134517) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -94,6 +94,25 @@ ActiveRecord::Schema.define(:version => 20131104201307) do
     t.boolean  "published",   :default => false
     t.string   "slogan"
     t.string   "icon"
+  end
+
+  create_table "article_sub_section_items", :force => true do |t|
+    t.integer  "sub_section_id"
+    t.text     "entry"
+    t.text     "body"
+    t.string   "title"
+    t.string   "caption"
+    t.string   "photo"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "article_sub_sections", :force => true do |t|
+    t.string   "title"
+    t.integer  "sub_sectionable_id"
+    t.string   "sub_sectionable_type"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "article_widgets", :force => true do |t|

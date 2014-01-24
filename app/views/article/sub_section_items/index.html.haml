@@ -1,0 +1,30 @@
+.page-head
+  .container
+    .row
+      .span12
+        %h2 Pages
+        %h4 all da pages
+.content
+  .container
+    %table.table
+      %tr
+        %th Title
+        %th Body
+        %th Category ID
+        %th Permalink
+        %th Position
+        %th
+        %th
+        %th
+      - for page in article_pages
+        %tr
+          %td= page.title
+          %td= page.body.truncate(100)
+          %td= page.category_id
+          %td= page.permalink
+          %td= page.position
+          %td= link_to 'Show', page_path(page)
+          %td= link_to 'Edit', edit_page_path(page)
+          %td= link_to 'Destroy', page_path(page), :confirm => 'Are you sure?', :method => :delete
+
+    %p= link_to "New Article/Page", new_page_path

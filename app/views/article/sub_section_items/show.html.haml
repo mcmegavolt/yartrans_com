@@ -1,0 +1,24 @@
+/ - set_meta_tags :title => (article_page.meta.present? ? article_page.meta.title : article_page.title), :description => (article_page.meta.present? ? article_page.meta.description : ''), :keywords => (article_page.meta.present? ? article_page.meta.keywords : '')
+/ - if article_page.meta.present? && article_page.meta.use_article_title?
+/   - set_meta_tags :title => article_page.title
+
+.page-head
+  .container
+    %h2
+      %span.page-icon= image_tag resource.photo_url(:medium) 
+      = resource.title unless resource.title.blank?
+      |
+      = resource.caption unless resource.title.blank?
+      |
+      = resource.sub_section.title   
+    .row
+      .span12
+        %p.entry
+          = resource.entry.html_safe
+
+.content.blog
+  .container
+    .row
+      .span12
+        = resource.body.html_safe
+        

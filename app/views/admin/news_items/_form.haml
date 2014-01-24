@@ -1,6 +1,6 @@
 = simple_form_for [:admin, resource], :html => { :class => 'form-horizontal' } do |f|
 	= f.input :title, :input_html => { :class => 'span8' }
 	= javascript_include_tag "ckeditor/init"
-	= f.input :body, :as => :ckeditor
+	= f.input :body, as: :ckeditor
 	.form-actions
 		= f.submit :class => 'btn'
