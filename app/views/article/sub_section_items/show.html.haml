@@ -33,7 +33,8 @@
                 / Thumbnail
                 .bthumb
                   = image_tag resource.photo_url(:big ) 
-                %p= resource.body.html_safe
+                %blockquote{:style=>'margin:15px 0 10px;font-weight:bold;'}= resource.entry
+                = resource.body.html_safe
                 %p.author.text-right{:style => 'clear:both;'}
                   &ndash;
                   %span.color= resource.caption

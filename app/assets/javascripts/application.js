@@ -20,6 +20,8 @@
 // = require jquery.cslider
 // = require_self
 
+$(document).ready(function() {
+
   $('.article-toggle-button').toggleButtons({
       width:100,
       style: {

@@ -45,4 +45,4 @@
                     = link_to article_sub_section_item_path(item) do
                       = image_tag item.photo_url(:big)
                   / Para
-                  %p= truncate(strip_tags(item.body), length: 100)
+                  %p= truncate(strip_tags(item.entry), length: 200)
