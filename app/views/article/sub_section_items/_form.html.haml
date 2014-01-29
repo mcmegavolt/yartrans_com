@@ -2,8 +2,8 @@
   = f.input :title, :input_html => { :class => 'span8' }
   = f.input :caption, :input_html => { :class => 'span8' }
   = javascript_include_tag "ckeditor/init"
-  = f.input :entry
-  = f.input :body, :as => :ckeditor
+  = f.input :entry, :input_html => { :rows => 3, :class => 'span8' }
+  = f.input :body, as: :ckeditor
   = f.input :photo, :as => :file
   = f.association :sub_section
   .form-actions

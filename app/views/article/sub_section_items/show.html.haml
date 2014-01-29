@@ -1,24 +1,46 @@
-/ - set_meta_tags :title => (article_page.meta.present? ? article_page.meta.title : article_page.title), :description => (article_page.meta.present? ? article_page.meta.description : ''), :keywords => (article_page.meta.present? ? article_page.meta.keywords : '')
-/ - if article_page.meta.present? && article_page.meta.use_article_title?
-/   - set_meta_tags :title => article_page.title
+- set_meta_tags :title => resource.caption + ' | ' + resource.sub_section.title, :description => resource.entry
 
-.page-head
-  .container
-    %h2
-      %span.page-icon= image_tag resource.photo_url(:medium) 
-      = resource.title unless resource.title.blank?
-      |
-      = resource.caption unless resource.title.blank?
-      |
-      = resource.sub_section.title   
-    .row
-      .span12
-        %p.entry
-          = resource.entry.html_safe
-
-.content.blog
-  .container
-    .row
-      .span12
-        = resource.body.html_safe
-        
+#article
+  #sub_section_item
+    #show
+      .page-head
+        .container
+          %h2
+            = resource.caption
+            %span.category
+              |
+              = link_to resource.sub_section.title, article_sub_section_path(resource.sub_section)
+            .thumbs-flow
+              - resource.sub_section.sub_section_items.sort_by{rand}.slice(0,9).each do |item|
+                = link_to article_sub_section_item_path(item) do
+                  = image_tag item.photo_url(:thumb), class: 'img-rounded'
+      .content.blog
+        .container
+          .row
+            .span8
+              .entry
+                / Meta details
+                .meta
+                  %i.icon-calendar
+                  = l resource.created_at.to_date, :format => :long
+                  %i.icon-user
+                  = resource.caption
+                  %i.icon-folder-open
+                  = resource.title
+                  / %span.pull-right
+                  /   %i.icon-comment
+                  /   %a{href: "#"} 2 Comments
+                / Thumbnail
+                .bthumb
+                  = image_tag resource.photo_url(:big ) 
+                %p= resource.body.html_safe
+                %p.author.text-right{:style => 'clear:both;'}
+                  &ndash;
+                  %span.color= resource.caption
+                  ,
+                  = resource.title
+            .span4
+              .sidebar
+                .widget
+                  %h4 Свежие добавленные
+                  = render 'article/widgets/sub_section_items', :article_page => resource

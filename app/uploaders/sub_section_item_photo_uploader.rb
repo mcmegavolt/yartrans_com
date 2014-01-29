@@ -44,7 +44,7 @@ class SubSectionItemPhotoUploader < CarrierWave::Uploader::Base
   end
 
   version :big do
-    process :resize_to_fill => [200, 200]
+    process :resize_to_fill => [800, 300]
   end
 
 

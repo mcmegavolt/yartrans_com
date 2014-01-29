@@ -1,0 +1,25 @@
+- if user_signed_in?
+  - if can? :edit, Article::SubSectionItem
+    = link_to new_article_sub_section_item_path do
+      %i.icon-file
+      Add new item
+    %hr/
+%ul.comment-list
+  - article_page.sub_section.sub_section_items.limit(4).each do |item|
+    %li.comment
+      %a.pull-left
+        = image_tag item.photo_url(:medium), class: 'avatar'
+      - unless item.caption.blank?
+        .comment-author
+          = link_to item.caption, article_sub_section_item_path(item)
+          - if user_signed_in?
+            - if can? :edit, Article::SubSectionItem
+              %span.button
+                = link_to edit_article_sub_section_item_path(item) do
+                  %i.icon-pencil
+      %p
+        = item.entry
+        = link_to t(:'most_common.readmore'), article_sub_section_item_path(item)
+- if article_page.sub_section.sub_section_items.count > 4
+  .button
+    = link_to t(:'most_common.view_all_items'), article_sub_section_path(article_page.sub_section)

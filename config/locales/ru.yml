@@ -207,6 +207,7 @@ ru:
     client: "Клиент"
     date: "Дата"
     id: "Номер"
+    view_all_items: "Смотреть все"
 
   mailboxer:
     message_mailer:

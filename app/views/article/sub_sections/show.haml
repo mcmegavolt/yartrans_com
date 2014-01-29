@@ -1,0 +1,48 @@
+- if resource.sub_sectionable.class.name == 'Article::Page'
+  - @sub_sectionable = resource.sub_sectionable.title
+- if resource.sub_sectionable.class.name == 'Article::Category'
+  - @sub_sectionable = resource.sub_sectionable.name
+
+- set_meta_tags :title => resource.title + ' | ' + @sub_sectionable
+
+#article
+  #sub_section_item
+    #show
+      .page-head
+        .container
+          %h2
+            = resource.title   
+            %span.category
+              |
+              - if resource.sub_sectionable.class.name == 'Article::Page'
+                = link_to resource.sub_sectionable.title, page_path(resource.sub_sectionable)
+              - if resource.sub_sectionable.class.name == 'Article::Category'
+                = link_to resource.sub_sectionable.name, category_path(resource.sub_sectionable)
+            .thumbs-flow
+              - resource.sub_section_items.sort_by{rand}.slice(0,9).each do |item|
+                = link_to article_sub_section_item_path(item) do
+                  = image_tag item.photo_url(:thumb), class: 'img-rounded'
+      .content.blog
+        .container
+          .row
+            - resource.sub_section_items.each do |item|
+              .span4
+                / Post one
+                .entry
+                  %h2
+                    = link_to item.caption, article_sub_section_item_path(item)
+                  / Meta details
+                  .meta
+                    %i.icon-calendar
+                    = l item.created_at.to_date, :format => :long
+                    %i.icon-folder-open
+                    = item.title
+                    / %span.pull-right
+                    /   1
+                    /   %i.icon-comment
+                  / Thumbnail
+                  .bthumb2
+                    = link_to article_sub_section_item_path(item) do
+                      = image_tag item.photo_url(:big)
+                  / Para
+                  %p= truncate(strip_tags(item.body), length: 100)

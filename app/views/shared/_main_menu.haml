@@ -10,7 +10,7 @@
         %ul.nav
           - root_article_categories.each do |category|
             %li.dropdownDELETE
-              = link_to category_path(category), :class => 'dropdown-toggleDELETE', "data-toggle" => "dropdownDELETE" do
+              = link_to category_path(category), "data-toggle" => "dropdownDELETE", :class => (current_page?(category_path(category)) ? 'dropdown-toggleDELETE current' : 'dropdown-toggleDELETE') do
                 = category.name
                 / %b.caret
               / %ul.dropdown-menu
@@ -22,4 +22,4 @@
           
           - static_article_pages.each do |static|
             %li
-              = link_to static.title, page_path(static)
+              = link_to static.title, page_path(static), class: ( 'current' if current_page?(page_path(static)) )

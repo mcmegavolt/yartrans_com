@@ -29,7 +29,7 @@ class Ability
 
     elsif user.role? :director ###### DIRECTOR ########
       can :log, [:admin_panel, :cabinet]
-      can :edit, [Article::Page, Article::Category,]
+      can :edit, [Article::Page, Article::Category, Article::SubSectionItem]
       can [:edit, :destroy], User do |user|
         (user.role? :client) || (user.role? :manager)
       end

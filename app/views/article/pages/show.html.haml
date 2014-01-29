@@ -2,47 +2,38 @@
 - if article_page.meta.present? && article_page.meta.use_article_title?
   - set_meta_tags :title => article_page.title
 
-.page-head
-  .container
-    %h2
-      %span.page-icon= image_tag article_page.icon_url(:small) 
-      = article_page.title
-      - if article_page.category.present?
-        %span.category
-          |
-          = link_to article_page.category.name, category_path(article_page.category)
-    .row
-      .span12
-        %p.entry
-          = article_page.entry.html_safe
-
-.content.blog
-  .container
-    .row
-      .span12
-        - if article_page.sub_section.present?
+#article
+  #page
+    #show
+      .page-head
+        .container
+          %h2
+            %span.page-icon= image_tag article_page.icon_url(:small) 
+            = article_page.title
+            - if article_page.category.present?
+              %span.category
+                |
+                = link_to article_page.category.name, category_path(article_page.category)
           .row
-            .span8
-              .posts
-                = render 'body'
-            .span4
-              .sidebar
-                .widget
-                  - if user_signed_in?
-                    - if can? :edit, Article::SubSectionItem
-                      = link_to new_article_sub_section_item_path do
-                        %i.icon-file
-                        Add new item
-                      %hr/
-                  %h4= article_page.sub_section.title
-                  - article_page.sub_section.sub_section_items.each do |item|
-                    = image_tag item.photo_url(:thumb), class: 'pull-left img-rounded'
-                    - unless item.title.blank?
-                      %h5= item.title
-                    %p= item.entry
-                    - unless item.caption.blank?
-                      %p= item.caption
-        - else
-          .posts
-            = render 'body'
-        = render 'meta'
+            .span12
+              %p.entry
+                = article_page.entry.html_safe
+
+      .content.blog
+        .container
+          .row
+            .span12
+              - if article_page.sub_section.present?
+                .row
+                  .span8
+                    .posts
+                      = render 'body'
+                  .span4
+                    .sidebar
+                      .widget
+                        %h4= article_page.sub_section.title
+                        = render 'article/widgets/sub_section_items', :article_page => article_page
+              - else
+                .posts
+                  = render 'body'
+              = render 'meta'

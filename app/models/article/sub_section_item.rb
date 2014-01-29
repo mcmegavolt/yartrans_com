@@ -5,9 +5,11 @@ class Article::SubSectionItem < ActiveRecord::Base
 
   validates_presence_of :entry, :body
 
-  validates_presence_of :title, :unless => :caption?
-  validates_presence_of :caption, :unless => :title?
+  validates_presence_of :title#, :unless => :caption?
+  validates_presence_of :caption
 
   mount_uploader :photo, SubSectionItemPhotoUploader
+
+  default_scope order('created_at DESC')
 
 end

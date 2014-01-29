@@ -11,8 +11,9 @@ Yartrans::Application.routes.draw do
   end
 
   resources :categories, :controller => "article/categories", :path => 'c'
-  resources :pages, :controller => "article/pages", :path => 'p'  
-  resources :article_sub_section_items, :controller => "article/sub_section_items", :path => 's'
+  resources :pages, :controller => "article/pages", :path => 'p'
+  resources :article_sub_section_items, :controller => "article/sub_section_items", :path => 'i'
+  resources :article_sub_sections, :controller => "article/sub_sections", :path => 's'
 
   resources :feedback
 
