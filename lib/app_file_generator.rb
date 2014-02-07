@@ -116,7 +116,7 @@ class AppFileGenerator
         ws.add_row
         ws.merge_cells 'A3:J3'
         ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания', 'Менеджер'  ], :style => table_header
-        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-', '-' ], :style => default
+        ws.add_row [Time.now.strftime('%S%M%H%d%M%Y'), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки, кг', 'Объем коробки, м3', 'Доп. информация' ], :style => table_header
 
@@ -145,7 +145,7 @@ class AppFileGenerator
         ws.add_row
         ws.merge_cells 'A3:G3'
         ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания', 'Менеджер' ], :style => table_header
-        ws.add_row ['заполняет оператор', Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-', '-' ], :style => default
+        ws.add_row [Time.now.strftime('%S%M%H%d%M%Y'), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'Кол. коробок', 'Доп. информация' ], :style => table_header
         ws.column_widths 40, 20, 20, 20, 20, 20, 20, 20, 20, 40
