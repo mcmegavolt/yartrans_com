@@ -110,13 +110,16 @@ class AppFileGenerator
       table_header = styles.add_style :bg_color => 'C3C3C3', :fg_color => '303030', :b => true, :alignment => {:horizontal => :center, :vertical => :center}, :width => :auto
       default = styles.add_style :b => false, :alignment => {:horizontal => :center, :vertical => :center}, :width => :auto
 
+      # client id + random 4 digits
+      app_random_id = profile.id.to_s + '-' + (1_000 + Random.rand(10_000 - 1_000)).to_s
+
       wb.add_worksheet(name: 'Заявка на прием груза') do  |ws|
         ws.add_row ['ЗАЯВКА НА ПРИМЕМ ГРУЗА', '', '', '', '', 'Код клиента'], :style => title
         ws.add_row [profile.name, '', '', '', '', profile.personal_id], :style => title
         ws.add_row
         ws.merge_cells 'A3:J3'
         ws.add_row ['Номер зявки', 'Создана', 'Дата приема', 'Желаемое время', 'Данные об авто', 'Примечания', 'Менеджер'  ], :style => table_header
-        ws.add_row [Time.now.strftime('%S%M%H%d%M%Y'), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-', '-' ], :style => default
+        ws.add_row [app_random_id, Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).last(8), '-', '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'В коробке', 'Кол. коробок', 'Вес коробки, кг', 'Объем коробки, м3', 'Доп. информация' ], :style => table_header
 
@@ -139,13 +142,16 @@ class AppFileGenerator
       table_header = styles.add_style :bg_color => 'C3C3C3', :fg_color => '303030', :b => true, :alignment => {:horizontal => :center, :vertical => :center}, :width => :auto
       default = styles.add_style :b => false, :alignment => {:horizontal => :center, :vertical => :center}, :width => :auto
 
+      # client id + random 4 digits
+      app_random_id = profile.id.to_s + '-' + (1_000 + Random.rand(10_000 - 1_000)).to_s
+
       wb.add_worksheet(name: 'Заявка на выдачу груза') do  |ws|
         ws.add_row ['ЗАЯВКА НА ВЫДАЧУ ГРУЗА','', '', '', '', '', 'Код клиента'], :style => title
         ws.add_row [profile.name,'', '', '', '', '', profile.personal_id], :style => title
         ws.add_row
         ws.merge_cells 'A3:G3'
         ws.add_row ['Номер зявки', 'Создана', 'Дата выдачи', 'Желаемое время', 'Кому выдать', 'Данные об авто', 'Примечания', 'Менеджер' ], :style => table_header
-        ws.add_row [Time.now.strftime('%S%M%H%d%M%Y'), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-', '-' ], :style => default
+        ws.add_row [app_random_id, Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), Time.now.to_formatted_s(:db).first(10), '-', '-' , '-', '-' ], :style => default
         ws.add_row
         ws.add_row ['ТМЦ', 'Артикул', 'Штрих-код', 'Единица', 'Количество', 'Кол. коробок', 'Доп. информация' ], :style => table_header
         ws.column_widths 40, 20, 20, 20, 20, 20, 20, 20, 20, 40
