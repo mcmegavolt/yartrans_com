@@ -25,7 +25,7 @@ class Cabinet::ReleaseAppsController < Cabinet::DashboardController
     if release_app.save
 
       ReleaseAppMailer.delay.new_app_to_manager(release_app)
-      ReleaseAppMailer.delay.new_app_to_client(release_app)
+      # ReleaseAppMailer.delay.new_app_to_client(release_app)
 
       flash[:success] = t(:'applications.release.flash.created')
       redirect_to cabinet_release_apps_path
