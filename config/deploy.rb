@@ -6,11 +6,10 @@ require "whenever/capistrano"
 
 set :rails_env, "production" #added for delayed job  
 
-
 set :rvm_type, :system  # Copy the exact line. I really mean :user here
 set :rvm_path, "/usr/local/rvm"
 
-set :application, "yartrans"
+set :application, "yartranscom"
 set :scm, :git
 set :repository,  ".git"
 set :branch, "develop"
@@ -21,12 +20,12 @@ role :db,  "vps.yartrans.ua", :primary => true # This is where Rails migrations 
 
 set :ssh_options, { :forward_agent => true, :paranoid => false }
 
-set :user, "yartrans"
-set :password, "YaRtRaN8*pa88w0rd"
+set :user, "yartranscom"
+set :password, "YaRtRaN8*pa88w0rd*c0M"
 set :use_sudo, false
 set :deploy_via, :copy
 set :copy_exclude, [".git"]
-set :deploy_to, "/home/yartrans/yartrans"
+set :deploy_to, "/home/yartranscom/yartranscom"
 set :normalize_asset_timestamps, false
 
 # set :rake, "#{rake} --trace"
