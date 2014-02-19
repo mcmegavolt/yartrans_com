@@ -58,9 +58,9 @@ namespace :deploy do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
 
-  task :migrate_database do
-    run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
-  end
+  # task :migrate_database do
+  #   run "cd '#{current_path}' && #{rake} db:migrate RAILS_ENV=#{rails_env}"
+  # end
 
 end
 
@@ -97,12 +97,12 @@ namespace :uploads do
     set :shared_children, fetch(:shared_children) + fetch(:uploads_dirs)
   end
 
-  after       "deploy:finalize_update", "uploads:symlink", "deploy:migrate_database"
+  after       "deploy:finalize_update", "uploads:symlink"#, "deploy:migrate_database"
   on :start,  "uploads:register_dirs"
 
 end
 
-after  "deploy:finalize_update", "deploy:migrate_database"
+# after  "deploy:finalize_update", "deploy:migrate_database"
 
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
