@@ -237,6 +237,17 @@ body {
 	  }
 	} 
 
+	#switch {
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		padding-top: 10px;
+		padding-right: 15px;
+		a:hover {
+			text-decoration: none;
+		}
+	}
+
 	#feedback { 
 	  height: 104px; 
 	  width: 104px; 
