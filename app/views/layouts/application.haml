@@ -14,7 +14,10 @@
     = csrf_meta_tags
     = display_meta_tags :site => t(:'seo.meta.site_name'), :reverse => true
     %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic", :rel => "stylesheet", :type => "text/css"}/
-    = favicon_link_tag 'icons/favicon.png', type: 'image/png'
+    
+    %link{ :rel => "shortcut icon", :href => "icons/favicon.ico", :type => "image/x-icon" }
+    %link{ :rel => "icon", :href => "icons/favicon.png", :sizes => "16x16" }
+    
     = stylesheet_link_tag 'application'
     /[if lt IE 9]
       = javascript_include_tag 'html5shim'
