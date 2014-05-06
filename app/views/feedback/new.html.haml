@@ -10,40 +10,52 @@
   .container
     .row
       .span12
-        %legend
-          Оставьте свои контакты и наши менеджеры свяжутся с Вами.
-        = form_for @feedback, :html => { :class => 'form-horizontal' }, :url => feedback_path do |form|
-          = render :partial => 'shared/form_errors', :locals => { :object => @feedback }
-          %fieldset
-            .control-group
-              = form.label t(:'feedback.form.name'), :class => 'control-label'
-              .controls
-                = form.text_field :name, :class => 'span5'
-                *
-            .control-group
-              = form.label t(:'feedback.form.phone'), :class => 'control-label'
-              .controls
-                = form.text_field :phone, :class => 'span5'
-                *
-            .control-group
-              = form.label t(:'feedback.form.email'), :class => 'control-label'
-              .controls
-                = form.text_field :email, :class => 'span5'            
-                %span.help-block
-                  Оставьте свой адрес электронной почты и мы вышлем Вам
+        - unless params[:oops]
+          %legend
+            Оставьте свои контакты и наши менеджеры свяжутся с Вами.
+          = form_for @feedback, :html => { :class => 'form-horizontal' }, :url => feedback_path do |form|
+            = render :partial => 'shared/form_errors', :locals => { :object => @feedback }
+            %fieldset
+              .control-group
+                = form.label t(:'feedback.form.name'), :class => 'control-label'
+                .controls
+                  = form.text_field :name, :class => 'span5'
+                  *
+              .control-group
+                = form.label t(:'feedback.form.phone'), :class => 'control-label'
+                .controls
+                  = form.text_field :phone, :class => 'span5'
+                  *
+              .control-group
+                = form.label t(:'feedback.form.email'), :class => 'control-label'
+                .controls
+                  = form.text_field :email, :class => 'span5'            
+                  %span.help-block
+                    Оставьте свой адрес электронной почты и мы вышлем Вам
+                    %br/
+                    общую презентацию о компании.
+              .control-group
+                = form.label t(:'feedback.form.message'), :class => 'control-label'
+                .controls
+                  = form.text_area :message, :class => 'span5', rows: 5
+                  %span.help-block
+                  При желании обозначьте суть Вашего вопроса,
                   %br/
-                  общую презентацию о компании.
-            .control-group
-              = form.label t(:'feedback.form.message'), :class => 'control-label'
-              .controls
-                = form.text_area :message, :class => 'span5', rows: 5
-                %span.help-block
-                При желании обозначьте суть Вашего вопроса,
-                %br/
-                чтобы мы перезвонили Вам уже с подготовленной информацией.
-                %br/
-                Также можете оставить ваши замечания и пожелания.
-                %br/
-                Ваше мнение важно для нас. Спасибо!
-          .form-actions
-            = form.submit t(:'feedback.form.submit'), :class => 'btn btn-success btn-large'
+                  чтобы мы перезвонили Вам уже с подготовленной информацией.
+                  %br/
+                  Также можете оставить ваши замечания и пожелания.
+                  %br/
+                  Ваше мнение важно для нас. Спасибо!
+              .control-group
+                .controls
+                  %input.machine{name: "machine",type: "text", :placeholder => 'Оставьте это полье пустым!'}
+                  %span.help-block.machine
+                    Внимание! Если Вы человек, не заполняйте это поле!
+
+            .form-actions
+              = form.submit t(:'feedback.form.submit'), :class => 'btn btn-success btn-large'
+        - else
+          .alert
+            Вы заполнили запрещенное поле! Если Вы не робот,
+            = link_to 'заполните форму', new_feedback_path
+            еще раз, только оставьте последнее поле пустым!

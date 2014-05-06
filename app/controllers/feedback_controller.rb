@@ -6,22 +6,30 @@ class FeedbackController < ApplicationController
 
   def create
 
-    @feedback = Feedback.new(params[:feedback])
+    if params[:machine].blank?
 
-    if @feedback.valid?
-      flash[:success] = t(:'feedback.messages.success')
-      FeedbackMailer.delay.feedback(@feedback)
-      redirect_to root_path
-    else
+      @feedback = Feedback.new(params[:feedback])
 
-      @error_msg = ''
+      if @feedback.valid?
+        flash[:success] = t(:'feedback.messages.success')
+        FeedbackMailer.delay.feedback(@feedback)
+        redirect_to root_path
+      else
 
-      unless @feedback.valid?
-        @error_msg += t(:'feedback.messages.bad_form')
+        @error_msg = ''
+
+        unless @feedback.valid?
+          @error_msg += t(:'feedback.messages.bad_form')
+        end
+
+        flash[:error] = @error_msg.html_safe
+        render :new
       end
-
-      flash[:error] = @error_msg.html_safe
-      render :new
+    
+    else
+      redirect_to new_feedback_path(:oops => '1')
     end
+
+
   end
 end
