@@ -2,6 +2,8 @@ lock '3.2.1'
 
 set :rails_env, "production" #added for delayed_jobs
 
+set :tmp_dir, "/home/yartranscom/tmp"
+
 set :deploy_to, "/home/yartranscom/yartranscom"
 set :scm, :git
 set :deploy_via, :remote_cache
