@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140123134517) do
+ActiveRecord::Schema.define(:version => 20140617101611) do
 
   create_table "activity_feeds", :force => true do |t|
     t.string   "class_name"
@@ -140,12 +140,6 @@ ActiveRecord::Schema.define(:version => 20140123134517) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
-  create_table "conversations", :force => true do |t|
-    t.string   "subject",    :default => ""
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -162,14 +156,19 @@ ActiveRecord::Schema.define(:version => 20140123134517) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "news_items", :force => true do |t|
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "title"
+  create_table "mailboxer_conversation_opt_outs", :force => true do |t|
+    t.integer "unsubscriber_id"
+    t.string  "unsubscriber_type"
+    t.integer "conversation_id"
   end
 
-  create_table "notifications", :force => true do |t|
+  create_table "mailboxer_conversations", :force => true do |t|
+    t.string   "subject",    :default => ""
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "mailboxer_notifications", :force => true do |t|
     t.string   "type"
     t.text     "body"
     t.string   "subject",              :default => ""
@@ -187,20 +186,9 @@ ActiveRecord::Schema.define(:version => 20140123134517) do
     t.datetime "expires"
   end
 
-  add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+  add_index "mailboxer_notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
 
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "personal_id"
-    t.string   "phone_main"
-    t.string   "phone_alternate"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.integer  "user_id"
-    t.string   "alt_email"
-  end
-
-  create_table "receipts", :force => true do |t|
+  create_table "mailboxer_receipts", :force => true do |t|
     t.integer  "receiver_id"
     t.string   "receiver_type"
     t.integer  "notification_id",                                  :null => false
@@ -212,7 +200,25 @@ ActiveRecord::Schema.define(:version => 20140123134517) do
     t.datetime "updated_at",                                       :null => false
   end
 
-  add_index "receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
+  add_index "mailboxer_receipts", ["notification_id"], :name => "index_receipts_on_notification_id"
+
+  create_table "news_items", :force => true do |t|
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "title"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "personal_id"
+    t.string   "phone_main"
+    t.string   "phone_alternate"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
+    t.string   "alt_email"
+  end
 
   create_table "release_apps", :force => true do |t|
     t.text     "notes"

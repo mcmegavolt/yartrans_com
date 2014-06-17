@@ -20,14 +20,11 @@ gem 'font-awesome-sass-rails'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
-gem "carrierwave"
-gem "mini_magick"
 gem "cancan"
 gem 'kaminari'
 gem 'has_scope'
 gem 'ransack'
 gem "rails-settings-cached", "0.2.4"
-gem 'unicorn'
 gem 'mailboxer'#, '0.9.0'
 gem 'simple_form' 
 gem 'cocoon'
@@ -44,8 +41,10 @@ end
 
 group :development do
   gem 'sqlite3'
-  gem 'capistrano'
-  gem 'rvm-capistrano'
+  gem 'capistrano', '~> 3.2.0'
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
   gem 'letter_opener'
   gem 'letter_opener_web', '~> 1.0'
   gem 'nifty-generators'
