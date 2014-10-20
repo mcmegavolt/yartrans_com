@@ -18,4 +18,3 @@ production:
   user: root
   password: "b@Z?kQy6TxBm"
   socket: /var/run/mysqld/mysqld.sock
-

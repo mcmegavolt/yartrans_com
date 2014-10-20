@@ -2,8 +2,8 @@ ru:
   seo:
     meta:
       site_name: "YarTrans Logistic"
-      home_title: "— современный 4PL оператор на Украинском рынке логистических услуг"
-      home_description: "Компания «ЯрТранс Лоджистик» — современный 4PL оператор на Украинском рынке логистических услуг."
+      home_title: "— современный 4PL оператор на рынке логистических услуг Украины и России."
+      home_description: "Компания «ЯрТранс Лоджистик» — современный 4PL оператор на рынке логистических услуг Украины и России."
       home_keywords: ""
       admin_site_name: "Администрирование"
       admin_home_title: "YarTrans Logistic"
@@ -72,15 +72,15 @@ ru:
         adm_time: "Желаемое время"
         vehicle: "Данные об авто"
         actions: "Действия"
-        items_count: "Позиций"  
-        file: "Загруженный файл"      
+        items_count: "Позиций"
+        file: "Загруженный файл"
       show:
         title: "Детали заявки"
         id: "Номер заявки"
         notes: "Доп. информация"
         vehicle: "Информация об авто"
         items_count: "Количество позиций"
-        recipient: "Кому выдать товар"        
+        recipient: "Кому выдать товар"
       edit:
         title: "Редактирование заявки на выдачу груза"
       new:
@@ -146,7 +146,7 @@ ru:
     my_profile: "Моя учетная запись"
     edit_profile: "Изменить учетную запись"
     hello: "Приветствую, "
-    login: "Вход для клиентов"    
+    login: "Вход для клиентов"
     logout: "Выйти"
     main_page: "На главную"
     news: "Корпоративные новости"
@@ -232,7 +232,7 @@ ru:
         phone: "Телефон"
         email: "E-mail"
 
-  activerecord: 
+  activerecord:
     models:
       news_item: "Новость"
       user: "Пользователь"
@@ -280,8 +280,8 @@ ru:
         admission_time: "Желаемое время"
         vehicle: "Данные об автомобиле"
         notes: "Примечания"
-        admission_items: "Позиции"   
-        file: "Файл заявки"  
+        admission_items: "Позиции"
+        file: "Файл заявки"
         remove_file: "Удалить файл"
         staff: "Менеджер"
       release_app:
@@ -291,7 +291,7 @@ ru:
         notes: "Примечания"
         release_items: "Позиции"
         recipient: "Кому выдать"
-        file: "Файл заявки"   
+        file: "Файл заявки"
         remove_file: "Удалить файл"
       admission_item:
         name: "Название"
@@ -361,6 +361,3 @@ ru:
     messages:
       form_errors:
         header: "Ошибка заполение формы"
-
-
-
